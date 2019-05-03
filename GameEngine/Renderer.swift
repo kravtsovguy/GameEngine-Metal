@@ -12,7 +12,7 @@ import Metal
 import MetalKit
 import simd
 
-class Renderer: NSObject, MTKViewDelegate {
+open class Renderer: NSObject, MTKViewDelegate {
 
     let commandQueue: MTLCommandQueue
     let pipelineState: MTLRenderPipelineState
@@ -24,7 +24,7 @@ class Renderer: NSObject, MTKViewDelegate {
         1.0, -1.0, 0.0
     ]
 
-    init(metalKitView: MTKView) throws {
+    public init(metalKitView: MTKView) throws {
         // configure mtkvview
         metalKitView.colorPixelFormat = .bgra8Unorm_srgb
         metalKitView.preferredFramesPerSecond = 60
@@ -40,7 +40,8 @@ class Renderer: NSObject, MTKViewDelegate {
         vertexBuffer = device.makeBuffer(bytes: vertexData, length: dataSize, options: [])!
 
         // init pipeline
-        let defaultLibrary = device.makeDefaultLibrary()!
+        let resourcePath = Bundle.main.path(forResource: "ShadersLibrary", ofType: "metallib")!
+        let defaultLibrary = try! device.makeLibrary(URL: URL(fileURLWithPath: resourcePath))
         let fragmentProgram = defaultLibrary.makeFunction(name: "basic_fragment")
         let vertexProgram = defaultLibrary.makeFunction(name: "basic_vertex")
         let pipelineStateDescriptor = MTLRenderPipelineDescriptor()
@@ -76,14 +77,14 @@ class Renderer: NSObject, MTKViewDelegate {
         commandBuffer.commit()
     }
     
-    func draw(in view: MTKView) {
+    public func draw(in view: MTKView) {
         /// Per frame updates here
         autoreleasepool {
             render(view: view)
         }
     }
     
-    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
+    public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
         /// Respond to drawable size or orientation changes here
     }
 }

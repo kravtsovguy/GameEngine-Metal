@@ -6,7 +6,8 @@
 //  Copyright © 2019 Matvey Kravtsov. All rights reserved.
 //
 
-import MetalKit;
+import MetalKit
+import GameEngine
 
 
 #if os(iOS) || os(tvOS)

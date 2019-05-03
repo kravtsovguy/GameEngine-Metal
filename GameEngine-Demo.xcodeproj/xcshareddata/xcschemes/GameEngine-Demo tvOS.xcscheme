@@ -14,9 +14,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9CF154292250D86B00CD00DA"
-               BuildableName = "GameEngine.app"
-               BlueprintName = "GameEngine macOS"
+               BlueprintIdentifier = "9CC82AC1227B887C00498FE3"
+               BuildableName = "GameEngine-Demo.app"
+               BlueprintName = "GameEngine-Demo tvOS"
+               ReferencedContainer = "container:GameEngine-Demo.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9CC82B6A227BC14300498FE3"
+               BuildableName = "libGameEngine.a"
+               BlueprintName = "GameEngine tvOS"
                ReferencedContainer = "container:GameEngine.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,10 +46,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9CF154292250D86B00CD00DA"
-            BuildableName = "GameEngine.app"
-            BlueprintName = "GameEngine macOS"
-            ReferencedContainer = "container:GameEngine.xcodeproj">
+            BlueprintIdentifier = "9CC82AC1227B887C00498FE3"
+            BuildableName = "GameEngine-Demo.app"
+            BlueprintName = "GameEngine-Demo tvOS"
+            ReferencedContainer = "container:GameEngine-Demo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -55,10 +69,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9CF154292250D86B00CD00DA"
-            BuildableName = "GameEngine.app"
-            BlueprintName = "GameEngine macOS"
-            ReferencedContainer = "container:GameEngine.xcodeproj">
+            BlueprintIdentifier = "9CC82AC1227B887C00498FE3"
+            BuildableName = "GameEngine-Demo.app"
+            BlueprintName = "GameEngine-Demo tvOS"
+            ReferencedContainer = "container:GameEngine-Demo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -74,10 +88,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9CF154292250D86B00CD00DA"
-            BuildableName = "GameEngine.app"
-            BlueprintName = "GameEngine macOS"
-            ReferencedContainer = "container:GameEngine.xcodeproj">
+            BlueprintIdentifier = "9CC82AC1227B887C00498FE3"
+            BuildableName = "GameEngine-Demo.app"
+            BlueprintName = "GameEngine-Demo tvOS"
+            ReferencedContainer = "container:GameEngine-Demo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
