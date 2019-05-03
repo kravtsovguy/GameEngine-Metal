@@ -5,15 +5,6 @@
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
-      <PreActions>
-         <ExecutionAction
-            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
-            <ActionContent
-               title = "Run Script"
-               scriptText = "if [ -d &quot;$PROJECT_DIR/Output&quot; ]&#10;then&#10;exit&#10;fi&#10;&#10;workspacePath=&quot;$PROJECT_DIR/$PROJECT_NAME.xcworkspace&quot;&#10;sharedSettings=&quot;$workspacePath/xcshareddata/WorkspaceSettings.xcsettings&quot;&#10;userSettings=&quot;$workspacePath/xcuserdata/$USER.xcuserdatad/WorkspaceSettings.xcsettings&quot;&#10;cp $sharedSettings $userSettings&#10;&#10;ps aux | grep /Applications/Xcode.app/Contents/MacOS/Xcode | awk &apos;{ print $2 }&apos; | xargs -L 1 kill -9&#10;&#10;open $workspacePath&#10;">
-            </ActionContent>
-         </ExecutionAction>
-      </PreActions>
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"

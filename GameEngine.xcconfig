@@ -1,0 +1,20 @@
+//
+//  GameEngine.xcconfig
+//  GameEngine
+//
+//  Created by Matvey Kravtsov on 03/05/2019.
+//  Copyright © 2019 Matvey Kravtsov. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+// Intermediate build files go here
+PROJECT_TEMP_DIR = $(SRCROOT)/build/$(PROJECT_NAME).build
+
+//// Build-related files for the active build configuration go here
+CONFIGURATION_BUILD_DIR = $(SRCROOT)/build/$TARGET_NAME/$CONFIGURATION
+
+//// The final product executables and other build products go here
+BUILT_PRODUCTS_DIR = $(SRCROOT)/build/$TARGET_NAME/$CONFIGURATION
+

@@ -74,6 +74,7 @@
 		9CC82B2F227BB38900498FE3 /* ShaderTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderTypes.h; sourceTree = "<group>"; };
 		9CC82B30227BB38900498FE3 /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		9CD605CA227C67CC00472E9F /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		9CD7C121227CD98000CDA812 /* GameEngine.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = GameEngine.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +107,7 @@
 			children = (
 				9CC82B03227BB2DA00498FE3 /* GameEngine */,
 				9CC82B93227BCB6200498FE3 /* ShadersLibrary */,
+				9CD7C121227CD98000CDA812 /* GameEngine.xcconfig */,
 				9C24B4AA227C7BA7009DA259 /* libGameEngine.a */,
 				9C24B4AB227C7BA7009DA259 /* ShadersLibrary.metallib */,
 				9C24B4AC227C7BA7009DA259 /* libGameEngine.a */,
@@ -361,6 +363,7 @@
 /* Begin XCBuildConfiguration section */
 		9CC82AE7227BB15D00498FE3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9CD7C121227CD98000CDA812 /* GameEngine.xcconfig */;
 			buildSettings = {
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
@@ -377,6 +380,7 @@
 		};
 		9CC82AE8227BB15D00498FE3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9CD7C121227CD98000CDA812 /* GameEngine.xcconfig */;
 			buildSettings = {
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;

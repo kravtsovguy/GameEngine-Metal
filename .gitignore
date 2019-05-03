@@ -8,7 +8,6 @@ xcuserdata/
 ## Build generated
 build/
 DerivedData/
-Output/
 
 ## Various settings
 *.pbxuser
