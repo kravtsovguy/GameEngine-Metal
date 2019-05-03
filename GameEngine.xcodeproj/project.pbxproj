@@ -6,20 +6,6 @@
 	objectVersion = 51;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		9C24B4BB227C95A5009DA259 /* WorkspaceSettings */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 9C24B4BE227C95A5009DA259 /* Build configuration list for PBXAggregateTarget "WorkspaceSettings" */;
-			buildPhases = (
-				9C24B4BF227C9607009DA259 /* ShellScript */,
-			);
-			dependencies = (
-			);
-			name = WorkspaceSettings;
-			productName = WorkspaceSettings;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		9CC82B7D227BC18000498FE3 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC82B30227BB38900498FE3 /* Renderer.swift */; };
 		9CC82B81227BC18100498FE3 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC82B30227BB38900498FE3 /* Renderer.swift */; };
@@ -53,27 +39,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 9CD605A7227BF43900472E9F;
 			remoteInfo = "ShadersLibrary tvOS";
-		};
-		9CFB5E73227C981E008D865C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9CC82AE3227BB15D00498FE3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9C24B4BB227C95A5009DA259;
-			remoteInfo = WorkspaceSettings;
-		};
-		9CFB5E75227C9822008D865C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9CC82AE3227BB15D00498FE3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9C24B4BB227C95A5009DA259;
-			remoteInfo = WorkspaceSettings;
-		};
-		9CFB5E77227C9826008D865C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9CC82AE3227BB15D00498FE3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9C24B4BB227C95A5009DA259;
-			remoteInfo = WorkspaceSettings;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -181,7 +146,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				9CFB5E74227C981E008D865C /* PBXTargetDependency */,
 				9CD6058F227BEF2E00472E9F /* PBXTargetDependency */,
 			);
 			name = "GameEngine macOS";
@@ -200,7 +164,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				9CFB5E76227C9822008D865C /* PBXTargetDependency */,
 				9CD605B1227BF46800472E9F /* PBXTargetDependency */,
 			);
 			name = "GameEngine tvOS";
@@ -219,7 +182,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				9CFB5E78227C9826008D865C /* PBXTargetDependency */,
 				9CD605A3227BF3E100472E9F /* PBXTargetDependency */,
 			);
 			name = "GameEngine iOS";
@@ -282,9 +244,6 @@
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Matvey Kravtsov";
 				TargetAttributes = {
-					9C24B4BB227C95A5009DA259 = {
-						CreatedOnToolsVersion = 10.2.1;
-					};
 					9CC82B5D227BC12300498FE3 = {
 						CreatedOnToolsVersion = 10.2.1;
 					};
@@ -323,30 +282,9 @@
 				9CD60584227BEE8000472E9F /* ShadersLibrary macOS */,
 				9CD60599227BF38F00472E9F /* ShadersLibrary iOS */,
 				9CD605A7227BF43900472E9F /* ShadersLibrary tvOS */,
-				9C24B4BB227C95A5009DA259 /* WorkspaceSettings */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		9C24B4BF227C9607009DA259 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ -d \"$PROJECT_DIR/Output\" ]\nthen\n    exit\nfi\n\nworkspacePath=\"$PROJECT_DIR/$PROJECT_NAME.xcworkspace\"\nsharedSettings=\"$workspacePath/xcshareddata/WorkspaceSettings.xcsettings\"\nuserSettings=\"$workspacePath/xcuserdata/$USER.xcuserdatad/WorkspaceSettings.xcsettings\"\ncp $sharedSettings $userSettings\n\nps aux | grep /Applications/Xcode.app/Contents/MacOS/Xcode | awk '{ print $2 }' | xargs -L 1 kill -9\n\nopen $workspacePath\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9CC82B5B227BC12300498FE3 /* Sources */ = {
@@ -418,42 +356,9 @@
 			target = 9CD605A7227BF43900472E9F /* ShadersLibrary tvOS */;
 			targetProxy = 9CD605B0227BF46800472E9F /* PBXContainerItemProxy */;
 		};
-		9CFB5E74227C981E008D865C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9C24B4BB227C95A5009DA259 /* WorkspaceSettings */;
-			targetProxy = 9CFB5E73227C981E008D865C /* PBXContainerItemProxy */;
-		};
-		9CFB5E76227C9822008D865C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9C24B4BB227C95A5009DA259 /* WorkspaceSettings */;
-			targetProxy = 9CFB5E75227C9822008D865C /* PBXContainerItemProxy */;
-		};
-		9CFB5E78227C9826008D865C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9C24B4BB227C95A5009DA259 /* WorkspaceSettings */;
-			targetProxy = 9CFB5E77227C9826008D865C /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		9C24B4BC227C95A5009DA259 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 83W65ZB2H6;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		9C24B4BD227C95A5009DA259 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 83W65ZB2H6;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		9CC82AE7227BB15D00498FE3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -952,15 +857,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9C24B4BE227C95A5009DA259 /* Build configuration list for PBXAggregateTarget "WorkspaceSettings" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9C24B4BC227C95A5009DA259 /* Debug */,
-				9C24B4BD227C95A5009DA259 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		9CC82AE6227BB15D00498FE3 /* Build configuration list for PBXProject "GameEngine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

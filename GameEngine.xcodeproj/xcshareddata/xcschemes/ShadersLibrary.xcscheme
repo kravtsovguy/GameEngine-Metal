@@ -5,15 +5,6 @@
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
-      <PreActions>
-         <ExecutionAction
-            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
-            <ActionContent
-               title = "Run Script"
-               scriptText = "if [ -d &quot;$PROJECT_DIR/Output&quot; ]&#10;then&#10;exit&#10;fi&#10;&#10;workspacePath=&quot;$PROJECT_DIR/$PROJECT_NAME.xcworkspace&quot;&#10;sharedSettings=&quot;$workspacePath/xcshareddata/WorkspaceSettings.xcsettings&quot;&#10;userSettings=&quot;$workspacePath/xcuserdata/$USER.xcuserdatad/WorkspaceSettings.xcsettings&quot;&#10;cp $sharedSettings $userSettings&#10;&#10;ps aux | grep /Applications/Xcode.app/Contents/MacOS/Xcode | awk &apos;{ print $2 }&apos; | xargs -L 1 kill -9&#10;&#10;open $workspacePath&#10;">
-            </ActionContent>
-         </ExecutionAction>
-      </PreActions>
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
@@ -23,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9CC82B75227BC15900498FE3"
-               BuildableName = "libGameEngine.a"
-               BlueprintName = "GameEngine iOS"
+               BlueprintIdentifier = "9CD60599227BF38F00472E9F"
+               BuildableName = "ShadersLibrary.metallib"
+               BlueprintName = "ShadersLibrary iOS"
                ReferencedContainer = "container:GameEngine.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -37,9 +28,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9CC82B6A227BC14300498FE3"
-               BuildableName = "libGameEngine.a"
-               BlueprintName = "GameEngine tvOS"
+               BlueprintIdentifier = "9CD60584227BEE8000472E9F"
+               BuildableName = "ShadersLibrary.metallib"
+               BlueprintName = "ShadersLibrary macOS"
                ReferencedContainer = "container:GameEngine.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -51,9 +42,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9CC82B5D227BC12300498FE3"
-               BuildableName = "libGameEngine.a"
-               BlueprintName = "GameEngine macOS"
+               BlueprintIdentifier = "9CD605A7227BF43900472E9F"
+               BuildableName = "ShadersLibrary.metallib"
+               BlueprintName = "ShadersLibrary tvOS"
                ReferencedContainer = "container:GameEngine.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -69,9 +60,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9CC82B75227BC15900498FE3"
-            BuildableName = "libGameEngine.a"
-            BlueprintName = "GameEngine iOS"
+            BlueprintIdentifier = "9CD60599227BF38F00472E9F"
+            BuildableName = "ShadersLibrary.metallib"
+            BlueprintName = "ShadersLibrary iOS"
             ReferencedContainer = "container:GameEngine.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -79,7 +70,7 @@
       </AdditionalOptions>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -100,9 +91,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9CC82B75227BC15900498FE3"
-            BuildableName = "libGameEngine.a"
-            BlueprintName = "GameEngine iOS"
+            BlueprintIdentifier = "9CD60599227BF38F00472E9F"
+            BuildableName = "ShadersLibrary.metallib"
+            BlueprintName = "ShadersLibrary iOS"
             ReferencedContainer = "container:GameEngine.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
