@@ -79,15 +79,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9CC82B75227BC15900498FE3"
-            BuildableName = "libGameEngine.a"
-            BlueprintName = "GameEngine iOS"
-            ReferencedContainer = "container:GameEngine.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

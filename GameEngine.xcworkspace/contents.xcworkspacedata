@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:GameEngine.xcodeproj">
+      location = "group:GameEngine/GameEngine.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:GameEngine-Demo.xcodeproj">
+      location = "group:Demo/GameEngine-Demo.xcodeproj">
    </FileRef>
 </Workspace>
