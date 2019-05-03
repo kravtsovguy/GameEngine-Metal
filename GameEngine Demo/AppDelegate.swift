@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let window = UIWindow()
-        window.makeKeyAndVisible()
         window.rootViewController = GameViewController()
+        window.makeKeyAndVisible()
 
         self.window = window
 
@@ -45,8 +45,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                               styleMask: NSWindow.StyleMask(rawValue: NSWindow.StyleMask.titled.rawValue | NSWindow.StyleMask.closable.rawValue),
                               backing: NSWindow.BackingStoreType.buffered,
                               defer: false)
+        window.contentViewController = GameViewController(with: rect.size)
         window.makeKeyAndOrderFront(NSApp)
-        window.contentViewController = GameViewController()
 
         self.window = window
     }
