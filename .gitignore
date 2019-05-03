@@ -8,6 +8,7 @@ xcuserdata/
 ## Build generated
 build/
 DerivedData/
+Output/
 
 ## Various settings
 *.pbxuser
@@ -18,7 +19,6 @@ DerivedData/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-xcuserdata/
 
 ## Other
 *.moved-aside

@@ -7,23 +7,22 @@
 //
 
 import MetalKit
-import GameEngine
 
 
 #if os(iOS) || os(tvOS)
 import UIKit
-typealias PlatformViewController = UIViewController
+public typealias PlatformViewController = UIViewController
 #elseif os(OSX)
 import AppKit
-typealias PlatformViewController = NSViewController
+public typealias PlatformViewController = NSViewController
 #endif
 
 
 // Platform independent view controller
-class GameViewController: PlatformViewController {
+open class GameViewController: PlatformViewController {
     var renderer: Renderer!
 
-    override func loadView() {
+    override open func loadView() {
         guard let defaultDevice = MTLCreateSystemDefaultDevice() else {
             fatalError("Metal is not supported on this device")
         }

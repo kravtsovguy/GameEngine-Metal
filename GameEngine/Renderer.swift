@@ -6,13 +6,12 @@
 //  Copyright © 2019 Matvey Kravtsov. All rights reserved.
 //
 
-// Platform independent renderer class
-
 import Metal
 import MetalKit
 import simd
 
-open class Renderer: NSObject, MTKViewDelegate {
+// Platform independent renderer class
+class Renderer: NSObject, MTKViewDelegate {
 
     let commandQueue: MTLCommandQueue
     let pipelineState: MTLRenderPipelineState
@@ -77,14 +76,14 @@ open class Renderer: NSObject, MTKViewDelegate {
         commandBuffer.commit()
     }
     
-    public func draw(in view: MTKView) {
+    func draw(in view: MTKView) {
         /// Per frame updates here
         autoreleasepool {
             render(view: view)
         }
     }
     
-    public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
+    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
         /// Respond to drawable size or orientation changes here
     }
 }

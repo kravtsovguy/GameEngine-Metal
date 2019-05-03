@@ -13,6 +13,9 @@
 		9CD6058C227BEE9C00472E9F /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 9CC82B2E227BB38800498FE3 /* Shaders.metal */; };
 		9CD605A1227BF3A000472E9F /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 9CC82B2E227BB38800498FE3 /* Shaders.metal */; };
 		9CD605AF227BF44800472E9F /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 9CC82B2E227BB38800498FE3 /* Shaders.metal */; };
+		9CD605CB227C67CC00472E9F /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD605CA227C67CC00472E9F /* GameViewController.swift */; };
+		9CD605CC227C67CC00472E9F /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD605CA227C67CC00472E9F /* GameViewController.swift */; };
+		9CD605CD227C67CC00472E9F /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD605CA227C67CC00472E9F /* GameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,15 +64,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9C24B4AA227C7BA7009DA259 /* libGameEngine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGameEngine.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C24B4AB227C7BA7009DA259 /* ShadersLibrary.metallib */ = {isa = PBXFileReference; explicitFileType = "archive.metal-library"; includeInIndex = 0; path = ShadersLibrary.metallib; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C24B4AC227C7BA7009DA259 /* libGameEngine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGameEngine.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C24B4AD227C7BA7009DA259 /* ShadersLibrary.metallib */ = {isa = PBXFileReference; explicitFileType = "archive.metal-library"; includeInIndex = 0; path = ShadersLibrary.metallib; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C24B4AE227C7BA7009DA259 /* libGameEngine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGameEngine.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C24B4AF227C7BA7009DA259 /* ShadersLibrary.metallib */ = {isa = PBXFileReference; explicitFileType = "archive.metal-library"; includeInIndex = 0; path = ShadersLibrary.metallib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CC82B2E227BB38800498FE3 /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		9CC82B2F227BB38900498FE3 /* ShaderTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderTypes.h; sourceTree = "<group>"; };
 		9CC82B30227BB38900498FE3 /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
-		9CC82B5E227BC12300498FE3 /* libGameEngine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libGameEngine.a; path = /Users/kravtsov/Projects_Xcode/GameEngine/build/Debug/libGameEngine.a; sourceTree = "<absolute>"; };
-		9CC82B76227BC15900498FE3 /* libGameEngine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libGameEngine.a; path = "/Users/kravtsov/Projects_Xcode/GameEngine/build/Debug-iphoneos/libGameEngine.a"; sourceTree = "<absolute>"; };
-		9CD60576227BE91D00472E9F /* libGameEngine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libGameEngine.a; path = "/Users/kravtsov/Projects_Xcode/GameEngine/build/Debug-appletvos/libGameEngine.a"; sourceTree = "<absolute>"; };
-		9CD60585227BEE8000472E9F /* ShadersLibrary.metallib */ = {isa = PBXFileReference; explicitFileType = "archive.metal-library"; includeInIndex = 0; name = ShadersLibrary.metallib; path = /Users/kravtsov/Projects_Xcode/GameEngine/build/Debug/ShadersLibrary.metallib; sourceTree = "<absolute>"; };
-		9CD6059A227BF39000472E9F /* ShadersLibrary.metallib */ = {isa = PBXFileReference; explicitFileType = "archive.metal-library"; includeInIndex = 0; name = ShadersLibrary.metallib; path = "/Users/kravtsov/Projects_Xcode/GameEngine/build/Debug-iphoneos/ShadersLibrary.metallib"; sourceTree = "<absolute>"; };
-		9CD605A8227BF43900472E9F /* ShadersLibrary.metallib */ = {isa = PBXFileReference; explicitFileType = "archive.metal-library"; includeInIndex = 0; name = ShadersLibrary.metallib; path = "/Users/kravtsov/Projects_Xcode/GameEngine/build/Debug-appletvos/ShadersLibrary.metallib"; sourceTree = "<absolute>"; };
+		9CD605CA227C67CC00472E9F /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,12 +106,19 @@
 			children = (
 				9CC82B03227BB2DA00498FE3 /* GameEngine */,
 				9CC82B93227BCB6200498FE3 /* ShadersLibrary */,
+				9C24B4AA227C7BA7009DA259 /* libGameEngine.a */,
+				9C24B4AB227C7BA7009DA259 /* ShadersLibrary.metallib */,
+				9C24B4AC227C7BA7009DA259 /* libGameEngine.a */,
+				9C24B4AD227C7BA7009DA259 /* ShadersLibrary.metallib */,
+				9C24B4AE227C7BA7009DA259 /* libGameEngine.a */,
+				9C24B4AF227C7BA7009DA259 /* ShadersLibrary.metallib */,
 			);
 			sourceTree = "<group>";
 		};
 		9CC82B03227BB2DA00498FE3 /* GameEngine */ = {
 			isa = PBXGroup;
 			children = (
+				9CD605CA227C67CC00472E9F /* GameViewController.swift */,
 				9CC82B30227BB38900498FE3 /* Renderer.swift */,
 				9CC82B2F227BB38900498FE3 /* ShaderTypes.h */,
 			);
@@ -139,7 +150,7 @@
 			);
 			name = "GameEngine macOS";
 			productName = "GameEngine macOS";
-			productReference = 9CC82B5E227BC12300498FE3 /* libGameEngine.a */;
+			productReference = 9C24B4AA227C7BA7009DA259 /* libGameEngine.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		9CC82B6A227BC14300498FE3 /* GameEngine tvOS */ = {
@@ -157,7 +168,7 @@
 			);
 			name = "GameEngine tvOS";
 			productName = "GameEngine tvOS";
-			productReference = 9CD60576227BE91D00472E9F /* libGameEngine.a */;
+			productReference = 9C24B4AC227C7BA7009DA259 /* libGameEngine.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		9CC82B75227BC15900498FE3 /* GameEngine iOS */ = {
@@ -175,7 +186,7 @@
 			);
 			name = "GameEngine iOS";
 			productName = "GameEngine iOS";
-			productReference = 9CC82B76227BC15900498FE3 /* libGameEngine.a */;
+			productReference = 9C24B4AE227C7BA7009DA259 /* libGameEngine.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		9CD60584227BEE8000472E9F /* ShadersLibrary macOS */ = {
@@ -190,7 +201,7 @@
 			);
 			name = "ShadersLibrary macOS";
 			productName = ShadersLibrary;
-			productReference = 9CD60585227BEE8000472E9F /* ShadersLibrary.metallib */;
+			productReference = 9C24B4AB227C7BA7009DA259 /* ShadersLibrary.metallib */;
 			productType = "com.apple.product-type.metal-library";
 		};
 		9CD60599227BF38F00472E9F /* ShadersLibrary iOS */ = {
@@ -205,7 +216,7 @@
 			);
 			name = "ShadersLibrary iOS";
 			productName = "ShadersLibrary iOS";
-			productReference = 9CD6059A227BF39000472E9F /* ShadersLibrary.metallib */;
+			productReference = 9C24B4AF227C7BA7009DA259 /* ShadersLibrary.metallib */;
 			productType = "com.apple.product-type.metal-library";
 		};
 		9CD605A7227BF43900472E9F /* ShadersLibrary tvOS */ = {
@@ -220,7 +231,7 @@
 			);
 			name = "ShadersLibrary tvOS";
 			productName = "ShadersLibrary tvOS";
-			productReference = 9CD605A8227BF43900472E9F /* ShadersLibrary.metallib */;
+			productReference = 9C24B4AD227C7BA7009DA259 /* ShadersLibrary.metallib */;
 			productType = "com.apple.product-type.metal-library";
 		};
 /* End PBXNativeTarget section */
@@ -280,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CD605CD227C67CC00472E9F /* GameViewController.swift in Sources */,
 				9CC82B7D227BC18000498FE3 /* Renderer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CD605CC227C67CC00472E9F /* GameViewController.swift in Sources */,
 				9CD60575227BE76000472E9F /* Renderer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,6 +309,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CD605CB227C67CC00472E9F /* GameViewController.swift in Sources */,
 				9CC82B81227BC18100498FE3 /* Renderer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

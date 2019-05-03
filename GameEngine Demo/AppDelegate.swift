@@ -6,6 +6,9 @@
 //  Copyright © 2019 Matvey Kravtsov. All rights reserved.
 //
 
+import GameEngine
+
+
 #if os(iOS) || os(tvOS)
 import UIKit
 
