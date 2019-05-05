@@ -42,7 +42,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let y = (screenFrame.height - height) / 2
         let rect = NSMakeRect(x, y, width, height);
         let window = NSWindow(contentRect: rect,
-                              styleMask: NSWindow.StyleMask(rawValue: NSWindow.StyleMask.titled.rawValue | NSWindow.StyleMask.closable.rawValue),
+                              styleMask: NSWindow.StyleMask(rawValue:
+                                NSWindow.StyleMask.titled.rawValue |
+                                NSWindow.StyleMask.closable.rawValue |
+                                NSWindow.StyleMask.resizable.rawValue),
                               backing: NSWindow.BackingStoreType.buffered,
                               defer: false)
         window.contentViewController = GameViewController(with: rect.size)

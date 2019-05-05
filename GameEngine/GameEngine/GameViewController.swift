@@ -22,6 +22,7 @@ public typealias PlatformViewController = NSViewController
 open class GameViewController: PlatformViewController {
     let initialSize: CGSize?
     var renderer: Renderer!
+    var metalView: MTKView! { return view as? MTKView }
 
     public convenience init() {
         self.init(with: nil)
@@ -36,15 +37,22 @@ open class GameViewController: PlatformViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override open func loadView() {
-        guard let defaultDevice = MTLCreateSystemDefaultDevice() else {
-            fatalError("Metal is not supported on this device")
-        }
-
+    open override func loadView() {
         let frame = CGRect(origin: CGPoint.zero, size: initialSize ?? CGSize.zero)
-        let view = MTKView(frame: frame, device: defaultDevice)
-        self.renderer = try! Renderer(metalKitView: view)
+        let view = MTKView(frame: frame)
+        view.colorPixelFormat = .bgra8Unorm
+        view.depthStencilPixelFormat = .depth32Float
+        view.preferredFramesPerSecond = 60
+        view.clearColor = MTLClearColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
 
         self.view = view
+    }
+
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+
+        renderer = Renderer(view: metalView)
+        metalView.device = Renderer.device
+        metalView.delegate = renderer
     }
 }

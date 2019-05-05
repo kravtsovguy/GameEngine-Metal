@@ -19,9 +19,17 @@
 #import <Foundation/Foundation.h>
 #endif
 
-#include <simd/simd.h>
+#import <simd/simd.h>
 
-// TODO: ShaderTypes
+typedef struct {
+    matrix_float4x4 modelMatrix;
+    matrix_float4x4 viewMatrix;
+    matrix_float4x4 projectionMatrix;
+} Uniforms;
+
+typedef struct {
+    vector_float3 cameraPosition;
+} FragmentUniforms;
 
 #endif /* ShaderTypes_h */
 

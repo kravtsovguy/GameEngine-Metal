@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C0240C0227E5C5D00FBB659 /* train.obj in Resources */ = {isa = PBXBuildFile; fileRef = 9C0240BF227E5C5D00FBB659 /* train.obj */; };
+		9C0240C1227E5C5D00FBB659 /* train.obj in Resources */ = {isa = PBXBuildFile; fileRef = 9C0240BF227E5C5D00FBB659 /* train.obj */; };
+		9C0240C2227E5C5D00FBB659 /* train.obj in Resources */ = {isa = PBXBuildFile; fileRef = 9C0240BF227E5C5D00FBB659 /* train.obj */; };
 		9CC82A93227B642700498FE3 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC82A92227B642700498FE3 /* main.swift */; };
 		9CC82AD1227B897E00498FE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CF154132250D86A00CD00DA /* Assets.xcassets */; };
 		9CC82AD4227B89F900498FE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF1541B2250D86A00CD00DA /* AppDelegate.swift */; };
@@ -23,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9C0240BF227E5C5D00FBB659 /* train.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = train.obj; sourceTree = "<group>"; };
 		9CC82A92227B642700498FE3 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		9CC82AC2227B887C00498FE3 /* GameEngine-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GameEngine-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CC82ACD227B887D00498FE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -68,6 +72,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C0240BE227E5C3E00FBB659 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9C0240BF227E5C5D00FBB659 /* train.obj */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		9CC82AD6227B8A2300498FE3 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +140,7 @@
 		9CF1541A2250D86A00CD00DA /* GameEngine Demo */ = {
 			isa = PBXGroup;
 			children = (
+				9C0240BE227E5C3E00FBB659 /* Resources */,
 				9CC82ADE227B9FB800498FE3 /* macOS */,
 				9CC82AD7227B8A2C00498FE3 /* tvOS */,
 				9CC82AD6227B8A2300498FE3 /* iOS */,
@@ -239,6 +252,7 @@
 			files = (
 				9CD7C131227CE26600CDA812 /* ShadersLibrary.metallib in Resources */,
 				9CC82AD1227B897E00498FE3 /* Assets.xcassets in Resources */,
+				9C0240C1227E5C5D00FBB659 /* train.obj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +262,7 @@
 			files = (
 				9CD7C133227CE27700CDA812 /* ShadersLibrary.metallib in Resources */,
 				9CF1543A2250D86B00CD00DA /* Assets.xcassets in Resources */,
+				9C0240C0227E5C5D00FBB659 /* train.obj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +272,7 @@
 			files = (
 				9CD7C12F227CE25900CDA812 /* ShadersLibrary.metallib in Resources */,
 				9CF1543B2250D86B00CD00DA /* Assets.xcassets in Resources */,
+				9C0240C2227E5C5D00FBB659 /* train.obj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
