@@ -10,9 +10,8 @@ import Foundation
 import MetalKit
 
 open class Model: Node {
-    
-    let mdlMeshes: [MDLMesh]
-    let mtkMeshes: [MTKMesh]
+
+    let meshes: [Mesh]
 
     public required init(name: String) {
         let assetURL = Bundle.main.url(forResource: name, withExtension: "obj")
@@ -22,46 +21,54 @@ open class Model: Node {
                              vertexDescriptor: vertexDescriptor,
                              bufferAllocator: allocator)
 
+        asset.loadTextures()
+
         let (mdlMeshes, mtkMeshes) = try! MTKMesh.newMeshes(asset: asset, device: Renderer.device)
+        self.meshes = zip(mdlMeshes, mtkMeshes).map {
+            Mesh(mdlMesh: $0.0, mtkMesh: $0.1)
+        }
 
-        self.mdlMeshes = mdlMeshes
-        self.mtkMeshes = mtkMeshes
         super.init()
-
         self.name = name
     }
 }
 
 extension Model: Renderable {
-    func render(commandEncoder: MTLRenderCommandEncoder, uniforms vertex: Uniforms) {
+    func render(commandEncoder: MTLRenderCommandEncoder,
+                uniforms vertex: Uniforms,
+                fragmentUniforms fragment: FragmentUniforms) {
         var uniforms = vertex
+        var fragmentUniforms = fragment
 
         uniforms.modelMatrix = worldMatrix
-
+        commandEncoder.setFragmentBytes(&fragmentUniforms,
+                                        length: MemoryLayout<FragmentUniforms>.stride,
+                                        index: 21);
         commandEncoder.setVertexBytes(&uniforms,
                                       length: MemoryLayout<Uniforms>.stride,
                                       index: 21)
 
-        for mtkMesh in mtkMeshes {
-            for vertexBuffer in mtkMesh.vertexBuffers {
+        for mesh in meshes {
+            for vertexBuffer in mesh.mtkMesh.vertexBuffers {
 
                 commandEncoder.setVertexBuffer(vertexBuffer.buffer,
                                                offset: vertexBuffer.offset,
                                                index: 0)
 
-                var colorID: UInt = 0
+                for submesh in mesh.submeshes {
 
-                for submesh in mtkMesh.submeshes {
-                    commandEncoder.setVertexBytes(&colorID,
-                                                  length: MemoryLayout<uint>.stride,
-                                                  index: 20)
+                    var material = submesh.material
+                    commandEncoder.setFragmentBytes(&material,
+                                                    length: MemoryLayout<Material>.stride,
+                                                    index: 20)
+                    commandEncoder.setFragmentTexture(submesh.textures.baseColor, index: 0)
+
+                    let mtkSubmesh = submesh.mtkSubmesh
                     commandEncoder.drawIndexedPrimitives(type: .triangle,
-                                                         indexCount: submesh.indexCount,
-                                                         indexType: submesh.indexType,
-                                                         indexBuffer: submesh.indexBuffer.buffer,
-                                                         indexBufferOffset: submesh.indexBuffer.offset)
-
-                    colorID += 1
+                                                         indexCount: mtkSubmesh.indexCount,
+                                                         indexType: mtkSubmesh.indexType,
+                                                         indexBuffer: mtkSubmesh.indexBuffer.buffer,
+                                                         indexBufferOffset: mtkSubmesh.indexBuffer.offset)
                 }
             }
         }

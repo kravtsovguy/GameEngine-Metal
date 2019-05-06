@@ -12,5 +12,6 @@ import MetalKit
 protocol Renderable {
     var name: String { get }
     func render(commandEncoder: MTLRenderCommandEncoder,
-                uniforms vertex: Uniforms)
+                uniforms vertex: Uniforms,
+                fragmentUniforms fragment: FragmentUniforms)
 }

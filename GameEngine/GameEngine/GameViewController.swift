@@ -52,6 +52,7 @@ open class GameViewController: PlatformViewController {
         super.viewDidLoad()
 
         renderer = Renderer(view: metalView)
+        renderer.scene = MainScene()
         metalView.device = Renderer.device
         metalView.delegate = renderer
     }
