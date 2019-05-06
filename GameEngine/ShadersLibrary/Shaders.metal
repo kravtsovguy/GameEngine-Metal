@@ -85,7 +85,7 @@ fragment float4 fragment_main(VertexOut in [[stage_in]],
     float3 reflection = reflect(lightVector, normalVector);
     float3 cameraVector = normalize(in.worldPosition - fragmentUniforms.cameraPosition);
     float specularIntensity = pow(saturate(dot(reflection, cameraVector)), materialShininess);
-    float3 specularColor = specularLightColor * materialSpecularColor * specularIntensity;
+    float3 specularColor = lightSpecularColor * materialSpecularColor * specularIntensity;
 
     // result color
     float3 color = diffuseColor + ambientColor + specularColor;

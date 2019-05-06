@@ -8,15 +8,15 @@
 
 import Foundation
 import MetalKit
+import simd
 
 class Camera: Node {
 
     var viewMatrix: float4x4 {
         let translationMatrix = float4x4(translation: transform.position)
         let rotationMatrix = float4x4(rotation: transform.rotation)
-        let scaleMatrix = float4x4(scaling: transform.scale)
 
-        return (translationMatrix * scaleMatrix * rotationMatrix).inverse
+        return (translationMatrix * rotationMatrix).inverse
     }
 
 
@@ -31,58 +31,35 @@ class Camera: Node {
                         far: far,
                         aspect: aspect)
     }
+
+    func zoom(delta: Float) {}
+    func rotate(delta: float2) {}
 }
 
-// TODO: remove
-//class ArcballCamera: Camera {
-//
-//    var minDistance: Float = 0.5
-//    var maxDistance: Float = 10
-//    var distance: Float = 0 {
-//        didSet {
-//            _viewMatrix = updateViewMatrix()
-//        }
-//    }
-//    var target = float3(0) {
-//        didSet {
-//            _viewMatrix = updateViewMatrix()
-//        }
-//    }
-//
-//    override var viewMatrix: float4x4 {
-//        return _viewMatrix
-//    }
-//
-//    private var _viewMatrix = float4x4.identity
-//
-//    override init() {
-//        super.init()
-//        _viewMatrix = updateViewMatrix()
-//    }
-//
-//    private func updateViewMatrix() -> float4x4 {
-//        let translateMatrix = float4x4(translation: [target.x, target.y, target.z - distance])
-//        let rotateMatrix = float4x4(rotationYXZ: [-rotation.x,
-//                                                  rotation.y,
-//                                                  0])
-//        let matrix = (rotateMatrix * translateMatrix).inverse
-//        position = rotateMatrix.upperLeft * -matrix.columns.3.xyz
-//        return matrix
-//    }
-//
-//    override func zoom(delta: Float) {
-//        let sensitivity: Float = 0.05
-//        distance -= delta * sensitivity
-//        _viewMatrix = updateViewMatrix()
-//    }
-//
-//    override func rotate(delta: float2) {
-//        let sensitivity: Float = 0.005
-//        rotation.y += delta.x * sensitivity
-//        rotation.x += delta.y * sensitivity
-//        rotation.x = max(-Float.pi/2,
-//                         min(rotation.x,
-//                             Float.pi/2))
-//        _viewMatrix = updateViewMatrix()
-//    }
-//}
+class ArcballCamera: Camera {
+    var distance: Float = 0
+    var target = float3(repeating: 0)
+
+    override var viewMatrix: float4x4 {
+        let translateMatrix = float4x4(translation: [target.x, target.y, target.z - distance])
+        let rotateMatrix = float4x4(rotationYXZ: [-transform.rotation.x,
+                                                  transform.rotation.y,
+                                                  0])
+
+        let matrix = (rotateMatrix * translateMatrix).inverse
+        transform.position = rotateMatrix.upperLeft * -matrix.columns.3.xyz
+        return matrix
+    }
+
+    override func zoom(delta: Float) {
+        let sensitivity: Float = 0.05
+        distance -= delta * sensitivity
+    }
+
+    override func rotate(delta: float2) {
+        let sensitivity: Float = 0.005
+        transform.rotation.y += delta.x * sensitivity
+        transform.rotation.x += delta.y * sensitivity
+        transform.rotation.x = max(-Float.pi/2, min(transform.rotation.x, Float.pi/2))
+    }
+}

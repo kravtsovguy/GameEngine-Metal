@@ -43,7 +43,7 @@ open class GameViewController: PlatformViewController {
         view.colorPixelFormat = .bgra8Unorm
         view.depthStencilPixelFormat = .depth32Float
         view.preferredFramesPerSecond = 60
-        view.clearColor = MTLClearColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
+        view.clearColor = MTLClearColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 1)
 
         self.view = view
     }
@@ -55,5 +55,48 @@ open class GameViewController: PlatformViewController {
         renderer.scene = MainScene()
         metalView.device = Renderer.device
         metalView.delegate = renderer
+
+        #if os(iOS)
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
+        let pinch = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch))
+
+        view.addGestureRecognizer(pan)
+        view.addGestureRecognizer(pinch)
+        #endif
+
+        #if os(OSX)
+        let pan = NSPanGestureRecognizer(target: self, action: #selector(handlePan))
+        view.addGestureRecognizer(pan)
+        #endif
     }
+
+    #if os(iOS)
+    @objc func handlePinch(gesture: UIPinchGestureRecognizer) {
+        renderer.scene?.camera.zoom(delta: Float(gesture.velocity * 0.5))
+    }
+
+    @objc func handlePan(gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translation(in: gesture.view)
+        let delta = float2(Float(translation.x),
+                           -Float(translation.y))
+
+        renderer.scene?.camera.rotate(delta: delta)
+        gesture.setTranslation(.zero, in: gesture.view)
+    }
+    #endif
+
+    #if os(OSX)
+    override open func scrollWheel(with event: NSEvent) {
+        renderer.scene?.camera.zoom(delta: Float(event.deltaY))
+    }
+
+    @objc func handlePan(gesture: NSPanGestureRecognizer) {
+        let translation = gesture.translation(in: gesture.view)
+        let delta = float2(Float(translation.x),
+                           Float(translation.y))
+
+        renderer.scene?.camera.rotate(delta: delta)
+        gesture.setTranslation(.zero, in: gesture.view)
+    }
+    #endif
 }

@@ -78,9 +78,9 @@ extension Renderer: MTKViewDelegate {
 
         commandEncoder.setDepthStencilState(depthStencilState)
 
-        fragmentUniforms.cameraPosition = camera.transform.position
         uniforms.viewMatrix = camera.viewMatrix
         uniforms.projectionMatrix = camera.projectionMatrix
+        fragmentUniforms.cameraPosition = camera.transform.position
 
         for renderable in scene.renderables {
             commandEncoder.pushDebugGroup(renderable.name)

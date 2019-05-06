@@ -13,9 +13,12 @@ class MainScene: Scene {
     let trees = Instance(name: "treefir", instanceCount: 3)
 
     override func setupScene() {
-        camera = Camera()
-        camera.transform.position = [0, 1.5, -3]
-        
+        let camera = ArcballCamera()
+        camera.target = [0, 0.8, 0]
+        camera.distance = 4
+        camera.transform.rotation = [-0.4, -0.4, 0]
+        self.camera = camera
+
         train.transform.position.z = 0
         train.transform.scale = float3(repeating: 0.5)
 
