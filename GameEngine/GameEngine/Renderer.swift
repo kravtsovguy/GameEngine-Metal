@@ -85,7 +85,7 @@ extension Renderer: MTKViewDelegate {
         for renderable in scene.renderables {
             commandEncoder.pushDebugGroup(renderable.name)
             renderable.render(commandEncoder: commandEncoder, uniforms: uniforms, fragmentUniforms: fragmentUniforms)
-            commandEncoder.pushDebugGroup(renderable.name)
+            commandEncoder.popDebugGroup()
         }
 
         commandEncoder.endEncoding()

@@ -27,15 +27,17 @@ struct Submesh {
     let material: Material
     let textures: Textures
     let pipelineState: MTLRenderPipelineState
+    let instancedPipelineState: MTLRenderPipelineState
 
     init(mdlSubmesh: MDLSubmesh, mtkSubmesh: MTKSubmesh) {
         self.mtkSubmesh = mtkSubmesh
         self.material = Material(material: mdlSubmesh.material)
         self.textures = Textures(material: mdlSubmesh.material)
-        self.pipelineState = Submesh.createRenderPipeline(textures: textures)
+        self.pipelineState = Submesh.createRenderPipeline(vertexFunctionName: "vertex_main", textures: textures)
+        self.instancedPipelineState = Submesh.createRenderPipeline(vertexFunctionName: "vertex_instances", textures: textures)
     }
 
-    static func createRenderPipeline(textures: Textures) -> MTLRenderPipelineState {
+    static func createRenderPipeline(vertexFunctionName: String, textures: Textures) -> MTLRenderPipelineState {
         let functionConstants = MTLFunctionConstantValues()
         var property = textures.baseColor != nil
         functionConstants.setConstantValue(&property,
@@ -45,7 +47,7 @@ struct Submesh {
         let pipelineStateDescriptor = MTLRenderPipelineDescriptor()
         pipelineStateDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm //view.colorPixelFormat
         pipelineStateDescriptor.depthAttachmentPixelFormat = .depth32Float //view.depthStencilPixelFormat
-        pipelineStateDescriptor.vertexFunction =  Renderer.library.makeFunction(name: "vertex_main")
+        pipelineStateDescriptor.vertexFunction =  Renderer.library.makeFunction(name: vertexFunctionName)
         pipelineStateDescriptor.fragmentFunction = try! Renderer.library.makeFunction(name: "fragment_main", constantValues: functionConstants)
         pipelineStateDescriptor.vertexDescriptor = MTLVertexDescriptor.defaultVertexDescriptor()
 

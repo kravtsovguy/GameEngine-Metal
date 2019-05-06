@@ -16,12 +16,12 @@
 		9C7C8475227FC2FF0071E7BA /* train.obj in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C8471227FC2FF0071E7BA /* train.obj */; };
 		9C7C8476227FC2FF0071E7BA /* train.obj in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C8471227FC2FF0071E7BA /* train.obj */; };
 		9C7C8477227FC2FF0071E7BA /* train.obj in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C8471227FC2FF0071E7BA /* train.obj */; };
-		9C7C847A227FCA690071E7BA /* treefir.obj in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C8478227FCA690071E7BA /* treefir.obj */; };
-		9C7C847B227FCA690071E7BA /* treefir.obj in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C8478227FCA690071E7BA /* treefir.obj */; };
-		9C7C847C227FCA690071E7BA /* treefir.obj in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C8478227FCA690071E7BA /* treefir.obj */; };
-		9C7C847D227FCA690071E7BA /* treefir.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C8479227FCA690071E7BA /* treefir.mtl */; };
-		9C7C847E227FCA690071E7BA /* treefir.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C8479227FCA690071E7BA /* treefir.mtl */; };
-		9C7C847F227FCA690071E7BA /* treefir.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C8479227FCA690071E7BA /* treefir.mtl */; };
+		9C7C8486227FE3140071E7BA /* treefir.obj in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C8484227FE3140071E7BA /* treefir.obj */; };
+		9C7C8487227FE3140071E7BA /* treefir.obj in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C8484227FE3140071E7BA /* treefir.obj */; };
+		9C7C8488227FE3140071E7BA /* treefir.obj in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C8484227FE3140071E7BA /* treefir.obj */; };
+		9C7C8489227FE3140071E7BA /* treefir.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C8485227FE3140071E7BA /* treefir.mtl */; };
+		9C7C848A227FE3140071E7BA /* treefir.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C8485227FE3140071E7BA /* treefir.mtl */; };
+		9C7C848B227FE3140071E7BA /* treefir.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C8485227FE3140071E7BA /* treefir.mtl */; };
 		9CC82A93227B642700498FE3 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC82A92227B642700498FE3 /* main.swift */; };
 		9CC82AD1227B897E00498FE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CF154132250D86A00CD00DA /* Assets.xcassets */; };
 		9CC82AD4227B89F900498FE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF1541B2250D86A00CD00DA /* AppDelegate.swift */; };
@@ -41,8 +41,8 @@
 		9C7C846C227FBB330071E7BA /* train-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "train-color.png"; sourceTree = "<group>"; };
 		9C7C8470227FC2FF0071E7BA /* train.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = train.mtl; sourceTree = "<group>"; };
 		9C7C8471227FC2FF0071E7BA /* train.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = train.obj; sourceTree = "<group>"; };
-		9C7C8478227FCA690071E7BA /* treefir.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = treefir.obj; sourceTree = "<group>"; };
-		9C7C8479227FCA690071E7BA /* treefir.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = treefir.mtl; sourceTree = "<group>"; };
+		9C7C8484227FE3140071E7BA /* treefir.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = treefir.obj; sourceTree = "<group>"; };
+		9C7C8485227FE3140071E7BA /* treefir.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = treefir.mtl; sourceTree = "<group>"; };
 		9CC82A92227B642700498FE3 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		9CC82AC2227B887C00498FE3 /* GameEngine-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GameEngine-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CC82ACD227B887D00498FE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -94,8 +94,8 @@
 				9C7C846C227FBB330071E7BA /* train-color.png */,
 				9C7C8470227FC2FF0071E7BA /* train.mtl */,
 				9C7C8471227FC2FF0071E7BA /* train.obj */,
-				9C7C8479227FCA690071E7BA /* treefir.mtl */,
-				9C7C8478227FCA690071E7BA /* treefir.obj */,
+				9C7C8485227FE3140071E7BA /* treefir.mtl */,
+				9C7C8484227FE3140071E7BA /* treefir.obj */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -273,8 +273,8 @@
 				9C7C846E227FBB330071E7BA /* train-color.png in Resources */,
 				9C7C8476227FC2FF0071E7BA /* train.obj in Resources */,
 				9CD7C131227CE26600CDA812 /* ShadersLibrary.metallib in Resources */,
-				9C7C847B227FCA690071E7BA /* treefir.obj in Resources */,
-				9C7C847E227FCA690071E7BA /* treefir.mtl in Resources */,
+				9C7C8487227FE3140071E7BA /* treefir.obj in Resources */,
+				9C7C848A227FE3140071E7BA /* treefir.mtl in Resources */,
 				9C7C8473227FC2FF0071E7BA /* train.mtl in Resources */,
 				9CC82AD1227B897E00498FE3 /* Assets.xcassets in Resources */,
 			);
@@ -287,8 +287,8 @@
 				9C7C846D227FBB330071E7BA /* train-color.png in Resources */,
 				9C7C8475227FC2FF0071E7BA /* train.obj in Resources */,
 				9CD7C133227CE27700CDA812 /* ShadersLibrary.metallib in Resources */,
-				9C7C847A227FCA690071E7BA /* treefir.obj in Resources */,
-				9C7C847D227FCA690071E7BA /* treefir.mtl in Resources */,
+				9C7C8486227FE3140071E7BA /* treefir.obj in Resources */,
+				9C7C8489227FE3140071E7BA /* treefir.mtl in Resources */,
 				9C7C8472227FC2FF0071E7BA /* train.mtl in Resources */,
 				9CF1543A2250D86B00CD00DA /* Assets.xcassets in Resources */,
 			);
@@ -301,8 +301,8 @@
 				9C7C846F227FBB330071E7BA /* train-color.png in Resources */,
 				9C7C8477227FC2FF0071E7BA /* train.obj in Resources */,
 				9CD7C12F227CE25900CDA812 /* ShadersLibrary.metallib in Resources */,
-				9C7C847C227FCA690071E7BA /* treefir.obj in Resources */,
-				9C7C847F227FCA690071E7BA /* treefir.mtl in Resources */,
+				9C7C8488227FE3140071E7BA /* treefir.obj in Resources */,
+				9C7C848B227FE3140071E7BA /* treefir.mtl in Resources */,
 				9C7C8474227FC2FF0071E7BA /* train.mtl in Resources */,
 				9CF1543B2250D86B00CD00DA /* Assets.xcassets in Resources */,
 			);

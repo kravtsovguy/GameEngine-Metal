@@ -14,7 +14,7 @@ using namespace metal;
 constant float3 lightPosition = float3(2.0, 1.0, 0);
 constant float3 ambientLightColor = float3(1.0, 1.0, 1.0);
 constant float ambientLightIntensity = 0.4;
-constant float3 specularLightColor = float3(1.0, 1.0, 1.0);
+constant float3 lightSpecularColor = float3(1.0, 1.0, 1.0);
 constant bool hasColorTexture [[function_constant(0)]];
 
 
@@ -43,9 +43,23 @@ vertex VertexOut vertex_main(VertexIn vertexBuffer [[stage_in]],
     return out;
 }
 
+vertex VertexOut vertex_instances(VertexIn vertexBuffer [[stage_in]],
+                                  constant Uniforms &uniforms [[buffer(21)]],
+                                  constant Instances *instances [[buffer(20)]],
+                                  uint instanceID [[instance_id]]) {
+    Instances instance = instances[instanceID];
+
+    VertexOut out;
+    out.position = uniforms.projectionMatrix * uniforms.viewMatrix * uniforms.modelMatrix * instance.modelMatrix * vertexBuffer.position;
+    out.worldNormal = (uniforms.modelMatrix * instance.modelMatrix * float4(vertexBuffer.normal, 0)).xyz;
+    out.worldPosition = (uniforms.modelMatrix * instance.modelMatrix * vertexBuffer.position).xyz;
+    out.uv = vertexBuffer.uv;
+    return out;
+}
+
 fragment float4 fragment_main(VertexOut in [[stage_in]],
-                              constant Material &material [[buffer(20)]],
-                              constant FragmentUniforms &fragmentUniforms [[buffer(21)]],
+                              constant Material &material [[buffer(11)]],
+                              constant FragmentUniforms &fragmentUniforms [[buffer(22)]],
                               texture2d<float>baseColorTexture [[texture(0), function_constant(hasColorTexture)]]) {
     float3 baseColor;
     if (hasColorTexture) {

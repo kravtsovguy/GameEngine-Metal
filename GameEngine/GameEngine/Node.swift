@@ -38,10 +38,4 @@ open class Node {
 //        }) else { return }
 //        children.remove(at: index)
 //    }
-
-//    var worldMatrix: float4x4 {
-//        if let parent = parent {
-//            return parent.worldMatrix * transform.matrix
-//        }
-//    }
 }

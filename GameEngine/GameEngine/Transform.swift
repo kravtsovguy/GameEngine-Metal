@@ -9,7 +9,7 @@
 import Foundation
 import simd
 
-class Transform {
+struct Transform {
     var position = float3(repeating: 0)
     var rotation = float3(repeating: 0)
     var scale = float3(repeating: 1)
