@@ -18,8 +18,8 @@ struct Vertex {
 // Platform independent renderer class
 class Renderer: NSObject {
     internal static var device: MTLDevice!
+    internal static var library: MTLLibrary!
     private let commandQueue: MTLCommandQueue
-    private let pipelineState: MTLRenderPipelineState
     private let depthStencilState: MTLDepthStencilState
     private var uniforms: Uniforms
     private var fragmentUniforms: FragmentUniforms
@@ -40,8 +40,8 @@ class Renderer: NSObject {
         }
 
         Renderer.device = device
+        Renderer.library = defaultLibrary
         self.commandQueue = commandQueue
-        self.pipelineState = Renderer.createRenderPipeline(with: defaultLibrary, view: view)
         self.depthStencilState = Renderer.createDepthState()
 
         uniforms = Uniforms()
@@ -76,7 +76,6 @@ extension Renderer: MTKViewDelegate {
             let camera = scene.camera
             else { return }
 
-        commandEncoder.setRenderPipelineState(pipelineState)
         commandEncoder.setDepthStencilState(depthStencilState)
 
         fragmentUniforms.cameraPosition = camera.transform.position

@@ -15,19 +15,11 @@ constant float3 lightPosition = float3(2.0, 1.0, 0);
 constant float3 ambientLightColor = float3(1.0, 1.0, 1.0);
 constant float ambientLightIntensity = 0.4;
 constant float3 specularLightColor = float3(1.0, 1.0, 1.0);
+constant bool hasColorTexture [[function_constant(0)]];
 
-//constant float3 colorArray[] {
-//    float3(1,0,0),
-//    float3(0,1,0),
-//    float3(0,0,1),
-//    float3(1,0,1),
-//    float3(0,1,1),
-//    float3(1,1,0),
-//};
 
 struct VertexIn {
     float4 position [[attribute(0)]];
-//    float3  color [[attribute(1)]];
     float3 normal [[attribute(1)]];
     float2 uv [[attribute(2)]];
 };
@@ -36,20 +28,15 @@ struct VertexOut {
     float4 position [[position]];
     float3 worldPosition;
     float3 worldNormal;
-    //    float3 color;
     float2 uv;
 };
 
 
 vertex VertexOut vertex_main(VertexIn vertexBuffer [[stage_in]],
-//                             constant uint &colorID [[buffer(20)]],
                              constant Uniforms &uniforms [[buffer(21)]]
-//                             constant float4x4 &modelMatrix [[buffer(21)]],
-//                             constant float4x4 &viewMatrix [[buffer(22)]]
                              ) {
     VertexOut out;
     out.position = uniforms.projectionMatrix * uniforms.viewMatrix * uniforms.modelMatrix * vertexBuffer.position;
-//    out.color = colorArray[colorID];//float3(1,0,1);//vertexBuffer.color;
     out.worldNormal = (uniforms.modelMatrix * float4(vertexBuffer.normal, 0)).xyz;
     out.worldPosition = (uniforms.modelMatrix * vertexBuffer.position).xyz;
     out.uv = vertexBuffer.uv;
@@ -59,11 +46,14 @@ vertex VertexOut vertex_main(VertexIn vertexBuffer [[stage_in]],
 fragment float4 fragment_main(VertexOut in [[stage_in]],
                               constant Material &material [[buffer(20)]],
                               constant FragmentUniforms &fragmentUniforms [[buffer(21)]],
-                              texture2d<float>baseColorTexture [[texture(0)]]) {
-//    return float4(in.uv, 0, 1);
-    const sampler s(filter::linear);
-    float3 baseColor = baseColorTexture.sample(s, in.uv).rgb;
-//    float3 baseColor = material.baseColor;
+                              texture2d<float>baseColorTexture [[texture(0), function_constant(hasColorTexture)]]) {
+    float3 baseColor;
+    if (hasColorTexture) {
+        const sampler s(filter::linear);
+        baseColor = baseColorTexture.sample(s, in.uv).rgb;
+    } else {
+        baseColor = material.baseColor;
+    }
 
 
     // diffuse

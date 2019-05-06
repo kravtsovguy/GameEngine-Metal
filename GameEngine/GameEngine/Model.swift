@@ -57,6 +57,8 @@ extension Model: Renderable {
 
                 for submesh in mesh.submeshes {
 
+                    commandEncoder.setRenderPipelineState(submesh.pipelineState)
+
                     var material = submesh.material
                     commandEncoder.setFragmentBytes(&material,
                                                     length: MemoryLayout<Material>.stride,
