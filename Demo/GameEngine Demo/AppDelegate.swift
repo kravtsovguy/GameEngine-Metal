@@ -18,7 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let window = UIWindow()
-        window.rootViewController = GameViewController()
+
+        let gameController = GameViewController(nibName: nil, bundle: nil)
+        gameController.scene = MainScene()
+        window.rootViewController = gameController
         window.makeKeyAndVisible()
 
         self.window = window
@@ -33,7 +36,7 @@ import Cocoa
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     var window : NSWindow?
-    let width: CGFloat = 600
+    let width: CGFloat = 800
     let height: CGFloat = 600
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -42,13 +45,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let y = (screenFrame.height - height) / 2
         let rect = NSMakeRect(x, y, width, height);
         let window = NSWindow(contentRect: rect,
-                              styleMask: NSWindow.StyleMask(rawValue:
-                                NSWindow.StyleMask.titled.rawValue |
-                                NSWindow.StyleMask.closable.rawValue |
-                                NSWindow.StyleMask.resizable.rawValue),
+                              styleMask: [.titled, .resizable, .closable],
                               backing: NSWindow.BackingStoreType.buffered,
                               defer: false)
-        window.contentViewController = GameViewController(with: rect.size)
+
+        let gameController = GameViewController(nibName: nil, bundle: nil)
+        gameController.initialSize = rect.size
+        gameController.scene = MainScene()
+        window.contentViewController = gameController
         window.makeKeyAndOrderFront(NSApp)
 
         self.window = window

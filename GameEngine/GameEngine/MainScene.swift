@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MainScene: Scene {
+open class MainScene: Scene {
     let train = Model(name: "train")
     let trees = Instance(name: "treefir", instanceCount: 3)
 

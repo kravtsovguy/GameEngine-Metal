@@ -17,45 +17,51 @@ struct Vertex {
 
 // Platform independent renderer class
 class Renderer: NSObject {
-    internal static var device: MTLDevice!
-    internal static var library: MTLLibrary!
-    private let commandQueue: MTLCommandQueue
-    private let depthStencilState: MTLDepthStencilState
-    private var uniforms: Uniforms
-    private var fragmentUniforms: FragmentUniforms
-    var scene: Scene?
-
-    required init(view: MTKView) {
-        // init command queue and device
-        guard
-            let device = MTLCreateSystemDefaultDevice(),
-            let commandQueue = device.makeCommandQueue() else {
+    static let device: MTLDevice = {
+        guard let device = MTLCreateSystemDefaultDevice() else {
                 fatalError("Unable to connect to GPU")
         }
 
+        return device
+    }()
+
+     static let library: MTLLibrary = {
         guard
             let resourcePath = Bundle.main.path(forResource: "ShadersLibrary", ofType: "metallib"),
             let defaultLibrary = try? device.makeLibrary(URL: URL(fileURLWithPath: resourcePath)) else {
                 fatalError("Unable to load shaders library")
         }
+        return defaultLibrary
+    }()
+    private let commandQueue = device.makeCommandQueue()!
+    private let depthStencilState = createDepthState()!
+    private var uniforms = Uniforms()
+    private var fragmentUniforms = FragmentUniforms()
+    var scene: Scene!
 
-        Renderer.device = device
-        Renderer.library = defaultLibrary
-        self.commandQueue = commandQueue
-        self.depthStencilState = Renderer.createDepthState()
-
-        uniforms = Uniforms()
-        fragmentUniforms = FragmentUniforms()
-
-        super.init()
-    }
-
-    static func createDepthState() -> MTLDepthStencilState {
+    static func createDepthState() -> MTLDepthStencilState? {
         let depthDescriptor = MTLDepthStencilDescriptor()
         depthDescriptor.depthCompareFunction = .less
         depthDescriptor.isDepthWriteEnabled = true
 
-        return Renderer.device.makeDepthStencilState(descriptor: depthDescriptor)!
+        return device.makeDepthStencilState(descriptor: depthDescriptor)
+    }
+
+    static func createRenderPipeline(vertexFunctionName: String, textures: Textures) -> MTLRenderPipelineState? {
+        let functionConstants = MTLFunctionConstantValues()
+        var property = textures.baseColor != nil
+        functionConstants.setConstantValue(&property,
+                                           type: .bool,
+                                           index: 0)
+
+        let pipelineStateDescriptor = MTLRenderPipelineDescriptor()
+        pipelineStateDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm //view.colorPixelFormat
+        pipelineStateDescriptor.depthAttachmentPixelFormat = .depth32Float //view.depthStencilPixelFormat
+        pipelineStateDescriptor.vertexFunction =  library.makeFunction(name: vertexFunctionName)
+        pipelineStateDescriptor.fragmentFunction = try! library.makeFunction(name: "fragment_main", constantValues: functionConstants)
+        pipelineStateDescriptor.vertexDescriptor = MTLVertexDescriptor.defaultVertexDescriptor()
+
+        return try? Renderer.device.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
     }
 }
 
@@ -63,7 +69,8 @@ class Renderer: NSObject {
 extension Renderer: MTKViewDelegate {
 
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
-        scene?.camera.aspect = Float(view.bounds.width / view.bounds.height)
+        print("size: \(size)")
+        scene.camera.aspect = Float(size.width / size.height)
     }
 
     func draw(in view: MTKView) {

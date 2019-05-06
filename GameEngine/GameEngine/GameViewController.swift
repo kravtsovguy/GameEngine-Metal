@@ -20,41 +20,35 @@ public typealias PlatformViewController = NSViewController
 
 // Platform independent view controller
 open class GameViewController: PlatformViewController {
-    let initialSize: CGSize?
-    var renderer: Renderer!
-    var metalView: MTKView! { return view as? MTKView }
-
-    public convenience init() {
-        self.init(with: nil)
+    let renderer: Renderer = Renderer()
+    public var initialSize: CGSize? = nil
+    public var scene: Scene {
+        get { return renderer.scene }
+        set { renderer.scene = newValue }
     }
 
-    public init(with size:CGSize?) {
-        initialSize = size
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required public init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     open override func loadView() {
-        let frame = CGRect(origin: CGPoint.zero, size: initialSize ?? CGSize.zero)
+        let frame = CGRect(origin: CGPoint.zero, size: initialSize ?? .zero)
         let view = MTKView(frame: frame)
         view.colorPixelFormat = .bgra8Unorm
         view.depthStencilPixelFormat = .depth32Float
         view.preferredFramesPerSecond = 60
         view.clearColor = MTLClearColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 1)
+        view.device = Renderer.device
+        view.delegate = renderer
+
+        #if os(OSX)
+        let scaleFactor = NSScreen.main!.backingScaleFactor
+        let size = CGSize(width: scaleFactor * view.frame.size.width,
+                          height: scaleFactor * view.frame.size.height)
+        renderer.mtkView(view, drawableSizeWillChange: size)
+        #endif
 
         self.view = view
     }
 
     open override func viewDidLoad() {
         super.viewDidLoad()
-
-        renderer = Renderer(view: metalView)
-        renderer.scene = MainScene()
-        metalView.device = Renderer.device
-        metalView.delegate = renderer
 
         #if os(iOS)
         let pan = UIPanGestureRecognizer(target: self, action: #selector(handlePan))

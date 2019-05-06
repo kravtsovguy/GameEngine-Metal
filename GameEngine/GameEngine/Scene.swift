@@ -8,17 +8,17 @@
 
 import Foundation
 
-class Scene {
-    var name: String = "Main"
-    var rootNode: Node = Node()
+open class Scene {
+    public var name: String = "Main"
+    public var rootNode: Node = Node()
     var renderables: [Renderable] = []
     var camera: Camera!
 
-    init() {
+    public init() {
         setupScene()
     }
 
-    final func add(node: Node, parent: Node? = nil) {
+    final public func add(node: Node, parent: Node? = nil) {
         if let parent = parent {
             parent.add(childNode: node)
         } else {
@@ -33,5 +33,4 @@ class Scene {
     func setupScene() {
         // override this to add objects to the scene
     }
-
 }

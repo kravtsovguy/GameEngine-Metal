@@ -10,7 +10,6 @@ import Foundation
 import MetalKit
 
 struct Mesh {
-
     let mtkMesh: MTKMesh
     let submeshes: [Submesh]
 
@@ -33,25 +32,8 @@ struct Submesh {
         self.mtkSubmesh = mtkSubmesh
         self.material = Material(material: mdlSubmesh.material)
         self.textures = Textures(material: mdlSubmesh.material)
-        self.pipelineState = Submesh.createRenderPipeline(vertexFunctionName: "vertex_main", textures: textures)
-        self.instancedPipelineState = Submesh.createRenderPipeline(vertexFunctionName: "vertex_instances", textures: textures)
-    }
-
-    static func createRenderPipeline(vertexFunctionName: String, textures: Textures) -> MTLRenderPipelineState {
-        let functionConstants = MTLFunctionConstantValues()
-        var property = textures.baseColor != nil
-        functionConstants.setConstantValue(&property,
-                                           type: .bool,
-                                           index: 0)
-
-        let pipelineStateDescriptor = MTLRenderPipelineDescriptor()
-        pipelineStateDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm //view.colorPixelFormat
-        pipelineStateDescriptor.depthAttachmentPixelFormat = .depth32Float //view.depthStencilPixelFormat
-        pipelineStateDescriptor.vertexFunction =  Renderer.library.makeFunction(name: vertexFunctionName)
-        pipelineStateDescriptor.fragmentFunction = try! Renderer.library.makeFunction(name: "fragment_main", constantValues: functionConstants)
-        pipelineStateDescriptor.vertexDescriptor = MTLVertexDescriptor.defaultVertexDescriptor()
-
-        return try! Renderer.device.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
+        self.pipelineState = Renderer.createRenderPipeline(vertexFunctionName: "vertex_main", textures: textures)!
+        self.instancedPipelineState = Renderer.createRenderPipeline(vertexFunctionName: "vertex_instances", textures: textures)!
     }
 }
 
