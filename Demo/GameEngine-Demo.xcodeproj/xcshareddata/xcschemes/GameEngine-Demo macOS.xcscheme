@@ -31,7 +31,7 @@
                BlueprintIdentifier = "9CC82B5D227BC12300498FE3"
                BuildableName = "libGameEngine.a"
                BlueprintName = "GameEngine macOS"
-               ReferencedContainer = "container:GameEngine.xcodeproj">
+               ReferencedContainer = "container:../GameEngine/GameEngine.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

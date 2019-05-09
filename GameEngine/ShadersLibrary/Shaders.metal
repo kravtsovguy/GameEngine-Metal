@@ -9,7 +9,7 @@
 #include <metal_stdlib>
 using namespace metal;
 
-#import "GameEngine/ShaderTypes.h"
+#include "../GameEngine/ShaderTypes.h"
 
 constant float3 lightPosition = float3(2.0, 1.0, 0);
 constant float3 ambientLightColor = float3(1.0, 1.0, 1.0);
