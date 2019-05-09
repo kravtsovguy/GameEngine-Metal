@@ -11,13 +11,17 @@ import MetalKit
 
 class Instance: Model {
     var transforms: [Transform]
-    var instanceCount: Int
+    var instanceCount: Int {
+        return transforms.count
+    }
     var instanceBuffer: MTLBuffer
 
     init(name: String, instanceCount: Int = 1) {
-        transforms = [Transform](repeatElement(Transform(), count: instanceCount))
+        transforms = []
+        for _ in 0..<instanceCount {
+            transforms.append(Transform())
+        }
 
-        self.instanceCount = instanceCount
         instanceBuffer = Renderer.device.makeBuffer(length: instanceCount * MemoryLayout<Instances>.stride,
                                                     options: [])!
 

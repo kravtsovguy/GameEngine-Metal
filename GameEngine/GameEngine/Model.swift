@@ -28,8 +28,7 @@ open class Model: Node {
             Mesh(mdlMesh: $0.0, mtkMesh: $0.1)
         }
 
-        super.init()
-        self.name = name
+        super.init(with: name)
     }
 
     func render(commandEncoder: MTLRenderCommandEncoder, submesh: Submesh) {
@@ -49,7 +48,7 @@ extension Model: Renderable {
         var uniforms = vertex
         var fragmentUniforms = fragment
 
-        uniforms.modelMatrix = worldMatrix
+        uniforms.modelMatrix = transform.worldMatrix
         commandEncoder.setVertexBytes(&uniforms,
                                       length: MemoryLayout<Uniforms>.stride,
                                       index: 21)

@@ -8,9 +8,10 @@
 
 import Foundation
 
-open class Scene {
+open class Scene: Liveable {
+    
     public var name: String = "Main"
-    public var rootNode: Node = Node()
+    public var rootNode: Node = Node(with: "Root")
     var renderables: [Renderable] = []
     var camera: Camera!
 
@@ -32,5 +33,14 @@ open class Scene {
 
     func setupScene() {
         // override this to add objects to the scene
+    }
+
+    func start() {
+        print("start scene \(name)")
+        rootNode.start()
+    }
+
+    func update(with deltaTime: Float) {
+        rootNode.update(with: deltaTime)
     }
 }

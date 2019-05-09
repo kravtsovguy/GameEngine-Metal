@@ -37,7 +37,11 @@ class Renderer: NSObject {
     private let depthStencilState = createDepthState()!
     private var uniforms = Uniforms()
     private var fragmentUniforms = FragmentUniforms()
-    var scene: Scene!
+    var scene: Scene! {
+        didSet {
+            scene?.start()
+        }
+    }
 
     static func createDepthState() -> MTLDepthStencilState? {
         let depthDescriptor = MTLDepthStencilDescriptor()
@@ -63,6 +67,23 @@ class Renderer: NSObject {
 
         return try? Renderer.device.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
     }
+
+    static func createSimpleRenderPipeline() -> MTLRenderPipelineState? {
+        let functionConstants = MTLFunctionConstantValues()
+        var property = false
+        functionConstants.setConstantValue(&property,
+                                           type: .bool,
+                                           index: 0)
+
+        let pipelineStateDescriptor = MTLRenderPipelineDescriptor()
+        pipelineStateDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm //view.colorPixelFormat
+        pipelineStateDescriptor.depthAttachmentPixelFormat = .depth32Float //view.depthStencilPixelFormat
+        pipelineStateDescriptor.vertexFunction =  library.makeFunction(name: "vertex_main")
+        pipelineStateDescriptor.fragmentFunction = try! library.makeFunction(name: "fragment_main", constantValues: functionConstants)
+        pipelineStateDescriptor.vertexDescriptor = MTLVertexDescriptor.defaultVertexDescriptor()
+
+        return try? Renderer.device.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
+    }
 }
 
 
@@ -82,6 +103,9 @@ extension Renderer: MTKViewDelegate {
             let scene = scene,
             let camera = scene.camera
             else { return }
+
+        let deltaTime = 1 / Float(view.preferredFramesPerSecond)
+        scene.update(with: deltaTime)
 
         commandEncoder.setDepthStencilState(depthStencilState)
 
