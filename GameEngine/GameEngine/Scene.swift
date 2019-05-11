@@ -10,25 +10,18 @@ import Foundation
 
 open class Scene: Liveable {
     
-    public var name: String = "Main"
-    public var rootNode: Node = Node(with: "Root")
-    var renderables: [Renderable] = []
-    var camera: Camera!
+    private(set) public var name: String = "Main"
+    private(set) public var rootNode: Node = Node(with: "Root")
+    private(set) var renderables: [Renderable] = []
+    public internal(set) var camera: Camera!
 
     public init() {
         setupScene()
     }
 
-    final public func add(node: Node, parent: Node? = nil) {
-        if let parent = parent {
-            parent.add(childNode: node)
-        } else {
-            rootNode.add(childNode: node)
-        }
-
-        if let renderable = node as? Renderable {
-            renderables.append(renderable)
-        }
+    public func add(node: Node) {
+        rootNode.add(childNode: node)
+        renderables.append(contentsOf:node.renderables)
     }
 
     func setupScene() {
@@ -36,7 +29,8 @@ open class Scene: Liveable {
     }
 
     func start() {
-        print("start scene \(name)")
+        print("scene \(name)")
+        rootNode.printStructure()
         rootNode.start()
     }
 

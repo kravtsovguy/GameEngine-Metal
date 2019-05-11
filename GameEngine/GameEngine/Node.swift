@@ -8,12 +8,27 @@
 
 import Foundation
 
-open class Node: Liveable {
-    var name: String
+public final class Node: Liveable {
+
+    public var name: String
     private(set) weak var parent: Node?
     private(set) var children: [Node] = []
     private(set) var components: [Component] = []
     private(set) var transform: Transform!
+    var renderables: [Renderable] {
+
+        var renderables: [Renderable] = []
+        for component in components {
+            if let renderable =  component as? Renderable {
+                renderables.append(renderable)
+            }
+        }
+        for child in children {
+            renderables.append(contentsOf: child.renderables)
+        }
+
+        return renderables
+    }
 
     public init(with name: String = "Untitled") {
         self.name = name
@@ -43,11 +58,25 @@ open class Node: Liveable {
         component.node = nil
     }
 
-    func start() {
-        print("start \t node \(name)")
+    func printStructure() {
+        print("\t node \(name)")
 
         for component in components {
-            print("start \t\t component \(String(describing:type(of: component)))")
+            var componentType = "component"
+            if component is Renderable {
+                componentType = "renerable"
+            }
+
+            print("\t\t \(componentType) \(String(describing:type(of: component)))")
+        }
+
+        for childNode in children {
+            childNode.printStructure()
+        }
+    }
+
+    func start() {
+        for component in components {
             component.start()
         }
 

@@ -10,10 +10,10 @@ import Metal
 import MetalKit
 import simd
 
-struct Vertex {
-    let position: float3
-    let color : float3
-}
+//struct Vertex {
+//    let position: float3
+//    let color : float3
+//}
 
 // Platform independent renderer class
 class Renderer: NSObject {
@@ -33,6 +33,7 @@ class Renderer: NSObject {
         }
         return defaultLibrary
     }()
+
     private let commandQueue = device.makeCommandQueue()!
     private let depthStencilState = createDepthState()!
     private var uniforms = Uniforms()
@@ -78,9 +79,9 @@ class Renderer: NSObject {
         let pipelineStateDescriptor = MTLRenderPipelineDescriptor()
         pipelineStateDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm //view.colorPixelFormat
         pipelineStateDescriptor.depthAttachmentPixelFormat = .depth32Float //view.depthStencilPixelFormat
-        pipelineStateDescriptor.vertexFunction =  library.makeFunction(name: "vertex_main")
+        pipelineStateDescriptor.vertexFunction =  library.makeFunction(name: "vertex_simple")
         pipelineStateDescriptor.fragmentFunction = try! library.makeFunction(name: "fragment_main", constantValues: functionConstants)
-        pipelineStateDescriptor.vertexDescriptor = MTLVertexDescriptor.defaultVertexDescriptor()
+        pipelineStateDescriptor.vertexDescriptor = MTLVertexDescriptor.simpleVertexDescriptor()
 
         return try? Renderer.device.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
     }

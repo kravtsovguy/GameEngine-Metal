@@ -9,11 +9,16 @@
 import Foundation
 import MetalKit
 
-open class Model: Node {
-
-    let meshes: [Mesh]
+open class Model: Component {
+    let name: String
+    private var meshes: [Mesh]!
 
     public init(name: String) {
+        self.name = name
+        super.init()
+    }
+
+    override func start() {
         let assetURL = Bundle.main.url(forResource: name, withExtension: "obj")
         let allocator = MTKMeshBufferAllocator(device: Renderer.device)
         let vertexDescriptor = MDLVertexDescriptor.defaultVertexDescriptor()
@@ -27,8 +32,6 @@ open class Model: Node {
         self.meshes = zip(mdlMeshes, mtkMeshes).map {
             Mesh(mdlMesh: $0.0, mtkMesh: $0.1)
         }
-
-        super.init(with: name)
     }
 
     func render(commandEncoder: MTLRenderCommandEncoder, submesh: Submesh) {
@@ -42,6 +45,7 @@ open class Model: Node {
 }
 
 extension Model: Renderable {
+
     func render(commandEncoder: MTLRenderCommandEncoder,
                 uniforms vertex: Uniforms,
                 fragmentUniforms fragment: FragmentUniforms) {

@@ -6,7 +6,7 @@
 //  Copyright © 2019 Matvey Kravtsov. All rights reserved.
 //
 
-open class ModeForwardComponent: Component {
+public final class ModeForwardComponent: Component {
 
     override func start() {
     }

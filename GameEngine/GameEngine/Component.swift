@@ -10,9 +10,9 @@ import Foundation
 
 open class Component: Liveable {
 
-    weak var node: Node!
+    public internal(set) weak var node: Node!
 
-    var transform: Transform! {
+    public var transform: Transform! {
         return node.transform
     }
 

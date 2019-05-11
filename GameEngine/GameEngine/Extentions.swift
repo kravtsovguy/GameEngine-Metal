@@ -10,6 +10,26 @@ import Foundation
 import MetalKit
 
 extension MTLVertexDescriptor {
+
+    static func simpleVertexDescriptor() -> MTLVertexDescriptor {
+        let vertexDescriptor = MTLVertexDescriptor()
+
+        // position
+        vertexDescriptor.attributes[0].format = .float3
+        vertexDescriptor.attributes[0].offset = 0
+        vertexDescriptor.attributes[0].bufferIndex = 0
+
+        // normal
+        vertexDescriptor.attributes[1].format = .float3
+        vertexDescriptor.attributes[1].offset = MemoryLayout<float3>.stride
+        vertexDescriptor.attributes[1].bufferIndex = 0
+
+        // layout
+        vertexDescriptor.layouts[0].stride = MemoryLayout<float3>.stride * 2
+
+        return vertexDescriptor
+    }
+
     static func defaultVertexDescriptor() -> MTLVertexDescriptor {
         let vertexDescriptor = MTLVertexDescriptor()
 

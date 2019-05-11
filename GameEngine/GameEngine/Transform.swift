@@ -9,7 +9,7 @@
 import Foundation
 import simd
 
-class Transform: Component {
+public final class Transform: Component {
     var position: float3 = [0, 0, 0]
     var rotation: float3 = [0, 0, 0] {
         didSet {

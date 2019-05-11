@@ -10,7 +10,7 @@ import Foundation
 import MetalKit
 import simd
 
-class Camera: Node {
+open class Camera: Component {
 
     var viewMatrix: float4x4 {
         let translationMatrix = float4x4(translation: transform.position)
