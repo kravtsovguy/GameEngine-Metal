@@ -6,12 +6,12 @@
 //  Copyright © 2019 Matvey Kravtsov. All rights reserved.
 //
 
+import GameEngine
+
+
 public final class ModeForwardComponent: Component {
 
-    override func start() {
-    }
-
-    override func update(with deltaTime: Float) {
+    override public func update(with deltaTime: Float) {
         self.transform.position += self.transform.rightVector * deltaTime
     }
 }

@@ -21,7 +21,7 @@ public class Model {
         self.meshes = meshes
     }
     
-    convenience init(withObject name: String) {
+    public convenience init(withObject name: String) {
         let assetURL = Bundle.main.url(forResource: name, withExtension: "obj")
         let asset = MDLAsset(url: assetURL,
                              vertexDescriptor: Model.vertexDescriptor,
@@ -36,7 +36,7 @@ public class Model {
         self.init(name: name, meshes: meshes)
     }
 
-    static func sphere(material: Material) -> Model {
+    public static func sphere(material: Material) -> Model {
         let mdlMesh = MDLMesh(sphereWithExtent: [1, 1, 1],
                               segments: [100, 100],
                               inwardNormals: false,
@@ -56,7 +56,7 @@ public class Model {
         return Model(name: "Sphere", meshes: [mesh])
     }
 
-    static func plane(material: Material) -> Model {
+    public static func plane(material: Material) -> Model {
         let vertices: [Vertex] = [
             Vertex(position: [-0.5, 0,  0.5], normal: [0, 1, 0], uv: [0, 1]),
             Vertex(position: [-0.5, 0, -0.5], normal: [0, 1, 0], uv: [0, 0]),

@@ -6,6 +6,8 @@
 //  Copyright © 2019 Matvey Kravtsov. All rights reserved.
 //
 
+import GameEngine
+
 
 public final class MainScene: Scene {
     let train = Node(with: "Train")
@@ -13,7 +15,7 @@ public final class MainScene: Scene {
     let plane = Node(with: "Plane")
     let sphere = Node(with: "Sphere")
 
-    override func setupScene() {
+    override public func setupScene() {
         let camera = Node(with: "Camera")
         let cameraComponent = ArcballCamera()
         cameraComponent.target = [0, 0.8, 0]

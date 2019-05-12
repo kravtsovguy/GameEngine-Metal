@@ -15,11 +15,13 @@ open class Component: Liveable {
         return node.transform
     }
 
-    func start() {
+    public init() { }
+
+    open func start() {
         // override
     }
 
-    func update(with deltaTime: Float) {
+    open func update(with deltaTime: Float) {
         // override
     }
 }

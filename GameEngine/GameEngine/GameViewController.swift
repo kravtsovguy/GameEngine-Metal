@@ -23,10 +23,23 @@ public typealias PlatformViewController = NSViewController
 /// Platform independent view controller
 open class GameViewController: PlatformViewController {
     let renderer: Renderer = Renderer()
+    var mtkView: MTKView {
+        return view as! MTKView
+    }
+
     public var initialSize: CGSize? = nil
-    public var scene: Scene {
+    public var scene: Scene? {
         get { return renderer.scene }
-        set { renderer.scene = newValue }
+        set {
+            renderer.scene = newValue
+
+            #if os(OSX)
+            let scaleFactor = NSScreen.main!.backingScaleFactor
+            let size = CGSize(width: scaleFactor * view.frame.size.width,
+                              height: scaleFactor * view.frame.size.height)
+            renderer.mtkView(mtkView, drawableSizeWillChange: size)
+            #endif
+        }
     }
 
     open override func loadView() {
@@ -37,13 +50,6 @@ open class GameViewController: PlatformViewController {
         view.preferredFramesPerSecond = 60
         view.clearColor = MTLClearColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 1)
         view.delegate = renderer
-
-        #if os(OSX)
-        let scaleFactor = NSScreen.main!.backingScaleFactor
-        let size = CGSize(width: scaleFactor * view.frame.size.width,
-                          height: scaleFactor * view.frame.size.height)
-        renderer.mtkView(view, drawableSizeWillChange: size)
-        #endif
 
         self.view = view
     }
@@ -67,7 +73,7 @@ open class GameViewController: PlatformViewController {
 
     #if os(iOS)
     @objc func handlePinch(gesture: UIPinchGestureRecognizer) {
-        renderer.scene?.camera.zoom(delta: Float(gesture.velocity * 0.5))
+        scene?.camera.zoom(delta: Float(gesture.velocity * 0.5))
     }
 
     @objc func handlePan(gesture: UIPanGestureRecognizer) {
@@ -75,14 +81,14 @@ open class GameViewController: PlatformViewController {
         let delta = float2(Float(translation.x),
                            -Float(translation.y))
 
-        renderer.scene?.camera.rotate(delta: delta)
+        scene?.camera.rotate(delta: delta)
         gesture.setTranslation(.zero, in: gesture.view)
     }
     #endif
 
     #if os(OSX)
     override open func scrollWheel(with event: NSEvent) {
-        renderer.scene?.camera.zoom(delta: Float(event.deltaY))
+        scene?.camera.zoom(delta: Float(event.deltaY))
     }
 
     @objc func handlePan(gesture: NSPanGestureRecognizer) {
@@ -90,7 +96,7 @@ open class GameViewController: PlatformViewController {
         let delta = float2(Float(translation.x),
                            Float(translation.y))
 
-        renderer.scene?.camera.rotate(delta: delta)
+        scene?.camera.rotate(delta: delta)
         gesture.setTranslation(.zero, in: gesture.view)
     }
     #endif

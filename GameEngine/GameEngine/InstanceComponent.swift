@@ -16,7 +16,7 @@ open class InstanceComponent: ModelComponent {
     }
     var instanceBuffer: MTLBuffer
 
-    init(model: Model, instanceCount: Int = 1) {
+    public init(model: Model, instanceCount: Int = 1) {
         transforms = []
         for _ in 0..<instanceCount {
             transforms.append(Transform())

@@ -10,11 +10,11 @@ import simd
 
 let π = Float.pi
 
-func radians(fromDegrees degrees: Float) -> Float {
+public func radians(fromDegrees degrees: Float) -> Float {
   return (degrees / 180) * π
 }
 
-func degrees(fromRadians radians: Float) -> Float {
+public func degrees(fromRadians radians: Float) -> Float {
   return (radians / π) * 180
 }
 

@@ -19,10 +19,10 @@ open class Camera: Component {
     }
 
 
-    var fov = radians(fromDegrees: 70)
-    var near: Float = 0.1
-    var far: Float = 100
-    var aspect: Float = 1
+    public var fov = radians(fromDegrees: 70)
+    public var near: Float = 0.1
+    public var far: Float = 100
+    public var aspect: Float = 1
 
     var projectionMatrix: float4x4 {
         return float4x4(projectionFov: fov,
@@ -36,9 +36,9 @@ open class Camera: Component {
 }
 
 
-class ArcballCamera: Camera {
-    var distance: Float = 0
-    var target = float3(repeating: 0)
+open class ArcballCamera: Camera {
+    public var distance: Float = 0
+    public var target = float3(repeating: 0)
 
     override var viewMatrix: float4x4 {
         let translateMatrix = float4x4(translation: [target.x, target.y, target.z - distance])

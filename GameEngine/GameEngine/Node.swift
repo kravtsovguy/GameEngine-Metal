@@ -10,10 +10,10 @@
 public final class Node: Liveable {
 
     public var name: String
-    private(set) weak var parent: Node?
-    private(set) var children: [Node] = []
-    private(set) var components: [Component] = []
-    private(set) var transform: Transform
+    public private(set) weak var parent: Node?
+    public private(set) var children: [Node] = []
+    public private(set) var components: [Component] = []
+    public private(set) var transform: Transform
     var renderables: [Renderable] {
 
         var renderables: [Renderable] = []
@@ -32,27 +32,27 @@ public final class Node: Liveable {
     public init(with name: String = "Untitled") {
         self.name = name
         self.transform = Transform()
-        add(component: transform)
+        self.transform.node = self
     }
 
-    func add(childNode: Node) {
+    public func add(childNode: Node) {
         childNode.parent?.remove(childNode: childNode)
         childNode.parent = self
         children.append(childNode)
     }
 
-    func remove(childNode: Node) {
+    public func remove(childNode: Node) {
         children.removeAll { $0 === childNode }
         childNode.parent = nil
     }
 
-    func add(component: Component) {
+    public func add(component: Component) {
         component.node?.remove(component: component)
         component.node = self
         components.append(component)
     }
 
-    func remove(component: Component) {
+    public func remove(component: Component) {
         components.removeAll { $0 === component }
         component.node = nil
     }
@@ -77,7 +77,7 @@ public final class Node: Liveable {
         }
     }
 
-    func start() {
+    public func start() {
         for component in components {
             component.start()
         }
@@ -87,7 +87,7 @@ public final class Node: Liveable {
         }
     }
 
-    func update(with deltaTime:Float) {
+    public func update(with deltaTime:Float) {
         for component in components {
             component.update(with: deltaTime)
         }
