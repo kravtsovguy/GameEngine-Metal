@@ -29,12 +29,11 @@ open class GameViewController: PlatformViewController {
 
     open override func loadView() {
         let frame = CGRect(origin: CGPoint.zero, size: initialSize ?? .zero)
-        let view = MTKView(frame: frame)
+        let view = MTKView(frame: frame, device: Renderer.device)
         view.colorPixelFormat = .bgra8Unorm
         view.depthStencilPixelFormat = .depth32Float
         view.preferredFramesPerSecond = 60
         view.clearColor = MTLClearColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 1)
-        view.device = Renderer.device
         view.delegate = renderer
 
         #if os(OSX)

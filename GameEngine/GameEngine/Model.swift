@@ -2,80 +2,93 @@
 //  Model.swift
 //  GameEngine
 //
-//  Created by Matvey Kravtsov on 05/05/2019.
+//  Created by Matvey Kravtsov on 12/05/2019.
 //  Copyright © 2019 Matvey Kravtsov. All rights reserved.
 //
 
-import Foundation
 import MetalKit
 
-open class Model: Component {
-    let name: String
-    private var meshes: [Mesh]!
+public class Model {
+    private static let allocator = MTKMeshBufferAllocator(device: Renderer.device)
+    private static let vertexDescriptor = MDLVertexDescriptor.defaultVertexDescriptor()
+    public let name: String
+    let meshes: [Mesh]
 
-    public init(name: String) {
-        self.name = name
-        super.init()
-    }
-
-    override func start() {
+    convenience init(withObject name: String) {
         let assetURL = Bundle.main.url(forResource: name, withExtension: "obj")
-        let allocator = MTKMeshBufferAllocator(device: Renderer.device)
-        let vertexDescriptor = MDLVertexDescriptor.defaultVertexDescriptor()
         let asset = MDLAsset(url: assetURL,
-                             vertexDescriptor: vertexDescriptor,
-                             bufferAllocator: allocator)
-
+                             vertexDescriptor: Model.vertexDescriptor,
+                             bufferAllocator: Model.allocator)
         asset.loadTextures()
 
         let (mdlMeshes, mtkMeshes) = try! MTKMesh.newMeshes(asset: asset, device: Renderer.device)
-        self.meshes = zip(mdlMeshes, mtkMeshes).map {
+        let meshes = zip(mdlMeshes, mtkMeshes).map {
             Mesh(mdlMesh: $0.0, mtkMesh: $0.1)
         }
+
+        self.init(name: name, meshes: meshes)
     }
 
-    func render(commandEncoder: MTLRenderCommandEncoder, submesh: Submesh) {
-        let mtkSubmesh = submesh.mtkSubmesh
-        commandEncoder.drawIndexedPrimitives(type: .triangle,
-                                             indexCount: mtkSubmesh.indexCount,
-                                             indexType: mtkSubmesh.indexType,
-                                             indexBuffer: mtkSubmesh.indexBuffer.buffer,
-                                             indexBufferOffset: mtkSubmesh.indexBuffer.offset)
+    required init(name: String, meshes: [Mesh]) {
+        self.name = name
+        self.meshes = meshes
     }
-}
 
-extension Model: Renderable {
+    static func sphere(material: Material) -> Model {
+        let mdlMesh = MDLMesh(sphereWithExtent: [1, 1, 1],
+                              segments: [100, 100],
+                              inwardNormals: false,
+                              geometryType: .triangles,
+                              allocator: allocator)
 
-    func render(commandEncoder: MTLRenderCommandEncoder,
-                uniforms vertex: Uniforms,
-                fragmentUniforms fragment: FragmentUniforms) {
-        var uniforms = vertex
-        var fragmentUniforms = fragment
-
-        uniforms.modelMatrix = transform.worldMatrix
-        commandEncoder.setVertexBytes(&uniforms,
-                                      length: MemoryLayout<Uniforms>.stride,
-                                      index: 21)
-        commandEncoder.setFragmentBytes(&fragmentUniforms,
-                                        length: MemoryLayout<FragmentUniforms>.stride,
-                                        index: 22)
-
-        for mesh in meshes {
-            for vertexBuffer in mesh.mtkMesh.vertexBuffers {
-
-                commandEncoder.setVertexBuffer(vertexBuffer.buffer, offset: 0, index: 0)
-
-                for submesh in mesh.submeshes {
-                    commandEncoder.setRenderPipelineState(submesh.pipelineState)
-                    var material = submesh.material
-                    commandEncoder.setFragmentBytes(&material,
-                                                    length: MemoryLayout<Material>.stride,
-                                                    index: 11)
-                    commandEncoder.setFragmentTexture(submesh.textures.baseColor, index: 0)
-
-                    render(commandEncoder: commandEncoder, submesh: submesh)
-                }
+        mdlMesh.vertexDescriptor = MDLVertexDescriptor.defaultVertexDescriptor()
+        mdlMesh.submeshes?.forEach {
+            if let submesh = $0 as? MDLSubmesh {
+                submesh.material = MDLMaterial(material: material)
             }
         }
+
+        let mtkMesh = try! MTKMesh(mesh: mdlMesh, device: Renderer.device)
+        let mesh = Mesh(mdlMesh: mdlMesh, mtkMesh: mtkMesh)
+
+        return Model(name: "Sphere", meshes: [mesh])
+    }
+
+    static func plane(material: Material) -> Model {
+        let vertices: [Vertex] = [
+            Vertex(position: [-0.5, 0,  0.5], normal: [0, 1, 0], uv: [0, 1]),
+            Vertex(position: [-0.5, 0, -0.5], normal: [0, 1, 0], uv: [0, 0]),
+            Vertex(position: [0.5 , 0,  0.5], normal: [0, 1, 0], uv: [1, 1]),
+            Vertex(position: [0.5 , 0, -0.5], normal: [0, 1, 0], uv: [1, 0]),
+        ]
+
+        let indices: [UInt16] = [
+            0, 1, 2,
+            2, 1, 3,
+        ]
+
+        let vertexBuffer = allocator.newBuffer(MemoryLayout<Vertex>.stride * vertices.count, type: .vertex)
+        let vertexMap = vertexBuffer.map()
+        vertexMap.bytes.assumingMemoryBound(to: Vertex.self).assign(from: vertices, count: vertices.count)
+
+        let indexBuffer = allocator.newBuffer(MemoryLayout<UInt16>.stride * indices.count, type: .index)
+        let indexMap = indexBuffer.map()
+        indexMap.bytes.assumingMemoryBound(to: UInt16.self).assign(from: indices, count: indices.count)
+
+        let submesh = MDLSubmesh(indexBuffer: indexBuffer,
+                                 indexCount: indices.count,
+                                 indexType: .uint16,
+                                 geometryType: .triangles,
+                                 material: MDLMaterial(material: material))
+
+        let mdlMesh = MDLMesh(vertexBuffer: vertexBuffer,
+                              vertexCount: vertices.count,
+                              descriptor: MDLVertexDescriptor.defaultVertexDescriptor(),
+                              submeshes: [submesh])
+
+        let mtkMesh = try! MTKMesh(mesh: mdlMesh, device: Renderer.device)
+        let mesh = Mesh(mdlMesh: mdlMesh, mtkMesh: mtkMesh)
+
+        return Model(name: "Plane", meshes: [mesh])
     }
 }

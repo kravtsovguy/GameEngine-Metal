@@ -39,7 +39,14 @@ typedef struct {
 
 typedef struct {
     matrix_float4x4 modelMatrix;
-} Instances; 
+} Instances;
+
+typedef struct {
+    vector_float3 position;
+    vector_float3 normal;
+    vector_float2 uv;
+} __attribute__((__packed__)) Vertex;
+
 
 #endif /* ShaderTypes_h */
 

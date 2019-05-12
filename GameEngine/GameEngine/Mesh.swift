@@ -32,8 +32,8 @@ struct Submesh {
         self.mtkSubmesh = mtkSubmesh
         self.material = Material(material: mdlSubmesh.material)
         self.textures = Textures(material: mdlSubmesh.material)
-        self.pipelineState = Renderer.createRenderPipeline(vertexFunctionName: "vertex_main", textures: textures)!
-        self.instancedPipelineState = Renderer.createRenderPipeline(vertexFunctionName: "vertex_instances", textures: textures)!
+        self.pipelineState = Renderer.createRenderPipeline(vertexFunctionName: "vertex_main", textures: textures)
+        self.instancedPipelineState = Renderer.createRenderPipeline(vertexFunctionName: "vertex_instances", textures: textures)
     }
 }
 
@@ -70,5 +70,20 @@ extension Material {
         if let shininess = material?.property(with: .specularExponent), shininess.type == .float {
             self.shininess = shininess.floatValue
         }
+    }
+}
+
+extension MDLMaterial {
+    convenience init(material: Material) {
+        self.init()
+
+        let baseColorPropery = MDLMaterialProperty(name: "Base Color", semantic: .baseColor, float3: material.baseColor)
+        setProperty(baseColorPropery)
+
+        let specularColorPropery = MDLMaterialProperty(name: "Specular Color", semantic: .specular, float3: material.specularColor)
+        setProperty(specularColorPropery)
+
+        let shininessPropery = MDLMaterialProperty(name: "Shininess", semantic: .specularExponent, float: material.shininess)
+        setProperty(shininessPropery)
     }
 }

@@ -34,7 +34,7 @@ class Renderer: NSObject {
         return defaultLibrary
     }()
 
-    private let commandQueue = device.makeCommandQueue()!
+    static let commandQueue = device.makeCommandQueue()!
     private let depthStencilState = createDepthState()!
     private var uniforms = Uniforms()
     private var fragmentUniforms = FragmentUniforms()
@@ -52,7 +52,7 @@ class Renderer: NSObject {
         return device.makeDepthStencilState(descriptor: depthDescriptor)
     }
 
-    static func createRenderPipeline(vertexFunctionName: String, textures: Textures) -> MTLRenderPipelineState? {
+    static func createRenderPipeline(vertexFunctionName: String, textures: Textures) -> MTLRenderPipelineState {
         let functionConstants = MTLFunctionConstantValues()
         var property = textures.baseColor != nil
         functionConstants.setConstantValue(&property,
@@ -66,10 +66,27 @@ class Renderer: NSObject {
         pipelineStateDescriptor.fragmentFunction = try! library.makeFunction(name: "fragment_main", constantValues: functionConstants)
         pipelineStateDescriptor.vertexDescriptor = MTLVertexDescriptor.defaultVertexDescriptor()
 
-        return try? Renderer.device.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
+        return try! Renderer.device.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
     }
 
-    static func createSimpleRenderPipeline() -> MTLRenderPipelineState? {
+    static func createDefaultRenderPipeline() -> MTLRenderPipelineState {
+        let functionConstants = MTLFunctionConstantValues()
+        var property = false
+        functionConstants.setConstantValue(&property,
+                                           type: .bool,
+                                           index: 0)
+
+        let pipelineStateDescriptor = MTLRenderPipelineDescriptor()
+        pipelineStateDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm //view.colorPixelFormat
+        pipelineStateDescriptor.depthAttachmentPixelFormat = .depth32Float //view.depthStencilPixelFormat
+        pipelineStateDescriptor.vertexFunction =  library.makeFunction(name: "vertex_main")
+        pipelineStateDescriptor.fragmentFunction = try! library.makeFunction(name: "fragment_main", constantValues: functionConstants)
+        pipelineStateDescriptor.vertexDescriptor = MTLVertexDescriptor.defaultVertexDescriptor()
+
+        return try! Renderer.device.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
+    }
+
+    static func createSimpleRenderPipeline() -> MTLRenderPipelineState {
         let functionConstants = MTLFunctionConstantValues()
         var property = false
         functionConstants.setConstantValue(&property,
@@ -83,7 +100,7 @@ class Renderer: NSObject {
         pipelineStateDescriptor.fragmentFunction = try! library.makeFunction(name: "fragment_main", constantValues: functionConstants)
         pipelineStateDescriptor.vertexDescriptor = MTLVertexDescriptor.simpleVertexDescriptor()
 
-        return try? Renderer.device.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
+        return try! Renderer.device.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
     }
 }
 
@@ -97,7 +114,7 @@ extension Renderer: MTKViewDelegate {
 
     func draw(in view: MTKView) {
         guard
-            let commandBuffer = commandQueue.makeCommandBuffer(),
+            let commandBuffer = Renderer.commandQueue.makeCommandBuffer(),
             let renderPassDescriptor = view.currentRenderPassDescriptor,
             let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor),
             let drawable = view.currentDrawable,
@@ -114,9 +131,19 @@ extension Renderer: MTKViewDelegate {
         uniforms.projectionMatrix = camera.projectionMatrix
         fragmentUniforms.cameraPosition = camera.transform.position
 
+        commandEncoder.setFragmentBytes(&fragmentUniforms,
+                                        length: MemoryLayout<FragmentUniforms>.stride,
+                                        index: 22)
+
         for renderable in scene.renderables {
             commandEncoder.pushDebugGroup(renderable.name)
-            renderable.render(commandEncoder: commandEncoder, uniforms: uniforms, fragmentUniforms: fragmentUniforms)
+
+            uniforms.modelMatrix = renderable.transform.worldMatrix
+            commandEncoder.setVertexBytes(&uniforms,
+                                          length: MemoryLayout<Uniforms>.stride,
+                                          index: 21)
+
+            renderable.render(commandEncoder: commandEncoder)
             commandEncoder.popDebugGroup()
         }
 

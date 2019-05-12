@@ -24,8 +24,14 @@ extension MTLVertexDescriptor {
         vertexDescriptor.attributes[1].offset = MemoryLayout<float3>.stride
         vertexDescriptor.attributes[1].bufferIndex = 0
 
+        // uv
+        vertexDescriptor.attributes[2].format = .float2
+        vertexDescriptor.attributes[2].offset = MemoryLayout<float3>.stride * 2
+        vertexDescriptor.attributes[2].bufferIndex = 0
+
         // layout
-        vertexDescriptor.layouts[0].stride = MemoryLayout<float3>.stride * 2
+        vertexDescriptor.layouts[0].stride = MemoryLayout<float3>.stride * 2 + MemoryLayout<float2>.stride
+//        vertexDescriptor.layouts[0].stride = MemoryLayout<float3>.stride * 2
 
         return vertexDescriptor
     }

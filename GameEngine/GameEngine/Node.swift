@@ -14,7 +14,7 @@ public final class Node: Liveable {
     private(set) weak var parent: Node?
     private(set) var children: [Node] = []
     private(set) var components: [Component] = []
-    private(set) var transform: Transform!
+    private(set) var transform: Transform
     var renderables: [Renderable] {
 
         var renderables: [Renderable] = []

@@ -14,6 +14,7 @@ using namespace metal;
 struct VertexIn {
     float4 position [[attribute(0)]];
     float3 normal [[attribute(1)]];
+    float2 uv [[attribute(2)]];
 };
 
 struct VertexOut {
@@ -32,6 +33,6 @@ vertex VertexOut vertex_simple(VertexIn vertexBuffer [[stage_in]],
     out.position = uniforms.projectionMatrix * uniforms.viewMatrix * uniforms.modelMatrix * vertexBuffer.position;
     out.worldNormal = (uniforms.modelMatrix * float4(vertexBuffer.normal, 0)).xyz;
     out.worldPosition = (uniforms.modelMatrix * vertexBuffer.position).xyz;
-    out.uv = float2(0, 0);
+    out.uv = vertexBuffer.uv;
     return out;
 }

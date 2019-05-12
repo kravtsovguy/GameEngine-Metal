@@ -9,14 +9,14 @@
 import Foundation
 import MetalKit
 
-class Instance: Model {
+class Instance: ModelComponent {
     var transforms: [Transform]
     var instanceCount: Int {
         return transforms.count
     }
     var instanceBuffer: MTLBuffer
 
-    init(name: String, instanceCount: Int = 1) {
+    init(model: Model, instanceCount: Int = 1) {
         transforms = []
         for _ in 0..<instanceCount {
             transforms.append(Transform())
@@ -25,7 +25,7 @@ class Instance: Model {
         instanceBuffer = Renderer.device.makeBuffer(length: instanceCount * MemoryLayout<Instances>.stride,
                                                     options: [])!
 
-        super.init(name: name)
+        super.init(model: model)
     }
 
     override func render(commandEncoder: MTLRenderCommandEncoder, submesh: Submesh) {

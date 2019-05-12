@@ -10,9 +10,9 @@
 		9C0240BB227E1ACA00FBB659 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0240BA227E1ACA00FBB659 /* Extentions.swift */; };
 		9C0240BC227E1B3B00FBB659 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0240BA227E1ACA00FBB659 /* Extentions.swift */; };
 		9C0240BD227E1B3B00FBB659 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0240BA227E1ACA00FBB659 /* Extentions.swift */; };
-		9C0240C4227E5C7C00FBB659 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0240C3227E5C7C00FBB659 /* Model.swift */; };
-		9C0240C5227E5C7C00FBB659 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0240C3227E5C7C00FBB659 /* Model.swift */; };
-		9C0240C6227E5C7C00FBB659 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0240C3227E5C7C00FBB659 /* Model.swift */; };
+		9C0240C4227E5C7C00FBB659 /* ModelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0240C3227E5C7C00FBB659 /* ModelComponent.swift */; };
+		9C0240C5227E5C7C00FBB659 /* ModelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0240C3227E5C7C00FBB659 /* ModelComponent.swift */; };
+		9C0240C6227E5C7C00FBB659 /* ModelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0240C3227E5C7C00FBB659 /* ModelComponent.swift */; };
 		9C0240C8227F228C00FBB659 /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0240C7227F228C00FBB659 /* Transform.swift */; };
 		9C0240C9227F228C00FBB659 /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0240C7227F228C00FBB659 /* Transform.swift */; };
 		9C0240CA227F228C00FBB659 /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0240C7227F228C00FBB659 /* Transform.swift */; };
@@ -22,6 +22,9 @@
 		9C0240D0227F779400FBB659 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0240CF227F779400FBB659 /* Camera.swift */; };
 		9C0240D1227F779400FBB659 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0240CF227F779400FBB659 /* Camera.swift */; };
 		9C0240D2227F779400FBB659 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0240CF227F779400FBB659 /* Camera.swift */; };
+		9C68006F2288509100D96B7D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68006E2288509000D96B7D /* Model.swift */; };
+		9C6800702288509100D96B7D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68006E2288509000D96B7D /* Model.swift */; };
+		9C6800712288509100D96B7D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68006E2288509000D96B7D /* Model.swift */; };
 		9C7C8455227FA8070071E7BA /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C8453227FA4070071E7BA /* Node.swift */; };
 		9C7C8456227FA8080071E7BA /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C8453227FA4070071E7BA /* Node.swift */; };
 		9C7C8457227FA8080071E7BA /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C8453227FA4070071E7BA /* Node.swift */; };
@@ -119,7 +122,7 @@
 
 /* Begin PBXFileReference section */
 		9C0240BA227E1ACA00FBB659 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
-		9C0240C3227E5C7C00FBB659 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		9C0240C3227E5C7C00FBB659 /* ModelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelComponent.swift; sourceTree = "<group>"; };
 		9C0240C7227F228C00FBB659 /* Transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transform.swift; sourceTree = "<group>"; };
 		9C0240CB227F236F00FBB659 /* MathLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathLibrary.swift; sourceTree = "<group>"; };
 		9C0240CF227F779400FBB659 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
@@ -129,6 +132,7 @@
 		9C24B4AD227C7BA7009DA259 /* ShadersLibrary.metallib */ = {isa = PBXFileReference; explicitFileType = "archive.metal-library"; includeInIndex = 0; path = ShadersLibrary.metallib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C24B4AE227C7BA7009DA259 /* libGameEngine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGameEngine.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C24B4AF227C7BA7009DA259 /* ShadersLibrary.metallib */ = {isa = PBXFileReference; explicitFileType = "archive.metal-library"; includeInIndex = 0; path = ShadersLibrary.metallib; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C68006E2288509000D96B7D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		9C7C8453227FA4070071E7BA /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		9C7C8458227FA8410071E7BA /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		9C7C845C227FA8800071E7BA /* Renderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
@@ -190,9 +194,10 @@
 				9C0240CB227F236F00FBB659 /* MathLibrary.swift */,
 				9C7C845C227FA8800071E7BA /* Renderable.swift */,
 				9C7C8464227FB13B0071E7BA /* Mesh.swift */,
-				9C0240C3227E5C7C00FBB659 /* Model.swift */,
+				9C0240C3227E5C7C00FBB659 /* ModelComponent.swift */,
 				9C7C8480227FD0EC0071E7BA /* Instance.swift */,
 				9C99CBC12286E2ED00C71D85 /* Vertex.swift */,
+				9C68006E2288509000D96B7D /* Model.swift */,
 				9C99CBB92284793700C71D85 /* PlaneModelComponent.swift */,
 				9C99CBC52286E86800C71D85 /* SphereModelComponent.swift */,
 			);
@@ -434,10 +439,11 @@
 				9C7C8457227FA8080071E7BA /* Node.swift in Sources */,
 				9C7C8465227FB13B0071E7BA /* Mesh.swift in Sources */,
 				9C0240BB227E1ACA00FBB659 /* Extentions.swift in Sources */,
-				9C0240C4227E5C7C00FBB659 /* Model.swift in Sources */,
+				9C0240C4227E5C7C00FBB659 /* ModelComponent.swift in Sources */,
 				9C99CBC22286E2ED00C71D85 /* Vertex.swift in Sources */,
 				9C99CBBA2284793700C71D85 /* PlaneModelComponent.swift in Sources */,
 				9C0240D0227F779400FBB659 /* Camera.swift in Sources */,
+				9C68006F2288509100D96B7D /* Model.swift in Sources */,
 				9C0240CC227F237000FBB659 /* MathLibrary.swift in Sources */,
 				9C99CBB122845C1700C71D85 /* Liveable.swift in Sources */,
 				9C7C8481227FD0EC0071E7BA /* Instance.swift in Sources */,
@@ -460,10 +466,11 @@
 				9C7C8456227FA8080071E7BA /* Node.swift in Sources */,
 				9C7C8466227FB13B0071E7BA /* Mesh.swift in Sources */,
 				9C0240BC227E1B3B00FBB659 /* Extentions.swift in Sources */,
-				9C0240C5227E5C7C00FBB659 /* Model.swift in Sources */,
+				9C0240C5227E5C7C00FBB659 /* ModelComponent.swift in Sources */,
 				9C99CBC32286E2ED00C71D85 /* Vertex.swift in Sources */,
 				9C99CBBB2284793700C71D85 /* PlaneModelComponent.swift in Sources */,
 				9C0240D1227F779400FBB659 /* Camera.swift in Sources */,
+				9C6800702288509100D96B7D /* Model.swift in Sources */,
 				9C0240CD227F237000FBB659 /* MathLibrary.swift in Sources */,
 				9C99CBB222845C1700C71D85 /* Liveable.swift in Sources */,
 				9C7C8482227FD0EC0071E7BA /* Instance.swift in Sources */,
@@ -486,10 +493,11 @@
 				9C7C8455227FA8070071E7BA /* Node.swift in Sources */,
 				9C7C8467227FB13B0071E7BA /* Mesh.swift in Sources */,
 				9C0240BD227E1B3B00FBB659 /* Extentions.swift in Sources */,
-				9C0240C6227E5C7C00FBB659 /* Model.swift in Sources */,
+				9C0240C6227E5C7C00FBB659 /* ModelComponent.swift in Sources */,
 				9C99CBC42286E2EE00C71D85 /* Vertex.swift in Sources */,
 				9C99CBBC2284793700C71D85 /* PlaneModelComponent.swift in Sources */,
 				9C0240D2227F779400FBB659 /* Camera.swift in Sources */,
+				9C6800712288509100D96B7D /* Model.swift in Sources */,
 				9C0240CE227F237000FBB659 /* MathLibrary.swift in Sources */,
 				9C99CBB322845C1700C71D85 /* Liveable.swift in Sources */,
 				9C7C8483227FD0EC0071E7BA /* Instance.swift in Sources */,
