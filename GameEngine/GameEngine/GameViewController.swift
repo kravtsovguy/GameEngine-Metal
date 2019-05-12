@@ -11,14 +11,16 @@ import MetalKit
 
 #if os(iOS) || os(tvOS)
 import UIKit
+/// Generic View Controller alias
 public typealias PlatformViewController = UIViewController
 #elseif os(OSX)
 import AppKit
+/// Generic View Controller alias
 public typealias PlatformViewController = NSViewController
 #endif
 
 
-// Platform independent view controller
+/// Platform independent view controller
 open class GameViewController: PlatformViewController {
     let renderer: Renderer = Renderer()
     public var initialSize: CGSize? = nil
@@ -29,7 +31,7 @@ open class GameViewController: PlatformViewController {
 
     open override func loadView() {
         let frame = CGRect(origin: CGPoint.zero, size: initialSize ?? .zero)
-        let view = MTKView(frame: frame, device: Renderer.device)
+        let view = MTKView(frame: frame, device: Metal.device)
         view.colorPixelFormat = .bgra8Unorm
         view.depthStencilPixelFormat = .depth32Float
         view.preferredFramesPerSecond = 60

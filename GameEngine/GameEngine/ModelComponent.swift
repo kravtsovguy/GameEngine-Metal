@@ -6,45 +6,20 @@
 //  Copyright © 2019 Matvey Kravtsov. All rights reserved.
 //
 
-import Foundation
 import MetalKit
 
+
 open class ModelComponent: Component {
-//    let name: String
-//    private var meshes: [Mesh]!
-
-//    public init(name: String) {
-//        self.name = name
-//        super.init()
-//    }
-
+    
+    let model: Model
     var name: String {
         return model.name
     }
-
-    let model: Model
 
     public init(model: Model) {
         self.model = model
         super.init()
     }
-
-
-//    override func start() {
-//        let assetURL = Bundle.main.url(forResource: name, withExtension: "obj")
-//        let allocator = MTKMeshBufferAllocator(device: Renderer.device)
-//        let vertexDescriptor = MDLVertexDescriptor.defaultVertexDescriptor()
-//        let asset = MDLAsset(url: assetURL,
-//                             vertexDescriptor: vertexDescriptor,
-//                             bufferAllocator: allocator)
-//
-//        asset.loadTextures()
-//
-//        let (mdlMeshes, mtkMeshes) = try! MTKMesh.newMeshes(asset: asset, device: Renderer.device)
-//        self.meshes = zip(mdlMeshes, mtkMeshes).map {
-//            Mesh(mdlMesh: $0.0, mtkMesh: $0.1)
-//        }
-//    }
 
     func render(commandEncoder: MTLRenderCommandEncoder, submesh: Submesh) {
         let mtkSubmesh = submesh.mtkSubmesh
@@ -55,6 +30,7 @@ open class ModelComponent: Component {
                                              indexBufferOffset: mtkSubmesh.indexBuffer.offset)
     }
 }
+
 
 extension ModelComponent: Renderable {
 

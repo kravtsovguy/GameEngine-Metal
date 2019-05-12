@@ -6,7 +6,6 @@
 //  Copyright © 2019 Matvey Kravtsov. All rights reserved.
 //
 
-import Foundation
 
 public final class MainScene: Scene {
     let train = Node(with: "Train")
@@ -24,7 +23,7 @@ public final class MainScene: Scene {
         self.camera = cameraComponent
 
         let treeModel = Model(withObject: "treefir")
-        let treesComponent = Instance(model: treeModel, instanceCount: 3)
+        let treesComponent = InstanceComponent(model: treeModel, instanceCount: 3)
         for i in 0..<3 {
             treesComponent.transforms[i].position.x = Float(i)
             treesComponent.transforms[i].position.y = 0
@@ -39,15 +38,22 @@ public final class MainScene: Scene {
         train.transform.scale = float3(repeating: 0.5)
         train.transform.rotation.y = radians(fromDegrees: 0)
 
-        plane.add(component: PlaneModelComponent(with: plane.name))
-        sphere.add(component: SphereModelComponent(with: sphere.name))
+        let planeModel = Model.plane(material: Material(baseColor: [0.5,0.5,0.5],
+                                                        specularColor: [0.5,0.5,0.5],
+                                                        shininess: 1))
+        plane.add(component: ModelComponent(model: planeModel))
+
+        let sphereModel = Model.sphere(material: Material(baseColor: [1.0,0.0,0.0],
+                                                          specularColor: [0.2,0.2,0.2],
+                                                          shininess: 1))
+        sphere.add(component: ModelComponent(model: sphereModel))
 
         sphere.transform.position.y = 1
-
+        
         add(node: camera)
         add(node: train)
         add(node: trees)
         add(node: plane)
-//        add(node: sphere)
+        add(node: sphere)
     }
 }

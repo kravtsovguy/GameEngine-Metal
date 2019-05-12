@@ -6,9 +6,8 @@
 //  Copyright © 2019 Matvey Kravtsov. All rights reserved.
 //
 
-import Foundation
-import MetalKit
 import simd
+
 
 open class Camera: Component {
 
@@ -35,6 +34,7 @@ open class Camera: Component {
     func zoom(delta: Float) {}
     func rotate(delta: float2) {}
 }
+
 
 class ArcballCamera: Camera {
     var distance: Float = 0

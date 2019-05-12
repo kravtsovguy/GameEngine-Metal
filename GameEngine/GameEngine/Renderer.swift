@@ -1,40 +1,16 @@
 //
 //  Renderer.swift
-//  GameEngine Shared
+//  GameEngine
 //
 //  Created by Matvey Kravtsov on 31/03/2019.
 //  Copyright © 2019 Matvey Kravtsov. All rights reserved.
 //
 
-import Metal
 import MetalKit
-import simd
 
-//struct Vertex {
-//    let position: float3
-//    let color : float3
-//}
 
 // Platform independent renderer class
 class Renderer: NSObject {
-    static let device: MTLDevice = {
-        guard let device = MTLCreateSystemDefaultDevice() else {
-                fatalError("Unable to connect to GPU")
-        }
-
-        return device
-    }()
-
-     static let library: MTLLibrary = {
-        guard
-            let resourcePath = Bundle.main.path(forResource: "ShadersLibrary", ofType: "metallib"),
-            let defaultLibrary = try? device.makeLibrary(URL: URL(fileURLWithPath: resourcePath)) else {
-                fatalError("Unable to load shaders library")
-        }
-        return defaultLibrary
-    }()
-
-    static let commandQueue = device.makeCommandQueue()!
     private let depthStencilState = createDepthState()!
     private var uniforms = Uniforms()
     private var fragmentUniforms = FragmentUniforms()
@@ -49,7 +25,7 @@ class Renderer: NSObject {
         depthDescriptor.depthCompareFunction = .less
         depthDescriptor.isDepthWriteEnabled = true
 
-        return device.makeDepthStencilState(descriptor: depthDescriptor)
+        return Metal.device.makeDepthStencilState(descriptor: depthDescriptor)
     }
 
     static func createRenderPipeline(vertexFunctionName: String, textures: Textures) -> MTLRenderPipelineState {
@@ -62,45 +38,11 @@ class Renderer: NSObject {
         let pipelineStateDescriptor = MTLRenderPipelineDescriptor()
         pipelineStateDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm //view.colorPixelFormat
         pipelineStateDescriptor.depthAttachmentPixelFormat = .depth32Float //view.depthStencilPixelFormat
-        pipelineStateDescriptor.vertexFunction =  library.makeFunction(name: vertexFunctionName)
-        pipelineStateDescriptor.fragmentFunction = try! library.makeFunction(name: "fragment_main", constantValues: functionConstants)
+        pipelineStateDescriptor.vertexFunction =  Metal.library.makeFunction(name: vertexFunctionName)
+        pipelineStateDescriptor.fragmentFunction = try! Metal.library.makeFunction(name: "fragment_main", constantValues: functionConstants)
         pipelineStateDescriptor.vertexDescriptor = MTLVertexDescriptor.defaultVertexDescriptor()
 
-        return try! Renderer.device.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
-    }
-
-    static func createDefaultRenderPipeline() -> MTLRenderPipelineState {
-        let functionConstants = MTLFunctionConstantValues()
-        var property = false
-        functionConstants.setConstantValue(&property,
-                                           type: .bool,
-                                           index: 0)
-
-        let pipelineStateDescriptor = MTLRenderPipelineDescriptor()
-        pipelineStateDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm //view.colorPixelFormat
-        pipelineStateDescriptor.depthAttachmentPixelFormat = .depth32Float //view.depthStencilPixelFormat
-        pipelineStateDescriptor.vertexFunction =  library.makeFunction(name: "vertex_main")
-        pipelineStateDescriptor.fragmentFunction = try! library.makeFunction(name: "fragment_main", constantValues: functionConstants)
-        pipelineStateDescriptor.vertexDescriptor = MTLVertexDescriptor.defaultVertexDescriptor()
-
-        return try! Renderer.device.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
-    }
-
-    static func createSimpleRenderPipeline() -> MTLRenderPipelineState {
-        let functionConstants = MTLFunctionConstantValues()
-        var property = false
-        functionConstants.setConstantValue(&property,
-                                           type: .bool,
-                                           index: 0)
-
-        let pipelineStateDescriptor = MTLRenderPipelineDescriptor()
-        pipelineStateDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm //view.colorPixelFormat
-        pipelineStateDescriptor.depthAttachmentPixelFormat = .depth32Float //view.depthStencilPixelFormat
-        pipelineStateDescriptor.vertexFunction =  library.makeFunction(name: "vertex_simple")
-        pipelineStateDescriptor.fragmentFunction = try! library.makeFunction(name: "fragment_main", constantValues: functionConstants)
-        pipelineStateDescriptor.vertexDescriptor = MTLVertexDescriptor.simpleVertexDescriptor()
-
-        return try! Renderer.device.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
+        return try! Metal.device.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
     }
 }
 
@@ -114,7 +56,7 @@ extension Renderer: MTKViewDelegate {
 
     func draw(in view: MTKView) {
         guard
-            let commandBuffer = Renderer.commandQueue.makeCommandBuffer(),
+            let commandBuffer = Metal.commandQueue.makeCommandBuffer(),
             let renderPassDescriptor = view.currentRenderPassDescriptor,
             let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor),
             let drawable = view.currentDrawable,

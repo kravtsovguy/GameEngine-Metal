@@ -1,16 +1,16 @@
 //
-//  Instance.swift
+//  InstanceComponent.swift
 //  GameEngine
 //
 //  Created by Matvey Kravtsov on 06/05/2019.
 //  Copyright © 2019 Matvey Kravtsov. All rights reserved.
 //
 
-import Foundation
 import MetalKit
 
-class Instance: ModelComponent {
-    var transforms: [Transform]
+
+open class InstanceComponent: ModelComponent {
+    public var transforms: [Transform]
     var instanceCount: Int {
         return transforms.count
     }
@@ -22,7 +22,7 @@ class Instance: ModelComponent {
             transforms.append(Transform())
         }
 
-        instanceBuffer = Renderer.device.makeBuffer(length: instanceCount * MemoryLayout<Instances>.stride,
+        instanceBuffer = Metal.device.makeBuffer(length: instanceCount * MemoryLayout<Instances>.stride,
                                                     options: [])!
 
         super.init(model: model)

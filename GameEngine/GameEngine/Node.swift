@@ -6,7 +6,6 @@
 //  Copyright © 2019 Matvey Kravtsov. All rights reserved.
 //
 
-import Foundation
 
 public final class Node: Liveable {
 
@@ -58,20 +57,23 @@ public final class Node: Liveable {
         component.node = nil
     }
 
-    func printStructure() {
-        print("\t node \(name)")
+    func printStructure(depthLevel: Int = 0) {
+        let nodeLevel = String(repeating: "\t", count: depthLevel)
+        let componentLevel = String(repeating: "\t", count: depthLevel + 1)
+        print("\(nodeLevel)node \(name)")
 
         for component in components {
             var componentType = "component"
-            if component is Renderable {
-                componentType = "renerable"
+
+            if let renderable = component as? Renderable {
+                componentType = "renerable(\(renderable.name))"
             }
 
-            print("\t\t \(componentType) \(String(describing:type(of: component)))")
+            print("\(componentLevel)\(componentType) \(String(describing:type(of: component)))")
         }
 
         for childNode in children {
-            childNode.printStructure()
+            childNode.printStructure(depthLevel: depthLevel + 1)
         }
     }
 

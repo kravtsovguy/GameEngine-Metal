@@ -6,7 +6,6 @@
 //  Copyright © 2019 Matvey Kravtsov. All rights reserved.
 //
 
-import Foundation
 
 protocol Liveable: AnyObject {
     func start();

@@ -6,9 +6,10 @@
 //  Copyright © 2019 Matvey Kravtsov. All rights reserved.
 //
 
-import Foundation
 import simd
 
+
+/// Transform Component which contains calculated worldMatrix
 public final class Transform: Component {
     var position: float3 = [0, 0, 0]
     var rotation: float3 = [0, 0, 0] {

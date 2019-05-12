@@ -8,12 +8,19 @@
 
 import MetalKit
 
+
 public class Model {
-    private static let allocator = MTKMeshBufferAllocator(device: Renderer.device)
+
+    private static let allocator = MTKMeshBufferAllocator(device: Metal.device)
     private static let vertexDescriptor = MDLVertexDescriptor.defaultVertexDescriptor()
     public let name: String
     let meshes: [Mesh]
 
+    required init(name: String, meshes: [Mesh]) {
+        self.name = name
+        self.meshes = meshes
+    }
+    
     convenience init(withObject name: String) {
         let assetURL = Bundle.main.url(forResource: name, withExtension: "obj")
         let asset = MDLAsset(url: assetURL,
@@ -21,17 +28,12 @@ public class Model {
                              bufferAllocator: Model.allocator)
         asset.loadTextures()
 
-        let (mdlMeshes, mtkMeshes) = try! MTKMesh.newMeshes(asset: asset, device: Renderer.device)
+        let (mdlMeshes, mtkMeshes) = try! MTKMesh.newMeshes(asset: asset, device: Metal.device)
         let meshes = zip(mdlMeshes, mtkMeshes).map {
             Mesh(mdlMesh: $0.0, mtkMesh: $0.1)
         }
 
         self.init(name: name, meshes: meshes)
-    }
-
-    required init(name: String, meshes: [Mesh]) {
-        self.name = name
-        self.meshes = meshes
     }
 
     static func sphere(material: Material) -> Model {
@@ -48,7 +50,7 @@ public class Model {
             }
         }
 
-        let mtkMesh = try! MTKMesh(mesh: mdlMesh, device: Renderer.device)
+        let mtkMesh = try! MTKMesh(mesh: mdlMesh, device: Metal.device)
         let mesh = Mesh(mdlMesh: mdlMesh, mtkMesh: mtkMesh)
 
         return Model(name: "Sphere", meshes: [mesh])
@@ -86,7 +88,7 @@ public class Model {
                               descriptor: MDLVertexDescriptor.defaultVertexDescriptor(),
                               submeshes: [submesh])
 
-        let mtkMesh = try! MTKMesh(mesh: mdlMesh, device: Renderer.device)
+        let mtkMesh = try! MTKMesh(mesh: mdlMesh, device: Metal.device)
         let mesh = Mesh(mdlMesh: mdlMesh, mtkMesh: mtkMesh)
 
         return Model(name: "Plane", meshes: [mesh])
