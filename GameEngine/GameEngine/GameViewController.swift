@@ -88,7 +88,7 @@ open class GameViewController: PlatformViewController {
 
     #if os(OSX)
     override open func scrollWheel(with event: NSEvent) {
-        scene?.camera.zoom(delta: Float(event.deltaY))
+        scene?.camera?.zoom(delta: Float(event.deltaY))
     }
 
     @objc func handlePan(gesture: NSPanGestureRecognizer) {
@@ -96,7 +96,7 @@ open class GameViewController: PlatformViewController {
         let delta = float2(Float(translation.x),
                            Float(translation.y))
 
-        scene?.camera.rotate(delta: delta)
+        scene?.camera?.rotate(delta: delta)
         gesture.setTranslation(.zero, in: gesture.view)
     }
     #endif

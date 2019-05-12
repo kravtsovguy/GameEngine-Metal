@@ -14,7 +14,7 @@ class Renderer: NSObject {
     private let depthStencilState = createDepthState()!
     private var uniforms = Uniforms()
     private var fragmentUniforms = FragmentUniforms()
-    var scene: Scene! {
+    var scene: Scene? {
         didSet {
             scene?.start()
         }
@@ -51,7 +51,11 @@ extension Renderer: MTKViewDelegate {
 
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
         print("size: \(size)")
-        scene.camera.aspect = Float(size.width / size.height)
+        guard let camera = scene?.camera else {
+            return
+        }
+
+        camera.aspect = Float(size.width / size.height)
     }
 
     func draw(in view: MTKView) {
