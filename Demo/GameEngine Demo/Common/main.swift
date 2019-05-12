@@ -21,6 +21,9 @@ UIApplicationMain(CommandLine.argc, CommandLine.unsafeArgv, nil, NSStringFromCla
 #elseif os(OSX)
 import Cocoa
 
+// setting macOS initial window size
+AppDelegate.viewControllerSize = NSSize(width: 800, height: 600)
+
 let app = NSApplication.shared
 let delegate = AppDelegate()
 app.delegate = delegate

@@ -6,22 +6,45 @@
 //  Copyright © 2019 Matvey Kravtsov. All rights reserved.
 //
 
-
 #if os(iOS) || os(tvOS)
 import UIKit
+/// Generic App Delegate Alias
+public typealias PlatformAppDelegate = UIResponder & UIApplicationDelegate
+#elseif os(OSX)
+import AppKit
+/// Generic App Delegate Alias
+public typealias PlatformAppDelegate = NSObject & NSApplicationDelegate
+#endif
 
 
-public class AppDelegate: UIResponder, UIApplicationDelegate {
+open class AppDelegate: PlatformAppDelegate {
+    ////////////
+    /// Begin Shared
+    ////////////
+
     public static var viewControllerType: GameViewController.Type = GameViewController.self
     lazy var viewController: GameViewController = {
         return AppDelegate.viewControllerType.init()
     }()
 
+    open func setupAppDelegate() {
+        // override
+    }
+
+    ////////////
+    /// End Shared
+    ////////////
+
+    #if os(iOS) || os(tvOS)
     public var window: UIWindow?
 
-    public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let window = UIWindow()
+    open func application(_ application: UIApplication,
+                          didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        defer {
+            self.setupAppDelegate()
+        }
 
+        let window = UIWindow()
         window.rootViewController = self.viewController
         window.makeKeyAndVisible()
 
@@ -30,26 +53,15 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-}
-
-#elseif os(OSX)
-import Cocoa
-
-
-public class AppDelegate: NSObject, NSApplicationDelegate {
-    public static var viewControllerType: GameViewController.Type = GameViewController.self
+    #elseif os(OSX)
     public static var viewControllerSize: NSSize = NSSize(width: 800, height: 600)
+    public var window : NSWindow?
 
-    lazy var viewController: GameViewController = {
-        let viewController = AppDelegate.viewControllerType.init()
-        viewController.initialSize = AppDelegate.viewControllerSize
+    open func applicationDidFinishLaunching(_ aNotification: Notification) {
+        defer {
+            self.setupAppDelegate()
+        }
 
-        return viewController
-    }()
-
-    var window : NSWindow?
-
-    public func applicationDidFinishLaunching(_ aNotification: Notification) {
         let screenFrame = NSScreen.main!.frame
         let width = AppDelegate.viewControllerSize.width
         let height = AppDelegate.viewControllerSize.height
@@ -61,7 +73,9 @@ public class AppDelegate: NSObject, NSApplicationDelegate {
                               backing: NSWindow.BackingStoreType.buffered,
                               defer: false)
 
-        window.contentViewController = self.viewController
+        let viewController = self.viewController
+        viewController.initialSize = AppDelegate.viewControllerSize
+        window.contentViewController = viewController
         window.makeKeyAndOrderFront(NSApp)
 
         self.window = window
@@ -70,7 +84,6 @@ public class AppDelegate: NSObject, NSApplicationDelegate {
     public func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
         return true
     }
-    
-}
-#endif
 
+    #endif
+}

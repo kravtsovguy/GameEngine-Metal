@@ -210,13 +210,13 @@
 			name = Public;
 			sourceTree = "<group>";
 		};
-		9C99CBAF2284594A00C71D85 /* Other */ = {
+		9C99CBAF2284594A00C71D85 /* Initialize */ = {
 			isa = PBXGroup;
 			children = (
 				9C6800822288A9F700D96B7D /* AppDelegate.swift */,
 				9CD605CA227C67CC00472E9F /* GameViewController.swift */,
 			);
-			name = Other;
+			name = Initialize;
 			sourceTree = "<group>";
 		};
 		9C99CBB822846C7A00C71D85 /* Shared */ = {
@@ -247,7 +247,7 @@
 			children = (
 				9C99CBB822846C7A00C71D85 /* Shared */,
 				9C99CBAD228458BB00C71D85 /* Core */,
-				9C99CBAF2284594A00C71D85 /* Other */,
+				9C99CBAF2284594A00C71D85 /* Initialize */,
 			);
 			path = GameEngine;
 			sourceTree = "<group>";

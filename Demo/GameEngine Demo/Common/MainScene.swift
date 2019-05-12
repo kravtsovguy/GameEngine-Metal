@@ -1,6 +1,6 @@
 //
 //  MainScene.swift
-//  GameEngine
+//  GameEngine-Demo
 //
 //  Created by Matvey Kravtsov on 06/05/2019.
 //  Copyright © 2019 Matvey Kravtsov. All rights reserved.
@@ -10,18 +10,18 @@ import GameEngine
 
 
 public final class MainScene: Scene {
+    let cameraNode = Node(with: "Camera")
     let train = Node(with: "Train")
     let trees = Node(with: "Trees")
     let plane = Node(with: "Plane")
     let sphere = Node(with: "Sphere")
 
     override public func setupScene() {
-        let camera = Node(with: "Camera")
         let cameraComponent = ArcballCamera()
         cameraComponent.target = [0, 0.8, 0]
         cameraComponent.distance = 4
-        camera.add(component: cameraComponent)
-        camera.transform.rotation = [-0.4, -0.4, 0]
+        cameraNode.add(component: cameraComponent)
+        cameraNode.transform.rotation = [-0.4, -0.4, 0]
         self.camera = cameraComponent
 
         let treeModel = Model(withObject: "treefir")
@@ -52,7 +52,7 @@ public final class MainScene: Scene {
 
         sphere.transform.position.y = 1
         
-        add(node: camera)
+        add(node: cameraNode)
         add(node: train)
         add(node: trees)
         add(node: plane)

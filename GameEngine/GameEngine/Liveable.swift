@@ -7,7 +7,7 @@
 //
 
 
-public protocol Liveable: AnyObject {
+protocol Liveable: AnyObject {
     func start()
     func update(with deltaTime:Float)
 }

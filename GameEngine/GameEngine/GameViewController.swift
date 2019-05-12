@@ -11,11 +11,11 @@ import MetalKit
 
 #if os(iOS) || os(tvOS)
 import UIKit
-/// Generic View Controller alias
+/// Generic View Controller Alias
 public typealias PlatformViewController = UIViewController
 #elseif os(OSX)
 import AppKit
-/// Generic View Controller alias
+/// Generic View Controller Alias
 public typealias PlatformViewController = NSViewController
 #endif
 

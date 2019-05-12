@@ -1,6 +1,6 @@
 //
 //  ModeForwardComponent.swift
-//  GameEngine
+//  GameEngine-Demo
 //
 //  Created by Matvey Kravtsov on 09/05/2019.
 //  Copyright © 2019 Matvey Kravtsov. All rights reserved.
