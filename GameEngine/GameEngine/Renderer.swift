@@ -56,12 +56,12 @@ extension Renderer: MTKViewDelegate {
 
     func draw(in view: MTKView) {
         guard
+            let scene = scene,
+            let camera = scene.camera,
             let commandBuffer = Metal.commandQueue.makeCommandBuffer(),
             let renderPassDescriptor = view.currentRenderPassDescriptor,
             let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor),
-            let drawable = view.currentDrawable,
-            let scene = scene,
-            let camera = scene.camera
+            let drawable = view.currentDrawable
             else { return }
 
         let deltaTime = 1 / Float(view.preferredFramesPerSecond)
