@@ -17,11 +17,12 @@ public final class MainScene: Scene {
     let sphere = Node(with: "Sphere")
 
     override public func setupScene() {
-        let cameraComponent = ArcballCamera()
-        cameraComponent.target = [0, 0.8, 0]
-        cameraComponent.distance = 4
+        let cameraComponent = OrthographicCamera()
+//        cameraComponent.target = [0, 0.8, 0]
+//        cameraComponent.distance = 4
         cameraNode.add(component: cameraComponent)
-        cameraNode.transform.rotation = [-0.4, -0.4, 0]
+        cameraComponent.transform.position = [0, 0, -2]
+//        cameraNode.transform.rotation = [-0.4, -0.4, 0]
         self.camera = cameraComponent
 
         let treeModel = Model(withObject: "treefir")

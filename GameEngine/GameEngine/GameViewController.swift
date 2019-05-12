@@ -73,7 +73,7 @@ open class GameViewController: PlatformViewController {
 
     #if os(iOS)
     @objc func handlePinch(gesture: UIPinchGestureRecognizer) {
-        scene?.camera.zoom(delta: Float(gesture.velocity * 0.5))
+        scene?.camera?.zoom(delta: Float(gesture.velocity * 0.5))
     }
 
     @objc func handlePan(gesture: UIPanGestureRecognizer) {
@@ -81,7 +81,7 @@ open class GameViewController: PlatformViewController {
         let delta = float2(Float(translation.x),
                            -Float(translation.y))
 
-        scene?.camera.rotate(delta: delta)
+        scene?.camera?.rotate(delta: delta)
         gesture.setTranslation(.zero, in: gesture.view)
     }
     #endif

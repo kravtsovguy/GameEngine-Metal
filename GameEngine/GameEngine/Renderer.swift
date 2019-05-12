@@ -51,10 +51,10 @@ extension Renderer: MTKViewDelegate {
 
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
         print("size: \(size)")
-        guard let camera = scene?.camera else {
+        guard var camera = scene?.camera else {
             return
         }
-
+        
         camera.aspect = Float(size.width / size.height)
     }
 

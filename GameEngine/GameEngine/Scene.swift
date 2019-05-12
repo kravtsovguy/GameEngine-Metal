@@ -11,7 +11,7 @@ open class Scene: Liveable {
     
     public private(set) var name: String = "Main"
     public private(set) var rootNode: Node = Node(with: "Root")
-    public var camera: Camera?
+    public var camera: CameraComponent?
     private(set) var renderables: [Renderable] = []
 
     public init() {
