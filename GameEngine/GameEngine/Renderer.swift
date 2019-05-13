@@ -51,7 +51,7 @@ extension Renderer: MTKViewDelegate {
 
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
         print("size: \(size)")
-        guard var camera = scene?.camera else {
+        guard let camera = scene?.camera else {
             return
         }
         

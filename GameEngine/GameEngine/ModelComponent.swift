@@ -12,9 +12,7 @@ import MetalKit
 open class ModelComponent: Component {
     
     let model: Model
-    var name: String {
-        return model.name
-    }
+    var name: String { return model.name }
 
     public init(model: Model) {
         self.model = model

@@ -57,26 +57,6 @@ public final class Node: Liveable {
         component.node = nil
     }
 
-    func printStructure(depthLevel: Int = 0) {
-        let nodeLevel = String(repeating: "\t", count: depthLevel)
-        let componentLevel = String(repeating: "\t", count: depthLevel + 1)
-        print("\(nodeLevel)node \(name)")
-
-        for component in components {
-            var componentType = "component"
-
-            if let renderable = component as? Renderable {
-                componentType = "renerable(\(renderable.name))"
-            }
-
-            print("\(componentLevel)\(componentType) \(String(describing:type(of: component)))")
-        }
-
-        for childNode in children {
-            childNode.printStructure(depthLevel: depthLevel + 1)
-        }
-    }
-
     public func start() {
         for component in components {
             component.start()
@@ -94,6 +74,26 @@ public final class Node: Liveable {
 
         for childNode in children {
             childNode.update(with: deltaTime)
+        }
+    }
+
+    func printStructure(depthLevel: Int = 0) {
+        let nodeLevel = String(repeating: "\t", count: depthLevel)
+        let componentLevel = String(repeating: "\t", count: depthLevel + 1)
+        print("\(nodeLevel)node \(name)")
+
+        for component in components {
+            var componentType = "component"
+
+            if let renderable = component as? Renderable {
+                componentType = "renerable(\(renderable.name))"
+            }
+
+            print("\(componentLevel)\(componentType) \(String(describing:type(of: component)))")
+        }
+
+        for childNode in children {
+            childNode.printStructure(depthLevel: depthLevel + 1)
         }
     }
 }

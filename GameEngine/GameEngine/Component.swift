@@ -10,11 +10,7 @@
 open class Component: Liveable {
 
     public internal(set) weak var node: Node!
-
-    public var transform: Transform {
-        return node.transform
-    }
-
+    public var transform: Transform { return node.transform }
     public init() { }
 
     open func start() {

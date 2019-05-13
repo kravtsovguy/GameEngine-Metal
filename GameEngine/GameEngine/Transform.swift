@@ -11,6 +11,7 @@ import simd
 
 /// Transform Component which contains calculated worldMatrix
 public final class Transform: Component {
+    
     public var position: float3 = [0, 0, 0]
     public var rotation: float3 = [0, 0, 0] {
         didSet {

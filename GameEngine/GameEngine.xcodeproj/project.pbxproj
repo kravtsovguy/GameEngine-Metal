@@ -19,9 +19,9 @@
 		9C0240CC227F237000FBB659 /* MathLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0240CB227F236F00FBB659 /* MathLibrary.swift */; };
 		9C0240CD227F237000FBB659 /* MathLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0240CB227F236F00FBB659 /* MathLibrary.swift */; };
 		9C0240CE227F237000FBB659 /* MathLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0240CB227F236F00FBB659 /* MathLibrary.swift */; };
-		9C0240D0227F779400FBB659 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0240CF227F779400FBB659 /* Camera.swift */; };
-		9C0240D1227F779400FBB659 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0240CF227F779400FBB659 /* Camera.swift */; };
-		9C0240D2227F779400FBB659 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0240CF227F779400FBB659 /* Camera.swift */; };
+		9C0240D0227F779400FBB659 /* CameraComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0240CF227F779400FBB659 /* CameraComponent.swift */; };
+		9C0240D1227F779400FBB659 /* CameraComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0240CF227F779400FBB659 /* CameraComponent.swift */; };
+		9C0240D2227F779400FBB659 /* CameraComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0240CF227F779400FBB659 /* CameraComponent.swift */; };
 		9C68006F2288509100D96B7D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68006E2288509000D96B7D /* Model.swift */; };
 		9C6800702288509100D96B7D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68006E2288509000D96B7D /* Model.swift */; };
 		9C6800712288509100D96B7D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68006E2288509000D96B7D /* Model.swift */; };
@@ -58,12 +58,9 @@
 		9C99CBB122845C1700C71D85 /* Liveable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C99CBB022845C1700C71D85 /* Liveable.swift */; };
 		9C99CBB222845C1700C71D85 /* Liveable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C99CBB022845C1700C71D85 /* Liveable.swift */; };
 		9C99CBB322845C1700C71D85 /* Liveable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C99CBB022845C1700C71D85 /* Liveable.swift */; };
-		9CA432922288CB1000832886 /* PerspectiveCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432912288CB1000832886 /* PerspectiveCamera.swift */; };
-		9CA432932288CB1000832886 /* PerspectiveCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432912288CB1000832886 /* PerspectiveCamera.swift */; };
-		9CA432942288CB1000832886 /* PerspectiveCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432912288CB1000832886 /* PerspectiveCamera.swift */; };
-		9CA432962288CFC800832886 /* OrthographicCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432952288CFC800832886 /* OrthographicCamera.swift */; };
-		9CA432972288CFC800832886 /* OrthographicCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432952288CFC800832886 /* OrthographicCamera.swift */; };
-		9CA432982288CFC800832886 /* OrthographicCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432952288CFC800832886 /* OrthographicCamera.swift */; };
+		9CA4329A2288F10C00832886 /* ArcballCameraComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432992288F10C00832886 /* ArcballCameraComponent.swift */; };
+		9CA4329B2288F10C00832886 /* ArcballCameraComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432992288F10C00832886 /* ArcballCameraComponent.swift */; };
+		9CA4329C2288F10C00832886 /* ArcballCameraComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432992288F10C00832886 /* ArcballCameraComponent.swift */; };
 		9CC82B7D227BC18000498FE3 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC82B30227BB38900498FE3 /* Renderer.swift */; };
 		9CC82B81227BC18100498FE3 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC82B30227BB38900498FE3 /* Renderer.swift */; };
 		9CD60575227BE76000472E9F /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC82B30227BB38900498FE3 /* Renderer.swift */; };
@@ -125,7 +122,7 @@
 		9C0240C3227E5C7C00FBB659 /* ModelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelComponent.swift; sourceTree = "<group>"; };
 		9C0240C7227F228C00FBB659 /* Transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transform.swift; sourceTree = "<group>"; };
 		9C0240CB227F236F00FBB659 /* MathLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathLibrary.swift; sourceTree = "<group>"; };
-		9C0240CF227F779400FBB659 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		9C0240CF227F779400FBB659 /* CameraComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraComponent.swift; sourceTree = "<group>"; };
 		9C24B4AA227C7BA7009DA259 /* libGameEngine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGameEngine.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C24B4AB227C7BA7009DA259 /* ShadersLibrary.metallib */ = {isa = PBXFileReference; explicitFileType = "archive.metal-library"; includeInIndex = 0; path = ShadersLibrary.metallib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C24B4AC227C7BA7009DA259 /* libGameEngine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGameEngine.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,8 +141,7 @@
 		9C7C8480227FD0EC0071E7BA /* InstanceComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceComponent.swift; sourceTree = "<group>"; };
 		9C99CBA9228457B900C71D85 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		9C99CBB022845C1700C71D85 /* Liveable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Liveable.swift; sourceTree = "<group>"; };
-		9CA432912288CB1000832886 /* PerspectiveCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerspectiveCamera.swift; sourceTree = "<group>"; };
-		9CA432952288CFC800832886 /* OrthographicCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrthographicCamera.swift; sourceTree = "<group>"; };
+		9CA432992288F10C00832886 /* ArcballCameraComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcballCameraComponent.swift; sourceTree = "<group>"; };
 		9CC82B2E227BB38800498FE3 /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		9CC82B2F227BB38900498FE3 /* ShaderTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderTypes.h; sourceTree = "<group>"; };
 		9CC82B30227BB38900498FE3 /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
@@ -196,28 +192,27 @@
 				9C7C8464227FB13B0071E7BA /* Mesh.swift */,
 				9C68007222885D6B00D96B7D /* Submesh.swift */,
 				9C68007622885DB300D96B7D /* Textures.swift */,
+				9C68006E2288509000D96B7D /* Model.swift */,
 				9C7C845C227FA8800071E7BA /* Renderable.swift */,
 				9C99CBB022845C1700C71D85 /* Liveable.swift */,
-				9C99CBAE2284592300C71D85 /* Public */,
+				9C99CBAE2284592300C71D85 /* Scene Graph */,
 			);
 			name = Core;
 			sourceTree = "<group>";
 		};
-		9C99CBAE2284592300C71D85 /* Public */ = {
+		9C99CBAE2284592300C71D85 /* Scene Graph */ = {
 			isa = PBXGroup;
 			children = (
-				9C0240C3227E5C7C00FBB659 /* ModelComponent.swift */,
-				9C7C8480227FD0EC0071E7BA /* InstanceComponent.swift */,
-				9C68006E2288509000D96B7D /* Model.swift */,
-				9C0240C7227F228C00FBB659 /* Transform.swift */,
 				9C7C8458227FA8410071E7BA /* Scene.swift */,
 				9C7C8453227FA4070071E7BA /* Node.swift */,
 				9C99CBA9228457B900C71D85 /* Component.swift */,
-				9C0240CF227F779400FBB659 /* Camera.swift */,
-				9CA432912288CB1000832886 /* PerspectiveCamera.swift */,
-				9CA432952288CFC800832886 /* OrthographicCamera.swift */,
+				9C0240C7227F228C00FBB659 /* Transform.swift */,
+				9C0240C3227E5C7C00FBB659 /* ModelComponent.swift */,
+				9C7C8480227FD0EC0071E7BA /* InstanceComponent.swift */,
+				9C0240CF227F779400FBB659 /* CameraComponent.swift */,
+				9CA432992288F10C00832886 /* ArcballCameraComponent.swift */,
 			);
-			name = Public;
+			name = "Scene Graph";
 			sourceTree = "<group>";
 		};
 		9C99CBAF2284594A00C71D85 /* Initialize */ = {
@@ -433,18 +428,17 @@
 				9C99CBAA228457B900C71D85 /* Component.swift in Sources */,
 				9CC82B7D227BC18000498FE3 /* Renderer.swift in Sources */,
 				9C0240C8227F228C00FBB659 /* Transform.swift in Sources */,
-				9CA432922288CB1000832886 /* PerspectiveCamera.swift in Sources */,
 				9C7C845D227FA8800071E7BA /* Renderable.swift in Sources */,
 				9C7C8457227FA8080071E7BA /* Node.swift in Sources */,
 				9C7C8465227FB13B0071E7BA /* Mesh.swift in Sources */,
 				9C0240BB227E1ACA00FBB659 /* Extentions.swift in Sources */,
 				9C0240C4227E5C7C00FBB659 /* ModelComponent.swift in Sources */,
-				9C0240D0227F779400FBB659 /* Camera.swift in Sources */,
+				9C0240D0227F779400FBB659 /* CameraComponent.swift in Sources */,
 				9C68006F2288509100D96B7D /* Model.swift in Sources */,
+				9CA4329A2288F10C00832886 /* ArcballCameraComponent.swift in Sources */,
 				9C68007322885D6B00D96B7D /* Submesh.swift in Sources */,
 				9C0240CC227F237000FBB659 /* MathLibrary.swift in Sources */,
 				9C99CBB122845C1700C71D85 /* Liveable.swift in Sources */,
-				9CA432962288CFC800832886 /* OrthographicCamera.swift in Sources */,
 				9C68007B2288A29400D96B7D /* Metal.swift in Sources */,
 				9C6800832288A9F700D96B7D /* AppDelegate.swift in Sources */,
 				9C7C8481227FD0EC0071E7BA /* InstanceComponent.swift in Sources */,
@@ -461,18 +455,17 @@
 				9C99CBAB228457B900C71D85 /* Component.swift in Sources */,
 				9CD60575227BE76000472E9F /* Renderer.swift in Sources */,
 				9C0240C9227F228C00FBB659 /* Transform.swift in Sources */,
-				9CA432932288CB1000832886 /* PerspectiveCamera.swift in Sources */,
 				9C7C845E227FA8800071E7BA /* Renderable.swift in Sources */,
 				9C7C8456227FA8080071E7BA /* Node.swift in Sources */,
 				9C7C8466227FB13B0071E7BA /* Mesh.swift in Sources */,
 				9C0240BC227E1B3B00FBB659 /* Extentions.swift in Sources */,
 				9C0240C5227E5C7C00FBB659 /* ModelComponent.swift in Sources */,
-				9C0240D1227F779400FBB659 /* Camera.swift in Sources */,
+				9C0240D1227F779400FBB659 /* CameraComponent.swift in Sources */,
 				9C6800702288509100D96B7D /* Model.swift in Sources */,
+				9CA4329B2288F10C00832886 /* ArcballCameraComponent.swift in Sources */,
 				9C68007422885D6B00D96B7D /* Submesh.swift in Sources */,
 				9C0240CD227F237000FBB659 /* MathLibrary.swift in Sources */,
 				9C99CBB222845C1700C71D85 /* Liveable.swift in Sources */,
-				9CA432972288CFC800832886 /* OrthographicCamera.swift in Sources */,
 				9C68007C2288A29400D96B7D /* Metal.swift in Sources */,
 				9C6800842288A9F700D96B7D /* AppDelegate.swift in Sources */,
 				9C7C8482227FD0EC0071E7BA /* InstanceComponent.swift in Sources */,
@@ -489,18 +482,17 @@
 				9C99CBAC228457B900C71D85 /* Component.swift in Sources */,
 				9CC82B81227BC18100498FE3 /* Renderer.swift in Sources */,
 				9C0240CA227F228C00FBB659 /* Transform.swift in Sources */,
-				9CA432942288CB1000832886 /* PerspectiveCamera.swift in Sources */,
 				9C7C845F227FA8800071E7BA /* Renderable.swift in Sources */,
 				9C7C8455227FA8070071E7BA /* Node.swift in Sources */,
 				9C7C8467227FB13B0071E7BA /* Mesh.swift in Sources */,
 				9C0240BD227E1B3B00FBB659 /* Extentions.swift in Sources */,
 				9C0240C6227E5C7C00FBB659 /* ModelComponent.swift in Sources */,
-				9C0240D2227F779400FBB659 /* Camera.swift in Sources */,
+				9C0240D2227F779400FBB659 /* CameraComponent.swift in Sources */,
 				9C6800712288509100D96B7D /* Model.swift in Sources */,
+				9CA4329C2288F10C00832886 /* ArcballCameraComponent.swift in Sources */,
 				9C68007522885D6B00D96B7D /* Submesh.swift in Sources */,
 				9C0240CE227F237000FBB659 /* MathLibrary.swift in Sources */,
 				9C99CBB322845C1700C71D85 /* Liveable.swift in Sources */,
-				9CA432982288CFC800832886 /* OrthographicCamera.swift in Sources */,
 				9C68007D2288A29400D96B7D /* Metal.swift in Sources */,
 				9C6800852288A9F700D96B7D /* AppDelegate.swift in Sources */,
 				9C7C8483227FD0EC0071E7BA /* InstanceComponent.swift in Sources */,

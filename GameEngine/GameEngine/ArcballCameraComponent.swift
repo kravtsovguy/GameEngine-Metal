@@ -1,52 +1,14 @@
 //
-//  PerspectiveCamera.swift
+//  ArcballCameraComponent.swift
 //  GameEngine
 //
 //  Created by Matvey Kravtsov on 13/05/2019.
 //  Copyright © 2019 Matvey Kravtsov. All rights reserved.
 //
 
-import MetalKit
 
-
-open class PerspsectiveCamera: CameraComponent {
-
-//    var viewMatrix: float4x4 {
-//        let translationMatrix = float4x4(translation: transform.position)
-//        let rotationMatrix = float4x4(rotation: transform.rotation)
-//
-//        return (translationMatrix * rotationMatrix).inverse
-//    }
-
-    public var viewMatrix: float4x4 {
-        let translationMatrix = float4x4(translation: transform.position)
-        let rotationMatrix = float4x4(rotation: transform.rotation)
-
-        return (translationMatrix * rotationMatrix).inverse
-    }
-
-
-    public var fov = radians(fromDegrees: 70)
-    public var near: Float = 0.1
-    public var far: Float = 100
-    public var aspect: Float = 1
-
-    public var projectionMatrix: float4x4 {
-        return float4x4(projectionFov: fov,
-                        near: near,
-                        far: far,
-                        aspect: aspect)
-    }
-
-    public func zoom(delta: Float) {
-    }
-
-    public func rotate(delta: float2) {
-    }
-}
-
-
-open class ArcballCamera: PerspsectiveCamera {
+public class ArcballCamera: CameraComponent {
+    
     public var distance: Float = 0
     public var target = float3(repeating: 0)
 
@@ -73,3 +35,4 @@ open class ArcballCamera: PerspsectiveCamera {
         transform.rotation.x = max(-Float.pi/2, min(transform.rotation.x, Float.pi/2))
     }
 }
+

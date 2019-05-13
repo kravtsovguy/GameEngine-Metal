@@ -18,12 +18,12 @@ open class Scene: Liveable {
         setupScene()
     }
 
-    public func add(node: Node) {
-        rootNode.add(childNode: node)
-    }
-
     open func setupScene() {
         // override this to add objects to the scene
+    }
+
+    public func add(node: Node) {
+        rootNode.add(childNode: node)
     }
 
     open func start() {

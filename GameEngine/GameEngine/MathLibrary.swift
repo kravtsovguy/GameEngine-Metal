@@ -94,18 +94,6 @@ extension float4x4 {
     }
 
     // MARK: - Left handed projection matrix
-    init(projectionFov fov: Float, near: Float, far: Float, aspect: Float) {
-        let y = 1 / tan(fov * 0.5)
-        let x = y / aspect
-        let z = far / (far - near)
-        let X = float4( x,  0,  0,  0)
-        let Y = float4( 0,  y,  0,  0)
-        let Z = float4( 0,  0,  z, 1)
-        let W = float4( 0,  0,  z * -near,  0)
-        self.init()
-        columns = (X, Y, Z, W)
-    }
-
     static func perspectiveMatrix(fov: Float, near: Float, far: Float, aspect: Float) -> float4x4 {
         let y = 1 / tan(fov * 0.5)
         let x = y / aspect
@@ -119,13 +107,16 @@ extension float4x4 {
     }
 
     static func orthographicMatrix(top: Float, bottom: Float, left: Float, right: Float, near: Float, far: Float) -> float4x4 {
-        let colomn0: float4 = [2/(right - left), 0, 0, 0]
-        let colomn1: float4 = [0, 2/(top - bottom), 0, 0]
-        let colomn2: float4 = [0, 0, 1/(far - near), 0]
-        let colomn3: float4 = [-(right + left)/(right - left), -(top + bottom)/(top - bottom), -(near)/(far - near), 1]
+        let x = 2 / (right - left)
+        let y = 2 / (top - bottom)
+        let z = 1 / (far - near)
 
-        let matrix = float4x4([colomn0, colomn1, colomn2, colomn3])
-        return matrix
+        let X = float4(x, 0, 0, 0)
+        let Y = float4(0, y, 0, 0)
+        let Z = float4(0, 0, z, 0)
+        let W = float4(0, 0, z * -near, 1)
+
+        return float4x4(columns: (X, Y, Z, W))
     }
 
     // left-handed LookAt

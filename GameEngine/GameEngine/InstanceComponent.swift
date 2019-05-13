@@ -10,10 +10,9 @@ import MetalKit
 
 
 open class InstanceComponent: ModelComponent {
+    
     public var transforms: [Transform]
-    var instanceCount: Int {
-        return transforms.count
-    }
+    var instanceCount: Int { return transforms.count }
     var instanceBuffer: MTLBuffer
 
     public init(model: Model, instanceCount: Int = 1) {
