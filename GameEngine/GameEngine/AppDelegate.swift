@@ -19,6 +19,11 @@ public typealias PlatformAppDelegate = NSObject & NSApplicationDelegate
 
 open class AppDelegate: PlatformAppDelegate {
 
+    // MARK: init
+    required public override init() {
+        super.init()
+    }
+
     // MARK: Begin Shared
     open func setupAppDelegate() {
         // override

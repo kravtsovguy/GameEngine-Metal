@@ -17,6 +17,7 @@ public enum Main {
     public final class Parameters {
 
         public var windowSizeMacOS: CGSize = CGSize(width: 800, height: 600)
+        public var appDelegateType: AppDelegate.Type = AppDelegate.self
         public var viewControllerType: GameViewController.Type = GameViewController.self
         public var viewType: GameView.Type = GameView.self
         public var sceneType: Scene.Type?
@@ -32,11 +33,11 @@ public enum Main {
         builder?(parameters)
 
         #if os(iOS) || os(tvOS)
-        UIApplicationMain(argc, argv, nil, NSStringFromClass(AppDelegate.self))
+        UIApplicationMain(argc, argv, nil, NSStringFromClass(parameters.appDelegateType))
 
         #elseif os(OSX)
         let app = NSApplication.shared
-        let delegate = AppDelegate()
+        let delegate = parameters.appDelegateType.init()
         app.delegate = delegate
 
         _ = NSApplicationMain(argc, argv)
