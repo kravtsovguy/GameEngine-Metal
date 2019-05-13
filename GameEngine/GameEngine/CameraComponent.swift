@@ -51,15 +51,9 @@ open class CameraComponent: Component {
 
     public var viewMatrix: float4x4 {
         let translationMatrix = float4x4(translation: transform.position)
-        let rotationMatrix = float4x4(rotation: transform.rotation)
+        let rotationMatrix = float4x4(rotationZYX: transform.rotation)
 
         return (translationMatrix * rotationMatrix).inverse
-    }
-
-    public func zoom(delta: Float) {
-    }
-
-    public func rotate(delta: float2) {
     }
 
     func calculateProjectionMatrix() -> float4x4 {

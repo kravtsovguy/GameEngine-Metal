@@ -69,9 +69,7 @@ open class AppDelegate: PlatformAppDelegate {
                               backing: NSWindow.BackingStoreType.buffered,
                               defer: false)
 
-        let viewController = self.viewController
-        viewController.initialSize = AppDelegate.viewControllerSize
-        window.contentViewController = viewController
+        window.contentViewController = self.viewController
         window.makeKeyAndOrderFront(NSApp)
 
         self.window = window

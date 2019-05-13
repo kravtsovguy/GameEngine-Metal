@@ -10,8 +10,8 @@ import GameEngine
 
 
 final class MainScene: Scene {
+    
     let camera = Node(with: "Camera") { node in
-        let cameraComponent = ArcballCamera()
         node.add(component: ArcballCamera()) { component in
             component.target = [0, 0.8, 0]
             component.distance = 4
@@ -20,6 +20,11 @@ final class MainScene: Scene {
 
 //        node.add(component: CameraComponent(projectionType: .defaultOrthographic)) { component in
 //            component.transform.position = [0, 0, -5]
+//        }
+
+//        node.add(component: FPSCameraComponent(projectionType: .defaultPerspective)) { component in
+//            component.transform.position = [0, 0, -5]
+//            component.transform.rotation = [0, 0, radians(fromDegrees: 0)]
 //        }
     }
 
@@ -56,7 +61,9 @@ final class MainScene: Scene {
                                                           specularColor: [0.2,0.2,0.2],
                                                           shininess: 1))
         node.add(component: ModelComponent(model: sphereModel))
-        node.transform.position.y = 1
+        node.transform.position.y = 0.5
+        node.transform.position.x = -1
+        node.transform.scale = float3(repeating: 0.5)
     }
 
     public init() {

@@ -13,7 +13,7 @@ final class GameViewController: GameEngine.GameViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        scene = MainScene()
+        gameView.scene = MainScene()
     }
 
 }

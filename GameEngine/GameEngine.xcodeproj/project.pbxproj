@@ -61,6 +61,21 @@
 		9CA4329A2288F10C00832886 /* ArcballCameraComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432992288F10C00832886 /* ArcballCameraComponent.swift */; };
 		9CA4329B2288F10C00832886 /* ArcballCameraComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432992288F10C00832886 /* ArcballCameraComponent.swift */; };
 		9CA4329C2288F10C00832886 /* ArcballCameraComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432992288F10C00832886 /* ArcballCameraComponent.swift */; };
+		9CA432A42289862400832886 /* FPSCameraComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432A32289862400832886 /* FPSCameraComponent.swift */; };
+		9CA432A52289862400832886 /* FPSCameraComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432A32289862400832886 /* FPSCameraComponent.swift */; };
+		9CA432A62289862400832886 /* FPSCameraComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432A32289862400832886 /* FPSCameraComponent.swift */; };
+		9CA432A822898C8F00832886 /* KeyCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432A722898C8F00832886 /* KeyCodes.swift */; };
+		9CA432A922898C8F00832886 /* KeyCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432A722898C8F00832886 /* KeyCodes.swift */; };
+		9CA432AA22898C8F00832886 /* KeyCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432A722898C8F00832886 /* KeyCodes.swift */; };
+		9CA432AC22898FD400832886 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432AB22898FD400832886 /* Keyboard.swift */; };
+		9CA432AD22898FD400832886 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432AB22898FD400832886 /* Keyboard.swift */; };
+		9CA432AE22898FD400832886 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432AB22898FD400832886 /* Keyboard.swift */; };
+		9CA432B02289922200832886 /* Mouse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432AF2289922200832886 /* Mouse.swift */; };
+		9CA432B12289922200832886 /* Mouse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432AF2289922200832886 /* Mouse.swift */; };
+		9CA432B22289922200832886 /* Mouse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432AF2289922200832886 /* Mouse.swift */; };
+		9CA432B422899C0B00832886 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432B322899C0B00832886 /* GameView.swift */; };
+		9CA432B522899C0B00832886 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432B322899C0B00832886 /* GameView.swift */; };
+		9CA432B622899C0B00832886 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432B322899C0B00832886 /* GameView.swift */; };
 		9CC82B7D227BC18000498FE3 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC82B30227BB38900498FE3 /* Renderer.swift */; };
 		9CC82B81227BC18100498FE3 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC82B30227BB38900498FE3 /* Renderer.swift */; };
 		9CD60575227BE76000472E9F /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC82B30227BB38900498FE3 /* Renderer.swift */; };
@@ -142,6 +157,11 @@
 		9C99CBA9228457B900C71D85 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		9C99CBB022845C1700C71D85 /* Liveable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Liveable.swift; sourceTree = "<group>"; };
 		9CA432992288F10C00832886 /* ArcballCameraComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcballCameraComponent.swift; sourceTree = "<group>"; };
+		9CA432A32289862400832886 /* FPSCameraComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPSCameraComponent.swift; sourceTree = "<group>"; };
+		9CA432A722898C8F00832886 /* KeyCodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyCodes.swift; sourceTree = "<group>"; };
+		9CA432AB22898FD400832886 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
+		9CA432AF2289922200832886 /* Mouse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mouse.swift; sourceTree = "<group>"; };
+		9CA432B322899C0B00832886 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		9CC82B2E227BB38800498FE3 /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		9CC82B2F227BB38900498FE3 /* ShaderTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderTypes.h; sourceTree = "<group>"; };
 		9CC82B30227BB38900498FE3 /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
@@ -189,6 +209,9 @@
 				9CC82B30227BB38900498FE3 /* Renderer.swift */,
 				9C0240BA227E1ACA00FBB659 /* Extentions.swift */,
 				9C0240CB227F236F00FBB659 /* MathLibrary.swift */,
+				9CA432A722898C8F00832886 /* KeyCodes.swift */,
+				9CA432AB22898FD400832886 /* Keyboard.swift */,
+				9CA432AF2289922200832886 /* Mouse.swift */,
 				9CA432A2228973BF00832886 /* Protocols */,
 				9CA432A12289739300832886 /* Model */,
 				9C99CBAE2284592300C71D85 /* Scene Graph */,
@@ -207,6 +230,7 @@
 				9C7C8480227FD0EC0071E7BA /* InstanceComponent.swift */,
 				9C0240CF227F779400FBB659 /* CameraComponent.swift */,
 				9CA432992288F10C00832886 /* ArcballCameraComponent.swift */,
+				9CA432A32289862400832886 /* FPSCameraComponent.swift */,
 			);
 			name = "Scene Graph";
 			sourceTree = "<group>";
@@ -216,6 +240,7 @@
 			children = (
 				9C6800822288A9F700D96B7D /* AppDelegate.swift */,
 				9CD605CA227C67CC00472E9F /* GameViewController.swift */,
+				9CA432B322899C0B00832886 /* GameView.swift */,
 			);
 			name = Initialize;
 			sourceTree = "<group>";
@@ -446,18 +471,23 @@
 				9C0240C8227F228C00FBB659 /* Transform.swift in Sources */,
 				9C7C845D227FA8800071E7BA /* Renderable.swift in Sources */,
 				9C7C8457227FA8080071E7BA /* Node.swift in Sources */,
+				9CA432B02289922200832886 /* Mouse.swift in Sources */,
 				9C7C8465227FB13B0071E7BA /* Mesh.swift in Sources */,
 				9C0240BB227E1ACA00FBB659 /* Extentions.swift in Sources */,
 				9C0240C4227E5C7C00FBB659 /* ModelComponent.swift in Sources */,
 				9C0240D0227F779400FBB659 /* CameraComponent.swift in Sources */,
 				9C68006F2288509100D96B7D /* Model.swift in Sources */,
 				9CA4329A2288F10C00832886 /* ArcballCameraComponent.swift in Sources */,
+				9CA432B422899C0B00832886 /* GameView.swift in Sources */,
+				9CA432A42289862400832886 /* FPSCameraComponent.swift in Sources */,
 				9C68007322885D6B00D96B7D /* Submesh.swift in Sources */,
 				9C0240CC227F237000FBB659 /* MathLibrary.swift in Sources */,
 				9C99CBB122845C1700C71D85 /* Liveable.swift in Sources */,
 				9C68007B2288A29400D96B7D /* Metal.swift in Sources */,
 				9C6800832288A9F700D96B7D /* AppDelegate.swift in Sources */,
+				9CA432AC22898FD400832886 /* Keyboard.swift in Sources */,
 				9C7C8481227FD0EC0071E7BA /* InstanceComponent.swift in Sources */,
+				9CA432A822898C8F00832886 /* KeyCodes.swift in Sources */,
 				9C7C8459227FA8410071E7BA /* Scene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -473,18 +503,23 @@
 				9C0240C9227F228C00FBB659 /* Transform.swift in Sources */,
 				9C7C845E227FA8800071E7BA /* Renderable.swift in Sources */,
 				9C7C8456227FA8080071E7BA /* Node.swift in Sources */,
+				9CA432B12289922200832886 /* Mouse.swift in Sources */,
 				9C7C8466227FB13B0071E7BA /* Mesh.swift in Sources */,
 				9C0240BC227E1B3B00FBB659 /* Extentions.swift in Sources */,
 				9C0240C5227E5C7C00FBB659 /* ModelComponent.swift in Sources */,
 				9C0240D1227F779400FBB659 /* CameraComponent.swift in Sources */,
 				9C6800702288509100D96B7D /* Model.swift in Sources */,
 				9CA4329B2288F10C00832886 /* ArcballCameraComponent.swift in Sources */,
+				9CA432B522899C0B00832886 /* GameView.swift in Sources */,
+				9CA432A52289862400832886 /* FPSCameraComponent.swift in Sources */,
 				9C68007422885D6B00D96B7D /* Submesh.swift in Sources */,
 				9C0240CD227F237000FBB659 /* MathLibrary.swift in Sources */,
 				9C99CBB222845C1700C71D85 /* Liveable.swift in Sources */,
 				9C68007C2288A29400D96B7D /* Metal.swift in Sources */,
 				9C6800842288A9F700D96B7D /* AppDelegate.swift in Sources */,
+				9CA432AD22898FD400832886 /* Keyboard.swift in Sources */,
 				9C7C8482227FD0EC0071E7BA /* InstanceComponent.swift in Sources */,
+				9CA432A922898C8F00832886 /* KeyCodes.swift in Sources */,
 				9C7C845A227FA8410071E7BA /* Scene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -500,18 +535,23 @@
 				9C0240CA227F228C00FBB659 /* Transform.swift in Sources */,
 				9C7C845F227FA8800071E7BA /* Renderable.swift in Sources */,
 				9C7C8455227FA8070071E7BA /* Node.swift in Sources */,
+				9CA432B22289922200832886 /* Mouse.swift in Sources */,
 				9C7C8467227FB13B0071E7BA /* Mesh.swift in Sources */,
 				9C0240BD227E1B3B00FBB659 /* Extentions.swift in Sources */,
 				9C0240C6227E5C7C00FBB659 /* ModelComponent.swift in Sources */,
 				9C0240D2227F779400FBB659 /* CameraComponent.swift in Sources */,
 				9C6800712288509100D96B7D /* Model.swift in Sources */,
 				9CA4329C2288F10C00832886 /* ArcballCameraComponent.swift in Sources */,
+				9CA432B622899C0B00832886 /* GameView.swift in Sources */,
+				9CA432A62289862400832886 /* FPSCameraComponent.swift in Sources */,
 				9C68007522885D6B00D96B7D /* Submesh.swift in Sources */,
 				9C0240CE227F237000FBB659 /* MathLibrary.swift in Sources */,
 				9C99CBB322845C1700C71D85 /* Liveable.swift in Sources */,
 				9C68007D2288A29400D96B7D /* Metal.swift in Sources */,
 				9C6800852288A9F700D96B7D /* AppDelegate.swift in Sources */,
+				9CA432AE22898FD400832886 /* Keyboard.swift in Sources */,
 				9C7C8483227FD0EC0071E7BA /* InstanceComponent.swift in Sources */,
+				9CA432AA22898C8F00832886 /* KeyCodes.swift in Sources */,
 				9C7C845B227FA8410071E7BA /* Scene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

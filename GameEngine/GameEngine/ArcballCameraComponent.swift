@@ -11,10 +11,12 @@ public class ArcballCamera: CameraComponent {
     
     public var distance: Float = 0
     public var target = float3(repeating: 0)
+    let sensitivity: Float = 0.5
+    let sensitivityWheel: Float = 1
 
     override public var viewMatrix: float4x4 {
         let translateMatrix = float4x4(translation: [target.x, target.y, target.z - distance])
-        let rotateMatrix = float4x4(rotationYXZ: [-transform.rotation.x,
+        let rotateMatrix = float4x4(rotationZYX: [-transform.rotation.x,
                                                   transform.rotation.y,
                                                   0])
 
@@ -23,16 +25,12 @@ public class ArcballCamera: CameraComponent {
         return matrix
     }
 
-    override public func zoom(delta: Float) {
-        let sensitivity: Float = 0.05
-        distance -= delta * sensitivity
-    }
-
-    override public func rotate(delta: float2) {
-        let sensitivity: Float = 0.005
-        transform.rotation.y += delta.x * sensitivity
-        transform.rotation.x += delta.y * sensitivity
+    public override func update(with deltaTime: Float) {
+        transform.rotation.y += Mouse.GetDX() * sensitivity * deltaTime
+        transform.rotation.x -= Mouse.GetDY() * sensitivity * deltaTime
         transform.rotation.x = max(-Float.pi/2, min(transform.rotation.x, Float.pi/2))
+
+        distance -= Mouse.GetDWheel() * sensitivityWheel * deltaTime
     }
 }
 
