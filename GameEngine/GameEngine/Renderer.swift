@@ -9,7 +9,7 @@
 import MetalKit
 
 
-// Platform independent renderer class
+/// Platform independent renderer class
 class Renderer: NSObject {
     private let depthStencilState = createDepthState()!
     private var uniforms = Uniforms()
