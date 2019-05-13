@@ -9,52 +9,59 @@
 import GameEngine
 
 
-public final class MainScene: Scene {
-    let cameraNode = Node(with: "Camera")
-    let train = Node(with: "Train")
-    let trees = Node(with: "Trees")
-    let plane = Node(with: "Plane")
-    let sphere = Node(with: "Sphere")
-
-    override public func setupScene() {
-//        let cameraComponent = CameraComponent(projectionType: .defaultOrthographic)
+final class MainScene: Scene {
+    let camera = Node(with: "Camera") { node in
         let cameraComponent = ArcballCamera()
-        cameraComponent.target = [0, 0.8, 0]
-        cameraComponent.distance = 4
-        cameraNode.add(component: cameraComponent)
-//        cameraComponent.transform.position = [0, 0, -5]
-        cameraNode.transform.rotation = [-0.4, -0.4, 0]
-        self.camera = cameraComponent
+        node.add(component: ArcballCamera()) { component in
+            component.target = [0, 0.8, 0]
+            component.distance = 4
+            component.transform.rotation = [-0.4, -0.4, 0]
+        }
 
+//        node.add(component: CameraComponent(projectionType: .defaultOrthographic)) { component in
+//            component.transform.position = [0, 0, -5]
+//        }
+    }
+
+    let train = Node(with: "Train") { node in
+        let trainModel = Model(withObject: "train")
+        node.add(component: ModelComponent(model: trainModel))
+        node.add(component: ModeForwardComponent())
+        node.transform.position.z = 0
+        node.transform.scale = float3(repeating: 0.5)
+        node.transform.rotation.y = radians(fromDegrees: 0)
+    }
+
+    let trees = Node(with: "Trees") { node in
         let treeModel = Model(withObject: "treefir")
         let treesComponent = InstanceComponent(model: treeModel, instanceCount: 3)
-        for i in 0..<3 {
-            treesComponent.transforms[i].position.x = Float(i)
-            treesComponent.transforms[i].position.y = 0
-            treesComponent.transforms[i].position.z = 1
+        node.add(component: treesComponent) { component in
+            for i in 0..<3 {
+                component.transforms[i].position.x = Float(i)
+                component.transforms[i].position.y = 0
+                component.transforms[i].position.z = 1
+            }
         }
-        trees.add(component: treesComponent)
+    }
 
-        let trainModel = Model(withObject: "train")
-        train.add(component: ModelComponent(model: trainModel))
-        train.add(component: ModeForwardComponent())
-        train.transform.position.z = 0
-        train.transform.scale = float3(repeating: 0.5)
-        train.transform.rotation.y = radians(fromDegrees: 0)
-
+    let plane = Node(with: "Plane") { node in
         let planeModel = Model.plane(material: Material(baseColor: [0.5,0.5,0.5],
                                                         specularColor: [0.5,0.5,0.5],
                                                         shininess: 1))
-        plane.add(component: ModelComponent(model: planeModel))
+        node.add(component: ModelComponent(model: planeModel))
+    }
 
+    let sphere = Node(with: "Sphere") { node in
         let sphereModel = Model.sphere(material: Material(baseColor: [1.0,0.0,0.0],
                                                           specularColor: [0.2,0.2,0.2],
                                                           shininess: 1))
-        sphere.add(component: ModelComponent(model: sphereModel))
+        node.add(component: ModelComponent(model: sphereModel))
+        node.transform.position.y = 1
+    }
 
-        sphere.transform.position.y = 1
-        
-        add(node: cameraNode)
+    public init() {
+        super.init(name: "Main")
+        add(node: camera)
         add(node: train)
         add(node: trees)
         add(node: plane)

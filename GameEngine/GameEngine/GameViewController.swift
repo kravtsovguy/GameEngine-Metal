@@ -73,7 +73,7 @@ open class GameViewController: PlatformViewController {
 
     #if os(iOS)
     @objc func handlePinch(gesture: UIPinchGestureRecognizer) {
-        scene?.camera?.zoom(delta: Float(gesture.velocity * 0.5))
+        scene?.cameraComponent?.zoom(delta: Float(gesture.velocity * 0.5))
     }
 
     @objc func handlePan(gesture: UIPanGestureRecognizer) {
@@ -81,14 +81,14 @@ open class GameViewController: PlatformViewController {
         let delta = float2(Float(translation.x),
                            -Float(translation.y))
 
-        scene?.camera?.rotate(delta: delta)
+        scene?.cameraComponent?.rotate(delta: delta)
         gesture.setTranslation(.zero, in: gesture.view)
     }
     #endif
 
     #if os(OSX)
     override open func scrollWheel(with event: NSEvent) {
-        scene?.camera?.zoom(delta: Float(event.deltaY))
+        scene?.cameraComponent?.zoom(delta: Float(event.deltaY))
     }
 
     @objc func handlePan(gesture: NSPanGestureRecognizer) {
@@ -96,7 +96,7 @@ open class GameViewController: PlatformViewController {
         let delta = float2(Float(translation.x),
                            Float(translation.y))
 
-        scene?.camera?.rotate(delta: delta)
+        scene?.cameraComponent?.rotate(delta: delta)
         gesture.setTranslation(.zero, in: gesture.view)
     }
     #endif

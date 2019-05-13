@@ -9,7 +9,7 @@
 import GameEngine
 
 
-public final class ModeForwardComponent: Component {
+final class ModeForwardComponent: Component {
 
     override public func update(with deltaTime: Float) {
         self.transform.position += self.transform.rightVector * deltaTime

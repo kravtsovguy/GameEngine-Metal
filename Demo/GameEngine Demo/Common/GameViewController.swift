@@ -9,7 +9,7 @@
 import GameEngine
 
 
-class GameViewController: GameEngine.GameViewController {
+final class GameViewController: GameEngine.GameViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

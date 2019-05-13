@@ -9,17 +9,13 @@
 
 open class Scene: Liveable {
     
-    public private(set) var name: String = "Main"
+    public var name: String
     public private(set) var rootNode: Node = Node(with: "Root")
-    public var camera: CameraComponent?
+    public private(set) weak var cameraComponent: CameraComponent?
     private(set) var renderables: [Renderable] = []
 
-    public init() {
-        setupScene()
-    }
-
-    open func setupScene() {
-        // override this to add objects to the scene
+    public init(name: String = "Untitled") {
+        self.name = name
     }
 
     public func add(node: Node) {
@@ -29,9 +25,10 @@ open class Scene: Liveable {
     open func start() {
         print("scene \(name)")
         rootNode.printStructure()
-        rootNode.start()
 
+        cameraComponent = rootNode.findComponent()
         renderables = rootNode.renderables
+        rootNode.start()
     }
 
     open func update(with deltaTime: Float) {

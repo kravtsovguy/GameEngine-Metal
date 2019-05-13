@@ -18,10 +18,8 @@ public typealias PlatformAppDelegate = NSObject & NSApplicationDelegate
 
 
 open class AppDelegate: PlatformAppDelegate {
-    ////////////
-    /// Begin Shared
-    ////////////
 
+    // MARK: Begin Shared
     public static var viewControllerType: GameViewController.Type = GameViewController.self
     lazy var viewController: GameViewController = {
         return AppDelegate.viewControllerType.init()
@@ -30,10 +28,8 @@ open class AppDelegate: PlatformAppDelegate {
     open func setupAppDelegate() {
         // override
     }
+    // MARK: End Shared
 
-    ////////////
-    /// End Shared
-    ////////////
 
     #if os(iOS) || os(tvOS)
     public var window: UIWindow?

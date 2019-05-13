@@ -29,10 +29,11 @@ public final class Node: Liveable {
         return renderables
     }
 
-    public init(with name: String = "Untitled") {
+    public init(with name: String = "Untitled", setup:((Node)->Void)? = nil) {
         self.name = name
         self.transform = Transform()
         self.transform.node = self
+        setup?(self)
     }
 
     public func add(childNode: Node) {
@@ -46,10 +47,11 @@ public final class Node: Liveable {
         childNode.parent = nil
     }
 
-    public func add(component: Component) {
+    public func add<T: Component>(component: T, setup:((T)->Void)? = nil) {
         component.node?.remove(component: component)
         component.node = self
         components.append(component)
+        setup?(component)
     }
 
     public func remove(component: Component) {
@@ -75,6 +77,20 @@ public final class Node: Liveable {
         for childNode in children {
             childNode.update(with: deltaTime)
         }
+    }
+
+    public func findComponent<T: Component>() -> T? {
+        for component in components {
+            guard let neededComponent = component as? T else { continue }
+            return neededComponent
+        }
+
+        for childNode in children {
+            guard let neededComponent: T = childNode.findComponent() else { continue }
+            return neededComponent
+        }
+
+        return nil
     }
 
     func printStructure(depthLevel: Int = 0) {

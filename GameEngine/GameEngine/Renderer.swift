@@ -51,7 +51,7 @@ extension Renderer: MTKViewDelegate {
 
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
         print("size: \(size)")
-        guard let camera = scene?.camera else {
+        guard let camera = scene?.cameraComponent else {
             return
         }
         
@@ -61,7 +61,7 @@ extension Renderer: MTKViewDelegate {
     func draw(in view: MTKView) {
         guard
             let scene = scene,
-            let camera = scene.camera,
+            let camera = scene.cameraComponent,
             let commandBuffer = Metal.commandQueue.makeCommandBuffer(),
             let renderPassDescriptor = view.currentRenderPassDescriptor,
             let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor),
