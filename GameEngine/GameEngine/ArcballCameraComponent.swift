@@ -11,8 +11,8 @@ public class ArcballCamera: CameraComponent {
     
     public var distance: Float = 0
     public var target = float3(repeating: 0)
-    let sensitivity: Float = 0.5
-    let sensitivityWheel: Float = 1
+    public var sensitivity: Float = 0.5
+    public var sensitivityWheel: Float = 1
 
     override public var viewMatrix: float4x4 {
         let translateMatrix = float4x4(translation: [target.x, target.y, target.z - distance])

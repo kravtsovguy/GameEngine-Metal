@@ -50,7 +50,7 @@ open class AppDelegate: PlatformAppDelegate {
     }
 
     #elseif os(OSX)
-    public static var viewControllerSize: NSSize = NSSize(width: 800, height: 600)
+    public static var viewSize: NSSize = NSSize(width: 800, height: 600)
     public var window : NSWindow?
 
     open func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -59,8 +59,8 @@ open class AppDelegate: PlatformAppDelegate {
         }
 
         let screenFrame = NSScreen.main!.frame
-        let width = AppDelegate.viewControllerSize.width
-        let height = AppDelegate.viewControllerSize.height
+        let width = AppDelegate.viewSize.width
+        let height = AppDelegate.viewSize.height
         let x = (screenFrame.width - width) / 2
         let y = (screenFrame.height - height) / 2
         let rect = NSMakeRect(x, y, width, height);

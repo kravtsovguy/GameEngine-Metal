@@ -19,17 +19,23 @@ public typealias PlatformViewController = NSViewController
 
 /// Platform independent view controller
 open class GameViewController: PlatformViewController {
-    public var gameView: GameView {
+    open var gameView: GameView {
         return view as! GameView
     }
 
-    open override func loadView() {
+    public var initialFrame: CGRect {
         var frame = CGRect(origin: .zero, size: .zero)
 
-        #if os(OSX)
-        frame.size = AppDelegate.viewControllerSize
+        #if os(iOS) || os(tvOS)
+        frame.size = UIScreen.main.bounds.size
+        #elseif os(OSX)
+        frame.size = AppDelegate.viewSize
         #endif
 
-        self.view = GameView(frame: frame)
+        return frame
+    }
+
+    open override func loadView() {
+        self.view = GameView(frame: initialFrame)
     }
 }

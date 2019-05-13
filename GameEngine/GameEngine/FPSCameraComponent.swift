@@ -8,8 +8,9 @@
 
 
 public class FPSCameraComponent: CameraComponent {
-    let speed: Float = 2
-    let sensitivity: Float = 0.5
+    
+    public var speed: Float = 2
+    public var sensitivity: Float = 0.5
 
     public override func update(with deltaTime: Float) {
         if Keyboard.isKeyPressed(.w) {

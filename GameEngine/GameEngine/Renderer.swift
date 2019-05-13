@@ -50,7 +50,7 @@ class Renderer: NSObject {
 extension Renderer: MTKViewDelegate {
 
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
-        print("size: \(size)")
+        print("drawable size: \(size)")
         guard let camera = scene?.cameraComponent else {
             return
         }
