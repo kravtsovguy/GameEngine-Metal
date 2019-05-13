@@ -189,12 +189,8 @@
 				9CC82B30227BB38900498FE3 /* Renderer.swift */,
 				9C0240BA227E1ACA00FBB659 /* Extentions.swift */,
 				9C0240CB227F236F00FBB659 /* MathLibrary.swift */,
-				9C7C8464227FB13B0071E7BA /* Mesh.swift */,
-				9C68007222885D6B00D96B7D /* Submesh.swift */,
-				9C68007622885DB300D96B7D /* Textures.swift */,
-				9C68006E2288509000D96B7D /* Model.swift */,
-				9C7C845C227FA8800071E7BA /* Renderable.swift */,
-				9C99CBB022845C1700C71D85 /* Liveable.swift */,
+				9CA432A2228973BF00832886 /* Protocols */,
+				9CA432A12289739300832886 /* Model */,
 				9C99CBAE2284592300C71D85 /* Scene Graph */,
 			);
 			name = Core;
@@ -230,6 +226,26 @@
 				9CC82B2F227BB38900498FE3 /* ShaderTypes.h */,
 			);
 			name = Shared;
+			sourceTree = "<group>";
+		};
+		9CA432A12289739300832886 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9C7C8464227FB13B0071E7BA /* Mesh.swift */,
+				9C68007222885D6B00D96B7D /* Submesh.swift */,
+				9C68007622885DB300D96B7D /* Textures.swift */,
+				9C68006E2288509000D96B7D /* Model.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		9CA432A2228973BF00832886 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				9C7C845C227FA8800071E7BA /* Renderable.swift */,
+				9C99CBB022845C1700C71D85 /* Liveable.swift */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 		9CC82AE2227BB15D00498FE3 = {
