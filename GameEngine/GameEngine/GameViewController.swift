@@ -29,13 +29,18 @@ open class GameViewController: PlatformViewController {
         #if os(iOS) || os(tvOS)
         frame.size = UIScreen.main.bounds.size
         #elseif os(OSX)
-        frame.size = AppDelegate.viewSize
+        frame.size = Main.parameters.windowSizeMacOS
         #endif
 
         return frame
     }
 
     open override func loadView() {
-        self.view = GameView(frame: initialFrame)
+        self.view = Main.parameters.viewType.init(frame: initialFrame)
+    }
+
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+        gameView.scene = Main.parameters.sceneType?.init()
     }
 }

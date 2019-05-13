@@ -79,6 +79,9 @@
 		9CA432B82289ACFB00832886 /* SoundComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432B72289ACFB00832886 /* SoundComponent.swift */; };
 		9CA432B92289ACFB00832886 /* SoundComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432B72289ACFB00832886 /* SoundComponent.swift */; };
 		9CA432BA2289ACFB00832886 /* SoundComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432B72289ACFB00832886 /* SoundComponent.swift */; };
+		9CA432D62289B1A100832886 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432D52289B1A100832886 /* Main.swift */; };
+		9CA432D72289B1A100832886 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432D52289B1A100832886 /* Main.swift */; };
+		9CA432D82289B1A100832886 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432D52289B1A100832886 /* Main.swift */; };
 		9CC82B7D227BC18000498FE3 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC82B30227BB38900498FE3 /* Renderer.swift */; };
 		9CC82B81227BC18100498FE3 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC82B30227BB38900498FE3 /* Renderer.swift */; };
 		9CD60575227BE76000472E9F /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC82B30227BB38900498FE3 /* Renderer.swift */; };
@@ -166,6 +169,7 @@
 		9CA432AF2289922200832886 /* Mouse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mouse.swift; sourceTree = "<group>"; };
 		9CA432B322899C0B00832886 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		9CA432B72289ACFB00832886 /* SoundComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundComponent.swift; sourceTree = "<group>"; };
+		9CA432D52289B1A100832886 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		9CC82B2E227BB38800498FE3 /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		9CC82B2F227BB38900498FE3 /* ShaderTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderTypes.h; sourceTree = "<group>"; };
 		9CC82B30227BB38900498FE3 /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
@@ -243,6 +247,7 @@
 		9C99CBAF2284594A00C71D85 /* Initialize */ = {
 			isa = PBXGroup;
 			children = (
+				9CA432D52289B1A100832886 /* Main.swift */,
 				9C6800822288A9F700D96B7D /* AppDelegate.swift */,
 				9CD605CA227C67CC00472E9F /* GameViewController.swift */,
 				9CA432B322899C0B00832886 /* GameView.swift */,
@@ -480,6 +485,7 @@
 				9C7C8465227FB13B0071E7BA /* Mesh.swift in Sources */,
 				9C0240BB227E1ACA00FBB659 /* Extentions.swift in Sources */,
 				9C0240C4227E5C7C00FBB659 /* ModelComponent.swift in Sources */,
+				9CA432D62289B1A100832886 /* Main.swift in Sources */,
 				9C0240D0227F779400FBB659 /* CameraComponent.swift in Sources */,
 				9C68006F2288509100D96B7D /* Model.swift in Sources */,
 				9CA4329A2288F10C00832886 /* ArcballCameraComponent.swift in Sources */,
@@ -513,6 +519,7 @@
 				9C7C8466227FB13B0071E7BA /* Mesh.swift in Sources */,
 				9C0240BC227E1B3B00FBB659 /* Extentions.swift in Sources */,
 				9C0240C5227E5C7C00FBB659 /* ModelComponent.swift in Sources */,
+				9CA432D72289B1A100832886 /* Main.swift in Sources */,
 				9C0240D1227F779400FBB659 /* CameraComponent.swift in Sources */,
 				9C6800702288509100D96B7D /* Model.swift in Sources */,
 				9CA4329B2288F10C00832886 /* ArcballCameraComponent.swift in Sources */,
@@ -546,6 +553,7 @@
 				9C7C8467227FB13B0071E7BA /* Mesh.swift in Sources */,
 				9C0240BD227E1B3B00FBB659 /* Extentions.swift in Sources */,
 				9C0240C6227E5C7C00FBB659 /* ModelComponent.swift in Sources */,
+				9CA432D82289B1A100832886 /* Main.swift in Sources */,
 				9C0240D2227F779400FBB659 /* CameraComponent.swift in Sources */,
 				9C6800712288509100D96B7D /* Model.swift in Sources */,
 				9CA4329C2288F10C00832886 /* ArcballCameraComponent.swift in Sources */,

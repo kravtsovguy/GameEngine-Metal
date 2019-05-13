@@ -9,25 +9,11 @@
 import GameEngine
 
 
-// setting viewController class
-AppDelegate.viewControllerType = GameViewController.self
+// MARK: start
+Main.start(CommandLine.argc, CommandLine.unsafeArgv) { parameters in
+    // MARK: setting macOS initial window size
+    parameters.windowSizeMacOS = NSSize(width: 800, height: 600)
 
-
-#if os(iOS) || os(tvOS)
-import UIKit
-
-UIApplicationMain(CommandLine.argc, CommandLine.unsafeArgv, nil, NSStringFromClass(AppDelegate.self))
-
-#elseif os(OSX)
-import Cocoa
-
-// setting macOS initial window size
-AppDelegate.viewSize = NSSize(width: 800, height: 600)
-
-let app = NSApplication.shared
-let delegate = AppDelegate()
-app.delegate = delegate
-
-_ = NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)
-#endif
-
+    // MARK: setting scene
+    parameters.sceneType = MainScene.self
+}

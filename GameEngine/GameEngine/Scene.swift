@@ -14,7 +14,11 @@ open class Scene: Liveable {
     public private(set) weak var cameraComponent: CameraComponent?
     private(set) var renderables: [Renderable] = []
 
-    public init(name: String = "Untitled") {
+    required public init() {
+        self.name = "Untitled"
+    }
+
+    public init(name: String) {
         self.name = name
     }
 

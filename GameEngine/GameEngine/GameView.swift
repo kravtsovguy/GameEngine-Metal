@@ -19,7 +19,7 @@ open class GameView: MTKView {
         }
     }
 
-    public init(frame: CGRect) {
+    required public init(frame: CGRect) {
         super.init(frame: frame, device: Metal.device)
         colorPixelFormat = .bgra8Unorm
         depthStencilPixelFormat = .depth32Float

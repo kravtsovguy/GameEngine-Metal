@@ -20,11 +20,6 @@ public typealias PlatformAppDelegate = NSObject & NSApplicationDelegate
 open class AppDelegate: PlatformAppDelegate {
 
     // MARK: Begin Shared
-    public static var viewControllerType: GameViewController.Type = GameViewController.self
-    lazy var viewController: GameViewController = {
-        return AppDelegate.viewControllerType.init()
-    }()
-
     open func setupAppDelegate() {
         // override
     }
@@ -41,7 +36,7 @@ open class AppDelegate: PlatformAppDelegate {
         }
 
         let window = UIWindow()
-        window.rootViewController = self.viewController
+        window.rootViewController = Main.parameters.viewControllerType.init()
         window.makeKeyAndVisible()
 
         self.window = window
@@ -50,7 +45,6 @@ open class AppDelegate: PlatformAppDelegate {
     }
 
     #elseif os(OSX)
-    public static var viewSize: NSSize = NSSize(width: 800, height: 600)
     public var window : NSWindow?
 
     open func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -59,8 +53,8 @@ open class AppDelegate: PlatformAppDelegate {
         }
 
         let screenFrame = NSScreen.main!.frame
-        let width = AppDelegate.viewSize.width
-        let height = AppDelegate.viewSize.height
+        let width = Main.parameters.windowSizeMacOS.width
+        let height = Main.parameters.windowSizeMacOS.height
         let x = (screenFrame.width - width) / 2
         let y = (screenFrame.height - height) / 2
         let rect = NSMakeRect(x, y, width, height);
@@ -69,7 +63,7 @@ open class AppDelegate: PlatformAppDelegate {
                               backing: NSWindow.BackingStoreType.buffered,
                               defer: false)
 
-        window.contentViewController = self.viewController
+        window.contentViewController = Main.parameters.viewControllerType.init()
         window.makeKeyAndOrderFront(NSApp)
 
         self.window = window

@@ -70,7 +70,7 @@ final class MainScene: Scene {
         node.transform.scale = float3(repeating: 0.5)
     }
 
-    public init() {
+    required init() {
         super.init(name: "Main")
         add(node: camera)
         add(node: train)
