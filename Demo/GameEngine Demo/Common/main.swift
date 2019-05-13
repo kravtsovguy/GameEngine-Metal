@@ -7,12 +7,13 @@
 //
 
 import GameEngine
+import CoreGraphics
 
 
 // MARK: start
 Main.start(CommandLine.argc, CommandLine.unsafeArgv) { parameters in
     // MARK: setting macOS initial window size
-    parameters.windowSizeMacOS = NSSize(width: 800, height: 600)
+    parameters.windowSizeMacOS = CGSize(width: 800, height: 600)
 
     // MARK: setting scene
     parameters.sceneType = MainScene.self
