@@ -34,6 +34,18 @@
 		9C7C849D228043490071E7BA /* treefir.obj in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C8490228043490071E7BA /* treefir.obj */; };
 		9C7C849E228043490071E7BA /* treefir.obj in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C8490228043490071E7BA /* treefir.obj */; };
 		9C7C849F228043490071E7BA /* treefir.obj in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C8490228043490071E7BA /* treefir.obj */; };
+		9CA432C82289ADA800832886 /* bounce.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9CA432BF2289ADA800832886 /* bounce.wav */; };
+		9CA432C92289ADA800832886 /* bounce.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9CA432BF2289ADA800832886 /* bounce.wav */; };
+		9CA432CA2289ADA800832886 /* bounce.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9CA432BF2289ADA800832886 /* bounce.wav */; };
+		9CA432CB2289ADA800832886 /* lose.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9CA432C02289ADA800832886 /* lose.wav */; };
+		9CA432CC2289ADA800832886 /* lose.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9CA432C02289ADA800832886 /* lose.wav */; };
+		9CA432CD2289ADA800832886 /* lose.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9CA432C02289ADA800832886 /* lose.wav */; };
+		9CA432CE2289ADA800832886 /* win.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9CA432C12289ADA800832886 /* win.wav */; };
+		9CA432CF2289ADA800832886 /* win.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9CA432C12289ADA800832886 /* win.wav */; };
+		9CA432D02289ADA800832886 /* win.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9CA432C12289ADA800832886 /* win.wav */; };
+		9CA432D22289AFBC00832886 /* ambient.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9CA432D12289AFBC00832886 /* ambient.wav */; };
+		9CA432D32289AFBC00832886 /* ambient.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9CA432D12289AFBC00832886 /* ambient.wav */; };
+		9CA432D42289AFBC00832886 /* ambient.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9CA432D12289AFBC00832886 /* ambient.wav */; };
 		9CC82AD1227B897E00498FE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CF154132250D86A00CD00DA /* Assets.xcassets */; };
 		9CD7C12F227CE25900CDA812 /* ShadersLibrary.metallib in Resources */ = {isa = PBXBuildFile; fileRef = 9CD7C12E227CE25900CDA812 /* ShadersLibrary.metallib */; };
 		9CD7C131227CE26600CDA812 /* ShadersLibrary.metallib in Resources */ = {isa = PBXBuildFile; fileRef = 9CD7C130227CE26600CDA812 /* ShadersLibrary.metallib */; };
@@ -55,6 +67,10 @@
 		9C7C848E228043480071E7BA /* train-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "train-color.png"; sourceTree = "<group>"; };
 		9C7C848F228043490071E7BA /* treefir.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = treefir.mtl; sourceTree = "<group>"; };
 		9C7C8490228043490071E7BA /* treefir.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = treefir.obj; sourceTree = "<group>"; };
+		9CA432BF2289ADA800832886 /* bounce.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bounce.wav; sourceTree = "<group>"; };
+		9CA432C02289ADA800832886 /* lose.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = lose.wav; sourceTree = "<group>"; };
+		9CA432C12289ADA800832886 /* win.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = win.wav; sourceTree = "<group>"; };
+		9CA432D12289AFBC00832886 /* ambient.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ambient.wav; sourceTree = "<group>"; };
 		9CC82AC2227B887C00498FE3 /* GameEngine-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GameEngine-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CC82ACD227B887D00498FE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9CD7C12E227CE25900CDA812 /* ShadersLibrary.metallib */ = {isa = PBXFileReference; lastKnownFileType = "archive.metal-library"; name = ShadersLibrary.metallib; path = "../../../GameEngine/build/ShadersLibrary macOS/Debug/ShadersLibrary.metallib"; sourceTree = "<group>"; };
@@ -101,11 +117,8 @@
 		9C0240BE227E5C3E00FBB659 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				9C7C848E228043480071E7BA /* train-color.png */,
-				9C7C848D228043480071E7BA /* train.mtl */,
-				9C7C848C228043480071E7BA /* train.obj */,
-				9C7C848F228043490071E7BA /* treefir.mtl */,
-				9C7C8490228043490071E7BA /* treefir.obj */,
+				9CA432BC2289AD9600832886 /* Sounds */,
+				9CA432BB2289AD8D00832886 /* Models */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -119,6 +132,29 @@
 				9C6800922288B27700D96B7D /* ModeForwardComponent.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		9CA432BB2289AD8D00832886 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9C7C848E228043480071E7BA /* train-color.png */,
+				9C7C848D228043480071E7BA /* train.mtl */,
+				9C7C848C228043480071E7BA /* train.obj */,
+				9C7C848F228043490071E7BA /* treefir.mtl */,
+				9C7C8490228043490071E7BA /* treefir.obj */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9CA432BC2289AD9600832886 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				9CA432D12289AFBC00832886 /* ambient.wav */,
+				9CA432BF2289ADA800832886 /* bounce.wav */,
+				9CA432C02289ADA800832886 /* lose.wav */,
+				9CA432C12289ADA800832886 /* win.wav */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		9CC82AD6227B8A2300498FE3 /* iOS */ = {
@@ -293,9 +329,13 @@
 				9C7C8498228043490071E7BA /* train-color.png in Resources */,
 				9CD7C131227CE26600CDA812 /* ShadersLibrary.metallib in Resources */,
 				9CC82AD1227B897E00498FE3 /* Assets.xcassets in Resources */,
+				9CA432C92289ADA800832886 /* bounce.wav in Resources */,
 				9C7C849B228043490071E7BA /* treefir.mtl in Resources */,
+				9CA432D32289AFBC00832886 /* ambient.wav in Resources */,
 				9C7C849E228043490071E7BA /* treefir.obj in Resources */,
+				9CA432CC2289ADA800832886 /* lose.wav in Resources */,
 				9C7C8495228043490071E7BA /* train.mtl in Resources */,
+				9CA432CF2289ADA800832886 /* win.wav in Resources */,
 				9C7C8492228043490071E7BA /* train.obj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,9 +347,13 @@
 				9C7C8497228043490071E7BA /* train-color.png in Resources */,
 				9CD7C133227CE27700CDA812 /* ShadersLibrary.metallib in Resources */,
 				9CF1543A2250D86B00CD00DA /* Assets.xcassets in Resources */,
+				9CA432C82289ADA800832886 /* bounce.wav in Resources */,
 				9C7C849A228043490071E7BA /* treefir.mtl in Resources */,
+				9CA432D22289AFBC00832886 /* ambient.wav in Resources */,
 				9C7C849D228043490071E7BA /* treefir.obj in Resources */,
+				9CA432CB2289ADA800832886 /* lose.wav in Resources */,
 				9C7C8494228043490071E7BA /* train.mtl in Resources */,
+				9CA432CE2289ADA800832886 /* win.wav in Resources */,
 				9C7C8491228043490071E7BA /* train.obj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -321,9 +365,13 @@
 				9C7C8499228043490071E7BA /* train-color.png in Resources */,
 				9CD7C12F227CE25900CDA812 /* ShadersLibrary.metallib in Resources */,
 				9CF1543B2250D86B00CD00DA /* Assets.xcassets in Resources */,
+				9CA432CA2289ADA800832886 /* bounce.wav in Resources */,
 				9C7C849C228043490071E7BA /* treefir.mtl in Resources */,
+				9CA432D42289AFBC00832886 /* ambient.wav in Resources */,
 				9C7C849F228043490071E7BA /* treefir.obj in Resources */,
+				9CA432CD2289ADA800832886 /* lose.wav in Resources */,
 				9C7C8496228043490071E7BA /* train.mtl in Resources */,
+				9CA432D02289ADA800832886 /* win.wav in Resources */,
 				9C7C8493228043490071E7BA /* train.obj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

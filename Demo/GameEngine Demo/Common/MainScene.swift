@@ -26,6 +26,10 @@ final class MainScene: Scene {
 //            component.transform.position = [0, 0, -5]
 //            component.transform.rotation = [0, 0, radians(fromDegrees: 0)]
 //        }
+
+        node.add(component: SoundComponent()) { component in
+            component.playBackgroundMusic("ambient.wav")
+        }
     }
 
     let train = Node(with: "Train") { node in

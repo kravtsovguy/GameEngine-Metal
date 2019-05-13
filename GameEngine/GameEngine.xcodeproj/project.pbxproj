@@ -76,6 +76,9 @@
 		9CA432B422899C0B00832886 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432B322899C0B00832886 /* GameView.swift */; };
 		9CA432B522899C0B00832886 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432B322899C0B00832886 /* GameView.swift */; };
 		9CA432B622899C0B00832886 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432B322899C0B00832886 /* GameView.swift */; };
+		9CA432B82289ACFB00832886 /* SoundComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432B72289ACFB00832886 /* SoundComponent.swift */; };
+		9CA432B92289ACFB00832886 /* SoundComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432B72289ACFB00832886 /* SoundComponent.swift */; };
+		9CA432BA2289ACFB00832886 /* SoundComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432B72289ACFB00832886 /* SoundComponent.swift */; };
 		9CC82B7D227BC18000498FE3 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC82B30227BB38900498FE3 /* Renderer.swift */; };
 		9CC82B81227BC18100498FE3 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC82B30227BB38900498FE3 /* Renderer.swift */; };
 		9CD60575227BE76000472E9F /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC82B30227BB38900498FE3 /* Renderer.swift */; };
@@ -162,6 +165,7 @@
 		9CA432AB22898FD400832886 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		9CA432AF2289922200832886 /* Mouse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mouse.swift; sourceTree = "<group>"; };
 		9CA432B322899C0B00832886 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		9CA432B72289ACFB00832886 /* SoundComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundComponent.swift; sourceTree = "<group>"; };
 		9CC82B2E227BB38800498FE3 /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		9CC82B2F227BB38900498FE3 /* ShaderTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderTypes.h; sourceTree = "<group>"; };
 		9CC82B30227BB38900498FE3 /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
@@ -231,6 +235,7 @@
 				9C0240CF227F779400FBB659 /* CameraComponent.swift */,
 				9CA432992288F10C00832886 /* ArcballCameraComponent.swift */,
 				9CA432A32289862400832886 /* FPSCameraComponent.swift */,
+				9CA432B72289ACFB00832886 /* SoundComponent.swift */,
 			);
 			name = "Scene Graph";
 			sourceTree = "<group>";
@@ -485,6 +490,7 @@
 				9C99CBB122845C1700C71D85 /* Liveable.swift in Sources */,
 				9C68007B2288A29400D96B7D /* Metal.swift in Sources */,
 				9C6800832288A9F700D96B7D /* AppDelegate.swift in Sources */,
+				9CA432B82289ACFB00832886 /* SoundComponent.swift in Sources */,
 				9CA432AC22898FD400832886 /* Keyboard.swift in Sources */,
 				9C7C8481227FD0EC0071E7BA /* InstanceComponent.swift in Sources */,
 				9CA432A822898C8F00832886 /* KeyCodes.swift in Sources */,
@@ -517,6 +523,7 @@
 				9C99CBB222845C1700C71D85 /* Liveable.swift in Sources */,
 				9C68007C2288A29400D96B7D /* Metal.swift in Sources */,
 				9C6800842288A9F700D96B7D /* AppDelegate.swift in Sources */,
+				9CA432B92289ACFB00832886 /* SoundComponent.swift in Sources */,
 				9CA432AD22898FD400832886 /* Keyboard.swift in Sources */,
 				9C7C8482227FD0EC0071E7BA /* InstanceComponent.swift in Sources */,
 				9CA432A922898C8F00832886 /* KeyCodes.swift in Sources */,
@@ -549,6 +556,7 @@
 				9C99CBB322845C1700C71D85 /* Liveable.swift in Sources */,
 				9C68007D2288A29400D96B7D /* Metal.swift in Sources */,
 				9C6800852288A9F700D96B7D /* AppDelegate.swift in Sources */,
+				9CA432BA2289ACFB00832886 /* SoundComponent.swift in Sources */,
 				9CA432AE22898FD400832886 /* Keyboard.swift in Sources */,
 				9C7C8483227FD0EC0071E7BA /* InstanceComponent.swift in Sources */,
 				9CA432AA22898C8F00832886 /* KeyCodes.swift in Sources */,
