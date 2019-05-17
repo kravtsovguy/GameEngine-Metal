@@ -41,8 +41,8 @@ open class AppDelegate: PlatformAppDelegate {
         }
 
         let window = UIWindow()
-        window.rootViewController = Main.parameters.viewControllerType.init()
         window.makeKeyAndVisible()
+        window.rootViewController = Main.parameters.viewControllerType.init()
 
         self.window = window
 
@@ -57,19 +57,24 @@ open class AppDelegate: PlatformAppDelegate {
             self.setupAppDelegate()
         }
 
-        let screenFrame = NSScreen.main!.frame
+        guard let mainScreen = NSScreen.main else {
+            fatalError("No Available Screens")
+        }
+
+        let screenFrame = mainScreen.frame
         let width = Main.parameters.windowSizeMacOS.width
         let height = Main.parameters.windowSizeMacOS.height
         let x = (screenFrame.width - width) / 2
         let y = (screenFrame.height - height) / 2
         let rect = NSMakeRect(x, y, width, height);
+        let styleMask: NSWindow.StyleMask = [.titled, .resizable, .closable]
         let window = NSWindow(contentRect: rect,
-                              styleMask: [.titled, .resizable, .closable],
-                              backing: NSWindow.BackingStoreType.buffered,
+                              styleMask: styleMask,
+                              backing: .buffered,
                               defer: false)
 
-        window.contentViewController = Main.parameters.viewControllerType.init()
         window.makeKeyAndOrderFront(NSApp)
+        window.contentViewController = Main.parameters.viewControllerType.init()
 
         self.window = window
     }

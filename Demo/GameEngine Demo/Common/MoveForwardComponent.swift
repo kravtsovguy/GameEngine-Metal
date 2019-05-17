@@ -1,5 +1,5 @@
 //
-//  ModeForwardComponent.swift
+//  MoveForwardComponent.swift
 //  GameEngine-Demo
 //
 //  Created by Matvey Kravtsov on 09/05/2019.
@@ -9,7 +9,7 @@
 import GameEngine
 
 
-final class ModeForwardComponent: Component {
+final class MoveForwardComponent: Component {
 
     override public func update(with deltaTime: Float) {
         self.transform.position += self.transform.rightVector * deltaTime

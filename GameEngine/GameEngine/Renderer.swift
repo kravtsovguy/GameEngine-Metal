@@ -14,8 +14,10 @@ class Renderer: NSObject {
     private let depthStencilState = createDepthState()!
     private var uniforms = Uniforms()
     private var fragmentUniforms = FragmentUniforms()
+    private var lastRenderTime: CFAbsoluteTime?
     var scene: Scene? {
         didSet {
+            lastRenderTime = nil
             scene?.start()
         }
     }
@@ -68,9 +70,6 @@ extension Renderer: MTKViewDelegate {
             let drawable = view.currentDrawable
             else { return }
 
-        let deltaTime = 1 / Float(view.preferredFramesPerSecond)
-        scene.update(with: deltaTime)
-
         commandEncoder.setDepthStencilState(depthStencilState)
 
         uniforms.viewMatrix = camera.viewMatrix
@@ -97,6 +96,16 @@ extension Renderer: MTKViewDelegate {
 
         commandBuffer.present(drawable)
         commandBuffer.commit()
+
+//        MARK: times alternatives
+//        CACurrentMediaTime()
+//        mach_absolute_time()
+//        CFAbsoluteTimeGetCurrent()
+        if let lastRenderTime = self.lastRenderTime {
+            let deltaTime = CFAbsoluteTimeGetCurrent() - lastRenderTime
+            scene.update(with: Float(deltaTime))
+        }
+        lastRenderTime = CFAbsoluteTimeGetCurrent()
     }
 
 }

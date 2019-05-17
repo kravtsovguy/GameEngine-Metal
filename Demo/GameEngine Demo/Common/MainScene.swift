@@ -35,7 +35,7 @@ final class MainScene: Scene {
     let train = Node(with: "Train") { node in
         let trainModel = Model(withObject: "train")
         node.add(component: ModelComponent(model: trainModel))
-        node.add(component: ModeForwardComponent())
+        node.add(component: MoveForwardComponent())
         node.transform.position.z = 0
         node.transform.scale = float3(repeating: 0.5)
         node.transform.rotation.y = radians(fromDegrees: 0)

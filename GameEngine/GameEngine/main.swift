@@ -16,7 +16,7 @@ public enum Main {
 
     public final class Parameters {
 
-        public var windowSizeMacOS: CGSize = CGSize(width: 800, height: 600)
+        public var windowSizeMacOS: CGSize = CGSize(width: 1200, height: 800)
         public var appDelegateType: AppDelegate.Type = AppDelegate.self
         public var viewControllerType: GameViewController.Type = GameViewController.self
         public var viewType: GameView.Type = GameView.self

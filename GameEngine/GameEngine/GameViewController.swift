@@ -27,9 +27,9 @@ open class GameViewController: PlatformViewController {
         var frame = CGRect(origin: .zero, size: .zero)
 
         #if os(iOS) || os(tvOS)
-        frame.size = UIScreen.main.bounds.size
+        frame.size = UIApplication.shared.keyWindow!.frame.size
         #elseif os(OSX)
-        frame.size = Main.parameters.windowSizeMacOS
+        frame.size = NSApplication.shared.keyWindow!.frame.size
         #endif
 
         return frame

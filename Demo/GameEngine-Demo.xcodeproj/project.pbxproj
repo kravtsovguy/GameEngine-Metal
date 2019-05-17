@@ -13,9 +13,9 @@
 		9C68008F2288B25500D96B7D /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68008E2288B25500D96B7D /* MainScene.swift */; };
 		9C6800902288B25500D96B7D /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68008E2288B25500D96B7D /* MainScene.swift */; };
 		9C6800912288B25500D96B7D /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68008E2288B25500D96B7D /* MainScene.swift */; };
-		9C6800932288B27700D96B7D /* ModeForwardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6800922288B27700D96B7D /* ModeForwardComponent.swift */; };
-		9C6800942288B27700D96B7D /* ModeForwardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6800922288B27700D96B7D /* ModeForwardComponent.swift */; };
-		9C6800952288B27700D96B7D /* ModeForwardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6800922288B27700D96B7D /* ModeForwardComponent.swift */; };
+		9C6800932288B27700D96B7D /* MoveForwardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6800922288B27700D96B7D /* MoveForwardComponent.swift */; };
+		9C6800942288B27700D96B7D /* MoveForwardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6800922288B27700D96B7D /* MoveForwardComponent.swift */; };
+		9C6800952288B27700D96B7D /* MoveForwardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6800922288B27700D96B7D /* MoveForwardComponent.swift */; };
 		9C7C8491228043490071E7BA /* train.obj in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C848C228043480071E7BA /* train.obj */; };
 		9C7C8492228043490071E7BA /* train.obj in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C848C228043480071E7BA /* train.obj */; };
 		9C7C8493228043490071E7BA /* train.obj in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C848C228043480071E7BA /* train.obj */; };
@@ -57,7 +57,7 @@
 /* Begin PBXFileReference section */
 		9C6800862288AA3500D96B7D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		9C68008E2288B25500D96B7D /* MainScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScene.swift; sourceTree = "<group>"; };
-		9C6800922288B27700D96B7D /* ModeForwardComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeForwardComponent.swift; sourceTree = "<group>"; };
+		9C6800922288B27700D96B7D /* MoveForwardComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoveForwardComponent.swift; sourceTree = "<group>"; };
 		9C7C848C228043480071E7BA /* train.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = train.obj; sourceTree = "<group>"; };
 		9C7C848D228043480071E7BA /* train.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = train.mtl; sourceTree = "<group>"; };
 		9C7C848E228043480071E7BA /* train-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "train-color.png"; sourceTree = "<group>"; };
@@ -124,7 +124,7 @@
 			children = (
 				9C6800862288AA3500D96B7D /* main.swift */,
 				9C68008E2288B25500D96B7D /* MainScene.swift */,
-				9C6800922288B27700D96B7D /* ModeForwardComponent.swift */,
+				9C6800922288B27700D96B7D /* MoveForwardComponent.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -379,7 +379,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C6800902288B25500D96B7D /* MainScene.swift in Sources */,
-				9C6800942288B27700D96B7D /* ModeForwardComponent.swift in Sources */,
+				9C6800942288B27700D96B7D /* MoveForwardComponent.swift in Sources */,
 				9C6800882288AA3500D96B7D /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -389,7 +389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C68008F2288B25500D96B7D /* MainScene.swift in Sources */,
-				9C6800932288B27700D96B7D /* ModeForwardComponent.swift in Sources */,
+				9C6800932288B27700D96B7D /* MoveForwardComponent.swift in Sources */,
 				9C6800872288AA3500D96B7D /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -399,7 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C6800912288B25500D96B7D /* MainScene.swift in Sources */,
-				9C6800952288B27700D96B7D /* ModeForwardComponent.swift in Sources */,
+				9C6800952288B27700D96B7D /* MoveForwardComponent.swift in Sources */,
 				9C6800892288ABEC00D96B7D /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

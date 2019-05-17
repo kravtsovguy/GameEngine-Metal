@@ -244,7 +244,7 @@
 			name = "Scene Graph";
 			sourceTree = "<group>";
 		};
-		9C99CBAF2284594A00C71D85 /* Initialize */ = {
+		9C99CBAF2284594A00C71D85 /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				9CA432D52289B1A100832886 /* Main.swift */,
@@ -252,7 +252,7 @@
 				9CD605CA227C67CC00472E9F /* GameViewController.swift */,
 				9CA432B322899C0B00832886 /* GameView.swift */,
 			);
-			name = Initialize;
+			name = Main;
 			sourceTree = "<group>";
 		};
 		9C99CBB822846C7A00C71D85 /* Shared */ = {
@@ -303,7 +303,7 @@
 			children = (
 				9C99CBB822846C7A00C71D85 /* Shared */,
 				9C99CBAD228458BB00C71D85 /* Core */,
-				9C99CBAF2284594A00C71D85 /* Initialize */,
+				9C99CBAF2284594A00C71D85 /* Main */,
 			);
 			path = GameEngine;
 			sourceTree = "<group>";
