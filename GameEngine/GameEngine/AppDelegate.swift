@@ -19,17 +19,15 @@ public typealias PlatformAppDelegate = NSObject & NSApplicationDelegate
 
 open class AppDelegate: PlatformAppDelegate {
 
+    // MARK: Shared
+    open func setup() {
+        // override
+    }
+
     // MARK: init
     required public override init() {
         super.init()
     }
-
-    // MARK: Begin Shared
-    open func setupAppDelegate() {
-        // override
-    }
-    // MARK: End Shared
-
 
     #if os(iOS) || os(tvOS)
     public var window: UIWindow?
@@ -37,14 +35,12 @@ open class AppDelegate: PlatformAppDelegate {
     open func application(_ application: UIApplication,
                           didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         defer {
-            self.setupAppDelegate()
+            self.setup()
         }
 
-        let window = UIWindow()
-        window.makeKeyAndVisible()
-        window.rootViewController = Main.parameters.viewControllerType.init()
-
-        self.window = window
+        window = UIWindow()
+        window?.makeKeyAndVisible()
+        window?.rootViewController = Main.parameters.viewControllerType.init()
 
         return true
     }
@@ -54,29 +50,17 @@ open class AppDelegate: PlatformAppDelegate {
 
     open func applicationDidFinishLaunching(_ aNotification: Notification) {
         defer {
-            self.setupAppDelegate()
+            self.setup()
         }
 
-        guard let mainScreen = NSScreen.main else {
-            fatalError("No Available Screens")
-        }
+        window = NSWindow(contentRect: CGRect(origin: .zero, size: Main.parameters.windowSizeMacOS),
+                          styleMask: [.titled, .resizable, .closable],
+                          backing: .buffered,
+                          defer: false)
 
-        let screenFrame = mainScreen.frame
-        let width = Main.parameters.windowSizeMacOS.width
-        let height = Main.parameters.windowSizeMacOS.height
-        let x = (screenFrame.width - width) / 2
-        let y = (screenFrame.height - height) / 2
-        let rect = NSMakeRect(x, y, width, height);
-        let styleMask: NSWindow.StyleMask = [.titled, .resizable, .closable]
-        let window = NSWindow(contentRect: rect,
-                              styleMask: styleMask,
-                              backing: .buffered,
-                              defer: false)
-
-        window.makeKeyAndOrderFront(NSApp)
-        window.contentViewController = Main.parameters.viewControllerType.init()
-
-        self.window = window
+        window?.makeKeyAndOrderFront(NSApp)
+        window?.center()
+        window?.contentViewController = Main.parameters.viewControllerType.init()
     }
 
     public func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
