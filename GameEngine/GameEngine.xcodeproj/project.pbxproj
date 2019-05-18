@@ -22,6 +22,37 @@
 		9C0240D0227F779400FBB659 /* CameraComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0240CF227F779400FBB659 /* CameraComponent.swift */; };
 		9C0240D1227F779400FBB659 /* CameraComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0240CF227F779400FBB659 /* CameraComponent.swift */; };
 		9C0240D2227F779400FBB659 /* CameraComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0240CF227F779400FBB659 /* CameraComponent.swift */; };
+		9C2AAB50228F6F010050C139 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C2AAB4F228F6F010050C139 /* Assets.xcassets */; };
+		9C2AAB5B229022030050C139 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2AAB5A229022030050C139 /* main.swift */; };
+		9C2AAB5C229022670050C139 /* Metal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68007A2288A29400D96B7D /* Metal.swift */; };
+		9C2AAB5D229022670050C139 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC82B30227BB38900498FE3 /* Renderer.swift */; };
+		9C2AAB5E229022670050C139 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0240BA227E1ACA00FBB659 /* Extentions.swift */; };
+		9C2AAB5F229022670050C139 /* MathLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0240CB227F236F00FBB659 /* MathLibrary.swift */; };
+		9C2AAB60229022670050C139 /* KeyCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432A722898C8F00832886 /* KeyCodes.swift */; };
+		9C2AAB61229022670050C139 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432AB22898FD400832886 /* Keyboard.swift */; };
+		9C2AAB62229022670050C139 /* Mouse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432AF2289922200832886 /* Mouse.swift */; };
+		9C2AAB63229022670050C139 /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C845C227FA8800071E7BA /* Renderable.swift */; };
+		9C2AAB64229022670050C139 /* Liveable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C99CBB022845C1700C71D85 /* Liveable.swift */; };
+		9C2AAB65229022670050C139 /* Mesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C8464227FB13B0071E7BA /* Mesh.swift */; };
+		9C2AAB66229022670050C139 /* Submesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68007222885D6B00D96B7D /* Submesh.swift */; };
+		9C2AAB67229022670050C139 /* Textures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68007622885DB300D96B7D /* Textures.swift */; };
+		9C2AAB68229022670050C139 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68006E2288509000D96B7D /* Model.swift */; };
+		9C2AAB69229022670050C139 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C8458227FA8410071E7BA /* Scene.swift */; };
+		9C2AAB6A229022670050C139 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C8453227FA4070071E7BA /* Node.swift */; };
+		9C2AAB6B229022670050C139 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C99CBA9228457B900C71D85 /* Component.swift */; };
+		9C2AAB6C229022670050C139 /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0240C7227F228C00FBB659 /* Transform.swift */; };
+		9C2AAB6D229022670050C139 /* ModelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0240C3227E5C7C00FBB659 /* ModelComponent.swift */; };
+		9C2AAB6E229022670050C139 /* InstanceComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C8480227FD0EC0071E7BA /* InstanceComponent.swift */; };
+		9C2AAB6F229022670050C139 /* CameraComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0240CF227F779400FBB659 /* CameraComponent.swift */; };
+		9C2AAB70229022670050C139 /* ArcballCameraComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432992288F10C00832886 /* ArcballCameraComponent.swift */; };
+		9C2AAB71229022670050C139 /* FPSCameraComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432A32289862400832886 /* FPSCameraComponent.swift */; };
+		9C2AAB72229022670050C139 /* SoundComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432B72289ACFB00832886 /* SoundComponent.swift */; };
+		9C2AAB73229022800050C139 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432D52289B1A100832886 /* Main.swift */; };
+		9C2AAB74229022800050C139 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6800822288A9F700D96B7D /* AppDelegate.swift */; };
+		9C2AAB75229022800050C139 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD605CA227C67CC00472E9F /* GameViewController.swift */; };
+		9C2AAB76229022800050C139 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432B322899C0B00832886 /* GameView.swift */; };
+		9C2AAB7A229023BF0050C139 /* EditorScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2AAB79229023BF0050C139 /* EditorScene.swift */; };
+		9C2AAB7F229026390050C139 /* ShadersLibrary.metallib in Resources */ = {isa = PBXBuildFile; fileRef = 9C2AAB7E229026390050C139 /* ShadersLibrary.metallib */; };
 		9C68006F2288509100D96B7D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68006E2288509000D96B7D /* Model.swift */; };
 		9C6800702288509100D96B7D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68006E2288509000D96B7D /* Model.swift */; };
 		9C6800712288509100D96B7D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68006E2288509000D96B7D /* Model.swift */; };
@@ -150,6 +181,12 @@
 		9C24B4AD227C7BA7009DA259 /* ShadersLibrary.metallib */ = {isa = PBXFileReference; explicitFileType = "archive.metal-library"; includeInIndex = 0; path = ShadersLibrary.metallib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C24B4AE227C7BA7009DA259 /* libGameEngine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGameEngine.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C24B4AF227C7BA7009DA259 /* ShadersLibrary.metallib */ = {isa = PBXFileReference; explicitFileType = "archive.metal-library"; includeInIndex = 0; path = ShadersLibrary.metallib; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C2AAB4B228F6F000050C139 /* GameEngine-Editor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GameEngine-Editor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C2AAB4F228F6F010050C139 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9C2AAB54228F6F010050C139 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9C2AAB5A229022030050C139 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		9C2AAB79229023BF0050C139 /* EditorScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorScene.swift; sourceTree = "<group>"; };
+		9C2AAB7E229026390050C139 /* ShadersLibrary.metallib */ = {isa = PBXFileReference; lastKnownFileType = "archive.metal-library"; name = ShadersLibrary.metallib; path = "build/ShadersLibrary macOS/Debug/ShadersLibrary.metallib"; sourceTree = SOURCE_ROOT; };
 		9C68006E2288509000D96B7D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		9C68007222885D6B00D96B7D /* Submesh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Submesh.swift; sourceTree = "<group>"; };
 		9C68007622885DB300D96B7D /* Textures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Textures.swift; sourceTree = "<group>"; };
@@ -178,6 +215,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		9C2AAB48228F6F000050C139 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9CC82B5C227BC12300498FE3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -208,6 +252,18 @@
 				9CD7C121227CD98000CDA812 /* GameEngine.xcconfig */,
 			);
 			path = Configuration;
+			sourceTree = "<group>";
+		};
+		9C2AAB4C228F6F000050C139 /* GameEngine-Editor */ = {
+			isa = PBXGroup;
+			children = (
+				9C2AAB7E229026390050C139 /* ShadersLibrary.metallib */,
+				9C2AAB4F228F6F010050C139 /* Assets.xcassets */,
+				9C2AAB54228F6F010050C139 /* Info.plist */,
+				9C2AAB5A229022030050C139 /* main.swift */,
+				9C2AAB79229023BF0050C139 /* EditorScene.swift */,
+			);
+			path = "GameEngine-Editor";
 			sourceTree = "<group>";
 		};
 		9C99CBAD228458BB00C71D85 /* Core */ = {
@@ -287,6 +343,7 @@
 			isa = PBXGroup;
 			children = (
 				9CC82B03227BB2DA00498FE3 /* GameEngine */,
+				9C2AAB4C228F6F000050C139 /* GameEngine-Editor */,
 				9CC82B93227BCB6200498FE3 /* ShadersLibrary */,
 				9C0240B9227E0DC700FBB659 /* Configuration */,
 				9C24B4AA227C7BA7009DA259 /* libGameEngine.a */,
@@ -295,6 +352,7 @@
 				9C24B4AD227C7BA7009DA259 /* ShadersLibrary.metallib */,
 				9C24B4AE227C7BA7009DA259 /* libGameEngine.a */,
 				9C24B4AF227C7BA7009DA259 /* ShadersLibrary.metallib */,
+				9C2AAB4B228F6F000050C139 /* GameEngine-Editor.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -319,6 +377,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		9C2AAB4A228F6F000050C139 /* GameEngine-Editor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9C2AAB58228F6F010050C139 /* Build configuration list for PBXNativeTarget "GameEngine-Editor" */;
+			buildPhases = (
+				9C2AAB47228F6F000050C139 /* Sources */,
+				9C2AAB48228F6F000050C139 /* Frameworks */,
+				9C2AAB49228F6F000050C139 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "GameEngine-Editor";
+			productName = "GameEngine-Editor";
+			productReference = 9C2AAB4B228F6F000050C139 /* GameEngine-Editor.app */;
+			productType = "com.apple.product-type.application";
+		};
 		9CC82B5D227BC12300498FE3 /* GameEngine macOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9CC82B64227BC12300498FE3 /* Build configuration list for PBXNativeTarget "GameEngine macOS" */;
@@ -427,6 +502,10 @@
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Matvey Kravtsov";
 				TargetAttributes = {
+					9C2AAB4A228F6F000050C139 = {
+						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
+					};
 					9CC82B5D227BC12300498FE3 = {
 						CreatedOnToolsVersion = 10.2.1;
 					};
@@ -453,6 +532,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 9CC82AE2227BB15D00498FE3;
 			productRefGroup = 9CC82AE2227BB15D00498FE3;
@@ -465,11 +545,60 @@
 				9CD60584227BEE8000472E9F /* ShadersLibrary macOS */,
 				9CD60599227BF38F00472E9F /* ShadersLibrary iOS */,
 				9CD605A7227BF43900472E9F /* ShadersLibrary tvOS */,
+				9C2AAB4A228F6F000050C139 /* GameEngine-Editor */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		9C2AAB49228F6F000050C139 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C2AAB7F229026390050C139 /* ShadersLibrary.metallib in Resources */,
+				9C2AAB50228F6F010050C139 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		9C2AAB47228F6F000050C139 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C2AAB70229022670050C139 /* ArcballCameraComponent.swift in Sources */,
+				9C2AAB71229022670050C139 /* FPSCameraComponent.swift in Sources */,
+				9C2AAB60229022670050C139 /* KeyCodes.swift in Sources */,
+				9C2AAB65229022670050C139 /* Mesh.swift in Sources */,
+				9C2AAB69229022670050C139 /* Scene.swift in Sources */,
+				9C2AAB6B229022670050C139 /* Component.swift in Sources */,
+				9C2AAB76229022800050C139 /* GameView.swift in Sources */,
+				9C2AAB5E229022670050C139 /* Extentions.swift in Sources */,
+				9C2AAB6D229022670050C139 /* ModelComponent.swift in Sources */,
+				9C2AAB74229022800050C139 /* AppDelegate.swift in Sources */,
+				9C2AAB7A229023BF0050C139 /* EditorScene.swift in Sources */,
+				9C2AAB61229022670050C139 /* Keyboard.swift in Sources */,
+				9C2AAB63229022670050C139 /* Renderable.swift in Sources */,
+				9C2AAB5B229022030050C139 /* main.swift in Sources */,
+				9C2AAB64229022670050C139 /* Liveable.swift in Sources */,
+				9C2AAB75229022800050C139 /* GameViewController.swift in Sources */,
+				9C2AAB68229022670050C139 /* Model.swift in Sources */,
+				9C2AAB66229022670050C139 /* Submesh.swift in Sources */,
+				9C2AAB5D229022670050C139 /* Renderer.swift in Sources */,
+				9C2AAB6A229022670050C139 /* Node.swift in Sources */,
+				9C2AAB6F229022670050C139 /* CameraComponent.swift in Sources */,
+				9C2AAB6E229022670050C139 /* InstanceComponent.swift in Sources */,
+				9C2AAB67229022670050C139 /* Textures.swift in Sources */,
+				9C2AAB72229022670050C139 /* SoundComponent.swift in Sources */,
+				9C2AAB73229022800050C139 /* Main.swift in Sources */,
+				9C2AAB5C229022670050C139 /* Metal.swift in Sources */,
+				9C2AAB5F229022670050C139 /* MathLibrary.swift in Sources */,
+				9C2AAB6C229022670050C139 /* Transform.swift in Sources */,
+				9C2AAB62229022670050C139 /* Mouse.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9CC82B5B227BC12300498FE3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -617,6 +746,143 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		9C2AAB56228F6F010050C139 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 83W65ZB2H6;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "GameEngine-Editor/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "kravtsov.GameEngine-Editor";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		9C2AAB57228F6F010050C139 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 83W65ZB2H6;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "GameEngine-Editor/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "kravtsov.GameEngine-Editor";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		9CC82AE7227BB15D00498FE3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9CD7C121227CD98000CDA812 /* GameEngine.xcconfig */;
@@ -1117,6 +1383,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		9C2AAB58228F6F010050C139 /* Build configuration list for PBXNativeTarget "GameEngine-Editor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C2AAB56228F6F010050C139 /* Debug */,
+				9C2AAB57228F6F010050C139 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9CC82AE6227BB15D00498FE3 /* Build configuration list for PBXProject "GameEngine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

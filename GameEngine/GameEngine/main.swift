@@ -27,8 +27,8 @@ public enum Main {
     
     static var parameters: Parameters = Parameters()
 
-    public static func start(_ argc: Int32,
-                             _ argv: UnsafeMutablePointer<UnsafeMutablePointer<CChar>?>,
+    public static func start(_ argc: Int32 = CommandLine.argc,
+                             _ argv: UnsafeMutablePointer<UnsafeMutablePointer<CChar>?> = CommandLine.unsafeArgv,
                              builder:((Parameters)->())? = nil) {
         builder?(parameters)
 
