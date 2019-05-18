@@ -21,6 +21,16 @@ open class GameView: MTKView {
 
     required public init(frame: CGRect) {
         super.init(frame: frame, device: Metal.device)
+        setup()
+    }
+
+    required public init(coder: NSCoder) {
+        super.init(coder: coder)
+        device = Metal.device
+        setup()
+    }
+
+    open func setup() {
         colorPixelFormat = .bgra8Unorm
         depthStencilPixelFormat = .depth32Float
         preferredFramesPerSecond = 60
@@ -34,10 +44,6 @@ open class GameView: MTKView {
         addGestureRecognizer(pan)
         addGestureRecognizer(pinch)
         #endif
-    }
-
-    required public init(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 
     #if os(iOS)
