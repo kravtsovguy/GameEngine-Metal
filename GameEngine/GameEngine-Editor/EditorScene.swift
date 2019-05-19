@@ -22,6 +22,7 @@ final class EditorScene: Scene {
                                                         specularColor: [0.5,0.5,0.5],
                                                         shininess: 1))
         node.add(component: ModelComponent(model: planeModel))
+        node.transform.scale = [3, 1, 3]
     }
 
     required init() {

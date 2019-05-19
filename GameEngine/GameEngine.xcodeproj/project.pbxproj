@@ -146,6 +146,13 @@
 			remoteGlobalIDString = 9CD605A7227BF43900472E9F;
 			remoteInfo = "ShadersLibrary tvOS";
 		};
+		9CFD0A9F2291BF390094CBCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9CC82AE3227BB15D00498FE3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9CC82B5D227BC12300498FE3;
+			remoteInfo = "GameEngine macOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -388,6 +395,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				9CFD0AA02291BF390094CBCC /* PBXTargetDependency */,
 			);
 			name = "GameEngine-Editor";
 			productName = "GameEngine-Editor";
@@ -742,6 +750,11 @@
 			isa = PBXTargetDependency;
 			target = 9CD605A7227BF43900472E9F /* ShadersLibrary tvOS */;
 			targetProxy = 9CD605B0227BF46800472E9F /* PBXContainerItemProxy */;
+		};
+		9CFD0AA02291BF390094CBCC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9CC82B5D227BC12300498FE3 /* GameEngine macOS */;
+			targetProxy = 9CFD0A9F2291BF390094CBCC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
