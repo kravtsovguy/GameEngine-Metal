@@ -11,7 +11,7 @@ import MetalKit
 
 protocol Renderable: AnyObject {
     var name: String { get }
+    var id: UInt { get }
     var transform: Transform { get }
     func render(commandEncoder: MTLRenderCommandEncoder)
-    func renderEditor(commandEncoder: MTLRenderCommandEncoder)
 }

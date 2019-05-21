@@ -10,20 +10,16 @@ import MetalKit
 
 
 open class ModelComponent: Component {
+
+    static var modelComponentsCount: UInt = 1
     
     let model: Model
     var name: String { return model.name }
-    private var editorColor: float3 =  float3.random(in: 0...1)
-    
-//    {
-////        var random = SystemRandomNumberGenerator()
-////        let r: UInt8 = random.next()
-////        let g: UInt8 = random.next()
-////        let b: UInt8 = random.next()
-////        Float.random(in: 0...1)
-//        float3.random(in: 0..1)
-//        return [Float.random(in: 0...1), Float.random(in: 0...1), Float.random(in: 0...1)]
-//    }()
+    let id: UInt = {
+        let id = modelComponentsCount
+        modelComponentsCount += 1
+        return id
+    }()
 
     public init(model: Model) {
         self.model = model
@@ -62,22 +58,5 @@ extension ModelComponent: Renderable {
             }
         }
     }
-
-    func renderEditor(commandEncoder: MTLRenderCommandEncoder) {
-        for mesh in model.meshes {
-            for vertexBuffer in mesh.mtkMesh.vertexBuffers {
-
-                commandEncoder.setVertexBuffer(vertexBuffer.buffer, offset: 0, index: 0)
-
-                for submesh in mesh.submeshes {
-                    commandEncoder.setFragmentBytes(&editorColor,
-                                                    length: MemoryLayout<float3>.stride,
-                                                    index: 12)
-
-                    render(commandEncoder: commandEncoder, submesh: submesh)
-                }
-            }
-        }
-    }
-
+    
 }

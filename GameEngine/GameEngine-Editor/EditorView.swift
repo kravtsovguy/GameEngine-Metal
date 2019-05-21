@@ -6,12 +6,37 @@
 //  Copyright © 2019 Matvey Kravtsov. All rights reserved.
 //
 
+import Cocoa
+
 
 class EditorView: GameView {
+    let renderPass: EditorRendererPass = EditorRendererPass()
 
     override func setup() {
         super.setup()
-        renderer.renderPasses.append(EditorRendererPass())
+        renderer.renderPasses.append(renderPass)
+    }
+
+    open override func mouseDown(with event: NSEvent) {
+        super.mouseDown(with: event)
+        let scale: uint = UInt32(self.currentDrawable!.layer.contentsScale)
+        let size: uint2 = [UInt32(self.drawableSize.width), UInt32(self.drawableSize.height)]
+        let position: uint2 = [UInt32(event.locationInWindow.x) * scale, size.y - UInt32(event.locationInWindow.y) * scale]
+//        print(position)
+
+        let index = Int(position.y * size.x + position.x)
+
+        let pixel = renderPass.pixelsPointer![index]
+//        print(pixel)
+
+        var selected: Renderable?
+        for renderable in scene?.renderables ?? [] {
+            if pixel.isEqualTo(rgbColor: renderable.editorColor) {
+                selected = renderable
+            }
+        }
+
+        print("select \(selected?.name ?? "none")")
     }
 
 }

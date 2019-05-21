@@ -28,6 +28,14 @@ enum Metal {
         return defaultLibrary
     }()
 
+    static let developerLibrary: MTLLibrary = {
+        guard
+            let defaultLibrary = device.makeDefaultLibrary() else {
+                fatalError("Unable to load developer's shaders library")
+        }
+        return defaultLibrary
+    }()
+
     static let commandQueue: MTLCommandQueue = {
         guard let commandQueue = device.makeCommandQueue() else {
             fatalError("Unable to make command queue")

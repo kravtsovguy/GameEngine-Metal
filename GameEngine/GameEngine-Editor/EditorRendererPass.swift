@@ -10,6 +10,18 @@ import MetalKit
 
 class EditorRendererPass: RendererPassProtocol {
 
+    struct Pixel {
+        let blue: UInt8
+        let green: UInt8
+        let red: UInt8
+        let alpha: UInt8
+
+        func isEqualTo(rgbColor: RGBColor) -> Bool {
+            return rgbColor.red == red && rgbColor.green == green && rgbColor.blue == blue
+        }
+    }
+
+    private(set) var pixelsPointer: UnsafeMutablePointer<Pixel>! = nil
     var renderPassDescriptor = MTLRenderPassDescriptor()
     private let editorPipeline = createEditorRenderPipeline()
     private var editorTexture: MTLTexture!
@@ -18,8 +30,8 @@ class EditorRendererPass: RendererPassProtocol {
         let pipelineStateDescriptor = MTLRenderPipelineDescriptor()
         pipelineStateDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm //view.colorPixelFormat
         pipelineStateDescriptor.depthAttachmentPixelFormat = .depth32Float //view.depthStencilPixelFormat
-        pipelineStateDescriptor.vertexFunction =  Metal.library.makeFunction(name: "vertex_editor")
-        pipelineStateDescriptor.fragmentFunction = Metal.library.makeFunction(name: "fragment_editor")
+        pipelineStateDescriptor.vertexFunction =  Metal.developerLibrary.makeFunction(name: "vertex_editor")
+        pipelineStateDescriptor.fragmentFunction = Metal.developerLibrary.makeFunction(name: "fragment_editor")
         pipelineStateDescriptor.vertexDescriptor = MTLVertexDescriptor.defaultVertexDescriptor()
 
         return try! Metal.device.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
@@ -48,25 +60,19 @@ class EditorRendererPass: RendererPassProtocol {
         renderPassDescriptor.depthAttachment = depthAttachment
     }
 
-    struct Pixel {
-        let blue: UInt8
-        let green: UInt8
-        let red: UInt8
-        let alpha: UInt8
-    }
-
-    func readTexture(texture: MTLTexture) -> (data:UnsafeMutablePointer<Pixel>, width: Int, height: Int)  {
+    func readTexture(texture: MTLTexture) {
+        pixelsPointer?.deallocate()
         let width = texture.width
         let height = texture.height
         let sourceRowBytes = width * MemoryLayout<Pixel>.size
-        let floatValues = UnsafeMutablePointer<Pixel>.allocate(capacity: width * height)
+        let pixelValues = UnsafeMutablePointer<Pixel>.allocate(capacity: width * height)
 
-        texture.getBytes(floatValues,
+        texture.getBytes(pixelValues,
                          bytesPerRow: sourceRowBytes,
                          from: MTLRegionMake2D(0, 0, width, height),
                          mipmapLevel: 0)
 
-        return (data: floatValues, width, height)
+        pixelsPointer = pixelValues
     }
 
     func setup(commandBuffer: MTLCommandBuffer) {
@@ -79,7 +85,8 @@ class EditorRendererPass: RendererPassProtocol {
     }
 
     func render(commandEncoder: MTLRenderCommandEncoder, renderable: Renderable) {
-        renderable.renderEditor(commandEncoder: commandEncoder)
+        guard let component = renderable as? ModelComponent else { return }
+        component.renderEditor(commandEncoder: commandEncoder)
     }
 
     func teardown(commandBuffer: MTLCommandBuffer) {
@@ -90,7 +97,7 @@ class EditorRendererPass: RendererPassProtocol {
     }
 
     func commandBufferCompleted(commandBuffer: MTLCommandBuffer) {
-        _ = readTexture(texture: editorTexture)
+        readTexture(texture: editorTexture)
     }
 
     func updateWithView(view: MTKView) {

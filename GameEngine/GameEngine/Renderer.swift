@@ -15,7 +15,8 @@ final class Renderer: NSObject {
     private(set) var uniforms = Uniforms()
     private(set) var fragmentUniforms = FragmentUniforms()
     private var lastRenderTime: CFAbsoluteTime?
-    var renderPasses: [RendererPassProtocol] = [MainRendererPass()]
+    private let mainPass: RendererPassProtocol = MainRendererPass()
+    var renderPasses: [RendererPassProtocol] = []
     var scene: Scene? {
         didSet {
             lastRenderTime = nil
@@ -106,10 +107,13 @@ extension Renderer: MTKViewDelegate {
         uniforms.projectionMatrix = camera.projectionMatrix
         fragmentUniforms.cameraPosition = camera.transform.position
 
-        renderPasses[0].updateWithView(view: view)
+        mainPass.updateWithView(view: view)
+        render(commandBuffer: commandBuffer, renderPass: mainPass, renderables: scene.renderables)
+
         for renderPass in renderPasses {
             render(commandBuffer: commandBuffer, renderPass: renderPass, renderables: scene.renderables)
         }
+        
         commandBuffer.present(drawable)
         commandBuffer.commit()
 
