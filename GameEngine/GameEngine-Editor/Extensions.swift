@@ -9,10 +9,11 @@
 import MetalKit
 
 extension Renderable {
-    var editorColor: RGBColor {
-        return RGBColor(red: UInt16(id % 256),
-                        green: UInt16(id % 256),
-                        blue: UInt16(id % 256))
+    var editorColor: EditorRendererPass.PixelColor {
+        return EditorRendererPass.PixelColor(blue: UInt8(1 * id % 256),
+                                             green: UInt8(2 * id % 256),
+                                             red: UInt8(3 * id % 256),
+                                             alpha: 255)
     }
 
 

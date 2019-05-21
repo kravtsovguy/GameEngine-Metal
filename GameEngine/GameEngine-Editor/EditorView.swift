@@ -22,16 +22,12 @@ class EditorView: GameView {
         let scale: uint = UInt32(self.currentDrawable!.layer.contentsScale)
         let size: uint2 = [UInt32(self.drawableSize.width), UInt32(self.drawableSize.height)]
         let position: uint2 = [UInt32(event.locationInWindow.x) * scale, size.y - UInt32(event.locationInWindow.y) * scale]
-//        print(position)
-
         let index = Int(position.y * size.x + position.x)
-
         let pixel = renderPass.pixelsPointer![index]
-//        print(pixel)
 
         var selected: Renderable?
         for renderable in scene?.renderables ?? [] {
-            if pixel.isEqualTo(rgbColor: renderable.editorColor) {
+            if pixel == renderable.editorColor {
                 selected = renderable
             }
         }

@@ -10,18 +10,21 @@ import MetalKit
 
 class EditorRendererPass: RendererPassProtocol {
 
-    struct Pixel {
+    struct PixelColor: Equatable {
         let blue: UInt8
         let green: UInt8
         let red: UInt8
         let alpha: UInt8
 
-        func isEqualTo(rgbColor: RGBColor) -> Bool {
-            return rgbColor.red == red && rgbColor.green == green && rgbColor.blue == blue
+        static func ==(lhs: PixelColor, rhs: PixelColor) -> Bool {
+            return lhs.red == rhs.red
+                && lhs.green == rhs.green
+                && lhs.blue == rhs.blue
+                && lhs.alpha == rhs.alpha
         }
     }
 
-    private(set) var pixelsPointer: UnsafeMutablePointer<Pixel>! = nil
+    private(set) var pixelsPointer: UnsafeMutablePointer<PixelColor>! = nil
     var renderPassDescriptor = MTLRenderPassDescriptor()
     private let editorPipeline = createEditorRenderPipeline()
     private var editorTexture: MTLTexture!
@@ -64,8 +67,8 @@ class EditorRendererPass: RendererPassProtocol {
         pixelsPointer?.deallocate()
         let width = texture.width
         let height = texture.height
-        let sourceRowBytes = width * MemoryLayout<Pixel>.size
-        let pixelValues = UnsafeMutablePointer<Pixel>.allocate(capacity: width * height)
+        let sourceRowBytes = width * MemoryLayout<PixelColor>.size
+        let pixelValues = UnsafeMutablePointer<PixelColor>.allocate(capacity: width * height)
 
         texture.getBytes(pixelValues,
                          bytesPerRow: sourceRowBytes,
