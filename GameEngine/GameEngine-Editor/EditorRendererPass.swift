@@ -44,7 +44,7 @@ class EditorRendererPass: RendererPassProtocol {
         editorTexture = buildTexture(pixelFormat: .bgra8Unorm, size: size, label: "Editor")
         renderPassDescriptor.colorAttachments[0].texture = editorTexture
         renderPassDescriptor.colorAttachments[0].loadAction = .clear
-        renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColor(red: 1, green: 0, blue: 0, alpha: 1)
+        renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColor(red: 0, green: 0, blue: 0, alpha: 1)
         renderPassDescriptor.depthAttachment = depthAttachment
     }
 

@@ -129,9 +129,6 @@
 		9CD605CD227C67CC00472E9F /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD605CA227C67CC00472E9F /* GameViewController.swift */; };
 		9CFD0AAA2293C20A0094CBCC /* ShaderEditor.metal in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD0AA92293C20A0094CBCC /* ShaderEditor.metal */; };
 		9CFD0AAC2293F88F0094CBCC /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD0AAB2293F88F0094CBCC /* EditorViewController.swift */; };
-		9CFD0AAE229408B00094CBCC /* EditorRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD0AAD229408B00094CBCC /* EditorRenderer.swift */; };
-		9CFD0AAF229408B00094CBCC /* EditorRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD0AAD229408B00094CBCC /* EditorRenderer.swift */; };
-		9CFD0AB122941A6C0094CBCC /* EditorRendererPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD0AB022941A6C0094CBCC /* EditorRendererPass.swift */; };
 		9CFD0AB222941A6C0094CBCC /* EditorRendererPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD0AB022941A6C0094CBCC /* EditorRendererPass.swift */; };
 		9CFD0AB422941B040094CBCC /* RendererPassProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD0AB322941B040094CBCC /* RendererPassProtocol.swift */; };
 		9CFD0AB522941B040094CBCC /* RendererPassProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD0AB322941B040094CBCC /* RendererPassProtocol.swift */; };
@@ -238,7 +235,6 @@
 		9CD7C121227CD98000CDA812 /* GameEngine.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = GameEngine.xcconfig; sourceTree = "<group>"; };
 		9CFD0AA92293C20A0094CBCC /* ShaderEditor.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ShaderEditor.metal; sourceTree = "<group>"; };
 		9CFD0AAB2293F88F0094CBCC /* EditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
-		9CFD0AAD229408B00094CBCC /* EditorRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorRenderer.swift; sourceTree = "<group>"; };
 		9CFD0AB022941A6C0094CBCC /* EditorRendererPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorRendererPass.swift; sourceTree = "<group>"; };
 		9CFD0AB322941B040094CBCC /* RendererPassProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RendererPassProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -293,6 +289,7 @@
 				9C2AAB79229023BF0050C139 /* EditorScene.swift */,
 				9CFD0AAB2293F88F0094CBCC /* EditorViewController.swift */,
 				9C77AE38229423CC00466837 /* EditorView.swift */,
+				9CFD0AB022941A6C0094CBCC /* EditorRendererPass.swift */,
 			);
 			path = "GameEngine-Editor";
 			sourceTree = "<group>";
@@ -302,8 +299,6 @@
 			children = (
 				9C68007A2288A29400D96B7D /* Metal.swift */,
 				9CC82B30227BB38900498FE3 /* Renderer.swift */,
-				9CFD0AAD229408B00094CBCC /* EditorRenderer.swift */,
-				9CFD0AB022941A6C0094CBCC /* EditorRendererPass.swift */,
 				9C77AE3322941DBF00466837 /* MainRenderPass.swift */,
 				9CFD0AB322941B040094CBCC /* RendererPassProtocol.swift */,
 				9C0240BA227E1ACA00FBB659 /* Extentions.swift */,
@@ -608,7 +603,6 @@
 				9C2AAB71229022670050C139 /* FPSCameraComponent.swift in Sources */,
 				9C2AAB60229022670050C139 /* KeyCodes.swift in Sources */,
 				9C2AAB65229022670050C139 /* Mesh.swift in Sources */,
-				9CFD0AAF229408B00094CBCC /* EditorRenderer.swift in Sources */,
 				9C2AAB69229022670050C139 /* Scene.swift in Sources */,
 				9C2AAB6B229022670050C139 /* Component.swift in Sources */,
 				9C2AAB76229022800050C139 /* GameView.swift in Sources */,
@@ -659,10 +653,8 @@
 				9C7C8465227FB13B0071E7BA /* Mesh.swift in Sources */,
 				9C0240BB227E1ACA00FBB659 /* Extentions.swift in Sources */,
 				9C0240C4227E5C7C00FBB659 /* ModelComponent.swift in Sources */,
-				9CFD0AB122941A6C0094CBCC /* EditorRendererPass.swift in Sources */,
 				9CA432D62289B1A100832886 /* Main.swift in Sources */,
 				9C0240D0227F779400FBB659 /* CameraComponent.swift in Sources */,
-				9CFD0AAE229408B00094CBCC /* EditorRenderer.swift in Sources */,
 				9C68006F2288509100D96B7D /* Model.swift in Sources */,
 				9CA4329A2288F10C00832886 /* ArcballCameraComponent.swift in Sources */,
 				9CA432B422899C0B00832886 /* GameView.swift in Sources */,

@@ -19,7 +19,7 @@ final class EditorScene: Scene {
 
     let plane = Node(with: "Plane") { node in
         let planeModel = Model.plane(material: Material(baseColor: [0.5,0.5,0.5],
-                                                        specularColor: [0.5,0.5,0.5],
+                                                        specularColor: [0.2,0.2,0.2],
                                                         shininess: 1))
         node.add(component: ModelComponent(model: planeModel))
         node.transform.scale = [3, 1, 3]
