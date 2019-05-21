@@ -8,5 +8,7 @@
 
 
 Main.start { params in
+    params.viewControllerType = EditorViewController.self
+    params.viewType = EditorView.self
     params.sceneType = EditorScene.self
 }

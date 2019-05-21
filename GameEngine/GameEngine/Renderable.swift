@@ -13,4 +13,5 @@ protocol Renderable: AnyObject {
     var name: String { get }
     var transform: Transform { get }
     func render(commandEncoder: MTLRenderCommandEncoder)
+    func renderEditor(commandEncoder: MTLRenderCommandEncoder)
 }

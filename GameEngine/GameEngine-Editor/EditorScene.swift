@@ -25,9 +25,20 @@ final class EditorScene: Scene {
         node.transform.scale = [3, 1, 3]
     }
 
+    let sphere = Node(with: "Sphere") { node in
+        let sphereModel = Model.sphere(material: Material(baseColor: [1.0,0.0,0.0],
+                                                          specularColor: [0.2,0.2,0.2],
+                                                          shininess: 1))
+        node.add(component: ModelComponent(model: sphereModel))
+        node.transform.position.y = 0.5
+//        node.transform.position.x = -1
+        node.transform.scale = float3(repeating: 0.5)
+    }
+
     required init() {
         super.init(name: "Editor")
         add(node: camera)
         add(node: plane)
+        add(node: sphere)
     }
 }

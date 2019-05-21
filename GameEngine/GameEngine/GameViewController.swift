@@ -29,7 +29,7 @@ open class GameViewController: PlatformViewController {
         #if os(iOS) || os(tvOS)
         frame.size = UIApplication.shared.keyWindow!.frame.size
         #elseif os(OSX)
-        frame.size = NSApplication.shared.keyWindow!.frame.size
+        frame.size = NSApplication.shared.windows.first!.frame.size
         #endif
 
         return frame

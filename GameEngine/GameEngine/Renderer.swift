@@ -11,10 +11,12 @@ import MetalKit
 
 /// Platform independent renderer class
 class Renderer: NSObject {
-    private let depthStencilState = createDepthState()!
-    private var uniforms = Uniforms()
-    private var fragmentUniforms = FragmentUniforms()
+    let depthStencilState = createDepthState()!
+    private(set) var uniforms = Uniforms()
+    private(set) var fragmentUniforms = FragmentUniforms()
     private var lastRenderTime: CFAbsoluteTime?
+//    var renderPassDescriptors: [MTLRenderPassDescriptor] = []
+    var renderPasses: [RendererPassProtocol] = [MainRendererPass()]
     var scene: Scene? {
         didSet {
             lastRenderTime = nil
@@ -46,6 +48,55 @@ class Renderer: NSObject {
 
         return try! Metal.device.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
     }
+
+//    func setup(commandBuffer: MTLCommandBuffer, renderPassDescriptor: MTLRenderPassDescriptor) {
+//
+//    }
+//
+//    func setup(encoder: MTLRenderCommandEncoder, renderPassDescriptor: MTLRenderPassDescriptor) {
+//        encoder.setDepthStencilState(depthStencilState)
+//
+//        encoder.setFragmentBytes(&fragmentUniforms,
+//                                 length: MemoryLayout<FragmentUniforms>.stride,
+//                                 index: 22)
+//    }
+//
+//    func render(renderable: Renderable, commandEncoder: MTLRenderCommandEncoder, renderPassDescriptor: MTLRenderPassDescriptor) {
+//        renderable.render(commandEncoder: commandEncoder)
+//    }
+
+    final func render(commandBuffer: MTLCommandBuffer, renderPass: RendererPassProtocol, renderables: [Renderable]) {
+        renderPass.setup(commandBuffer: commandBuffer)
+        
+        guard let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPass.renderPassDescriptor) else {
+            return
+        }
+
+        commandEncoder.pushDebugGroup(String(describing:type(of: renderPass)))
+
+        renderPass.setup(commandEncoder: commandEncoder, renderer: self)
+        for renderable in renderables {
+            commandEncoder.pushDebugGroup(renderable.name)
+
+            uniforms.modelMatrix = renderable.transform.worldMatrix
+            commandEncoder.setVertexBytes(&uniforms,
+                                          length: MemoryLayout<Uniforms>.stride,
+                                          index: 21)
+
+            renderPass.render(commandEncoder: commandEncoder, renderable: renderable)
+            commandEncoder.popDebugGroup()
+        }
+
+        commandEncoder.endEncoding()
+        commandEncoder.popDebugGroup()
+
+        renderPass.teardown(commandBuffer: commandBuffer)
+        commandBuffer.addCompletedHandler(renderPass.commandBufferCompleted)
+    }
+
+//    func commandBufferCompleted(commandBuffer: MTLCommandBuffer) {
+//
+//    }
 }
 
 
@@ -58,6 +109,10 @@ extension Renderer: MTKViewDelegate {
         }
         
         camera.aspect = Float(size.width / size.height)
+
+        for renderPass in renderPasses {
+            renderPass.updateWithView(view: view)
+        }
     }
 
     func draw(in view: MTKView) {
@@ -65,34 +120,45 @@ extension Renderer: MTKViewDelegate {
             let scene = scene,
             let camera = scene.cameraComponent,
             let commandBuffer = Metal.commandQueue.makeCommandBuffer(),
-            let renderPassDescriptor = view.currentRenderPassDescriptor,
-            let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor),
+//            let renderPassDescriptor = view.currentRenderPassDescriptor,
             let drawable = view.currentDrawable
             else { return }
-
-        commandEncoder.setDepthStencilState(depthStencilState)
 
         uniforms.viewMatrix = camera.viewMatrix
         uniforms.projectionMatrix = camera.projectionMatrix
         fragmentUniforms.cameraPosition = camera.transform.position
 
-        commandEncoder.setFragmentBytes(&fragmentUniforms,
-                                        length: MemoryLayout<FragmentUniforms>.stride,
-                                        index: 22)
+//        var descriptors = [renderPassDescriptor]
+//        descriptors.append(contentsOf: renderPassDescriptors)
 
-        for renderable in scene.renderables {
-            commandEncoder.pushDebugGroup(renderable.name)
+//        for renderPassDescriptor in descriptors {
+//            render(commandBuffer: commandBuffer, renderPassDescriptor: renderPassDescriptor, renderables: scene.renderables)
+//        }
 
-            uniforms.modelMatrix = renderable.transform.worldMatrix
-            commandEncoder.setVertexBytes(&uniforms,
-                                          length: MemoryLayout<Uniforms>.stride,
-                                          index: 21)
+//        renderPasses[0].renderPassDescriptor = view.currentRenderPassDescriptor!
 
-            renderable.render(commandEncoder: commandEncoder)
-            commandEncoder.popDebugGroup()
+        renderPasses[0].updateWithView(view: view)
+
+        for renderPass in renderPasses {
+            render(commandBuffer: commandBuffer, renderPass: renderPass, renderables: scene.renderables)
         }
 
-        commandEncoder.endEncoding()
+
+
+
+//        commandBuffer.addCompletedHandler { commandBuffer in
+//            _ = self.readTexture(texture: self.editorTexture)
+//        }
+//
+//
+//        if let editorEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: editorRenderPassDescriptor) {
+//            renderEditorPass(scene: scene, encoder: editorEncoder)
+//        }
+//
+//        if let blitEncoder = commandBuffer.makeBlitCommandEncoder() {
+//            blitEncoder.synchronize(texture: editorTexture, slice: 0, level: 0)
+//            blitEncoder.endEncoding()
+//        }
 
         commandBuffer.present(drawable)
         commandBuffer.commit()
@@ -107,5 +173,4 @@ extension Renderer: MTKViewDelegate {
         }
         lastRenderTime = CFAbsoluteTimeGetCurrent()
     }
-
 }
