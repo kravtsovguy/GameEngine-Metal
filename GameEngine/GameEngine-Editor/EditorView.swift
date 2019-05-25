@@ -8,6 +8,7 @@
 
 import Cocoa
 
+
 final class EditorView: NSView {
 
     private lazy var label: NSTextField = {

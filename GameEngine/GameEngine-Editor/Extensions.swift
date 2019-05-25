@@ -6,7 +6,7 @@
 //  Copyright © 2019 Matvey Kravtsov. All rights reserved.
 //
 
-import MetalKit
+import Metal
 import GameEngine
 
 
