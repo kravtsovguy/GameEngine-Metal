@@ -8,24 +8,15 @@
 
 import MetalKit
 
-extension Renderable {
+
+extension ModelComponent: EditorRenderable {
+
     var editorColor: EditorRendererPass.PixelColor {
-        return EditorRendererPass.PixelColor(blue: UInt8(1 * id % 256),
-                                             green: UInt8(2 * id % 256),
-                                             red: UInt8(3 * id % 256),
+        return EditorRendererPass.PixelColor(blue: UInt8(id / UInt(powf(256, 0)) % 256),
+                                             green: UInt8(id / UInt(powf(256, 1)) % 256),
+                                             red: UInt8(id / UInt(powf(256, 2)) % 256),
                                              alpha: 255)
     }
-
-
-    var editorColorFloat: float3 {
-        return [Float(editorColor.red) / Float(UInt8.max),
-                Float(editorColor.green) / Float(UInt8.max),
-                Float(editorColor.blue) / Float(UInt8.max)]
-    }
-}
-
-
-extension ModelComponent {
 
     func renderEditor(commandEncoder: MTLRenderCommandEncoder) {
         for mesh in model.meshes {
@@ -35,7 +26,7 @@ extension ModelComponent {
 
                 for submesh in mesh.submeshes {
 
-                    var color = editorColorFloat
+                    var color = editorColor.float3
                     commandEncoder.setFragmentBytes(&color,
                                                     length: MemoryLayout<float3>.stride,
                                                     index: 12)

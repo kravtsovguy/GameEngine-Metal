@@ -16,6 +16,19 @@ class EditorRendererPass: RendererPassProtocol {
         let red: UInt8
         let alpha: UInt8
 
+        var mtlColor: MTLClearColor {
+            return MTLClearColor(red: Double(red) / Double(UInt8.max),
+                                 green: Double(green) / Double(UInt8.max),
+                                 blue: Double(blue) / Double(UInt8.max),
+                                 alpha: Double(alpha) / Double(UInt8.max))
+        }
+
+        var float3: float3 {
+            return [Float(red) / Float(UInt8.max),
+                    Float(green) / Float(UInt8.max),
+                    Float(blue) / Float(UInt8.max)]
+        }
+
         static func ==(lhs: PixelColor, rhs: PixelColor) -> Bool {
             return lhs.red == rhs.red
                 && lhs.green == rhs.green
@@ -24,10 +37,18 @@ class EditorRendererPass: RendererPassProtocol {
         }
     }
 
-    private(set) var pixelsPointer: UnsafeMutablePointer<PixelColor>! = nil
-    var renderPassDescriptor = MTLRenderPassDescriptor()
-    private let editorPipeline = createEditorRenderPipeline()
+    private var pixelsPointer: UnsafeMutablePointer<PixelColor>!
     private var editorTexture: MTLTexture!
+    private let editorPipeline = createEditorRenderPipeline()
+
+    let backgoundColor: PixelColor = PixelColor(blue: 0, green: 0, red: 0, alpha: 255)
+    let renderPassDescriptor = MTLRenderPassDescriptor()
+
+    func pixel(x: UInt, y: UInt) -> PixelColor {
+        let index = Int(y * UInt(editorTexture.width) + x)
+
+        return pixelsPointer[index]
+    }
 
     static func createEditorRenderPipeline() -> MTLRenderPipelineState {
         let pipelineStateDescriptor = MTLRenderPipelineDescriptor()
@@ -59,7 +80,7 @@ class EditorRendererPass: RendererPassProtocol {
         editorTexture = buildTexture(pixelFormat: .bgra8Unorm, size: size, label: "Editor")
         renderPassDescriptor.colorAttachments[0].texture = editorTexture
         renderPassDescriptor.colorAttachments[0].loadAction = .clear
-        renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColor(red: 0, green: 0, blue: 0, alpha: 1)
+        renderPassDescriptor.colorAttachments[0].clearColor = backgoundColor.mtlColor
         renderPassDescriptor.depthAttachment = depthAttachment
     }
 
@@ -88,8 +109,8 @@ class EditorRendererPass: RendererPassProtocol {
     }
 
     func render(commandEncoder: MTLRenderCommandEncoder, renderable: Renderable) {
-        guard let component = renderable as? ModelComponent else { return }
-        component.renderEditor(commandEncoder: commandEncoder)
+        guard let editorRenderable = renderable as? EditorRenderable else { return }
+        editorRenderable.renderEditor(commandEncoder: commandEncoder)
     }
 
     func teardown(commandBuffer: MTLCommandBuffer) {

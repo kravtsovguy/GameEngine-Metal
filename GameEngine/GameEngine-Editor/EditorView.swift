@@ -19,16 +19,23 @@ class EditorView: GameView {
 
     open override func mouseDown(with event: NSEvent) {
         super.mouseDown(with: event)
-        let scale: uint = UInt32(self.currentDrawable!.layer.contentsScale)
-        let size: uint2 = [UInt32(self.drawableSize.width), UInt32(self.drawableSize.height)]
-        let position: uint2 = [UInt32(event.locationInWindow.x) * scale, size.y - UInt32(event.locationInWindow.y) * scale]
-        let index = Int(position.y * size.x + position.x)
-        let pixel = renderPass.pixelsPointer![index]
+
+        guard let scene = scene else { return }
+
+        let scale: UInt = UInt(self.currentDrawable!.layer.contentsScale)
+        let size: (width: UInt, height: UInt) = (UInt(self.drawableSize.width), UInt(self.drawableSize.height))
+        let position: (x: UInt, y: UInt) = (UInt(event.locationInWindow.x) * scale, size.height - UInt(event.locationInWindow.y) * scale)
+        let pixel = renderPass.pixel(x: position.x, y: position.y)
 
         var selected: Renderable?
-        for renderable in scene?.renderables ?? [] {
-            if pixel == renderable.editorColor {
-                selected = renderable
+
+        if pixel != renderPass.backgoundColor {
+            for renderable in scene.renderables {
+                if
+                    let editorRenderable = renderable as? EditorRenderable,
+                    pixel == editorRenderable.editorColor {
+                    selected = renderable
+                }
             }
         }
 

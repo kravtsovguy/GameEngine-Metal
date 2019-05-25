@@ -121,6 +121,7 @@
 		9CA432D82289B1A100832886 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA432D52289B1A100832886 /* Main.swift */; };
 		9CC82B7D227BC18000498FE3 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC82B30227BB38900498FE3 /* Renderer.swift */; };
 		9CC82B81227BC18100498FE3 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC82B30227BB38900498FE3 /* Renderer.swift */; };
+		9CCB6BF3229984E2005A8B2F /* EditorRenderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCB6BF2229984E2005A8B2F /* EditorRenderable.swift */; };
 		9CD60575227BE76000472E9F /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC82B30227BB38900498FE3 /* Renderer.swift */; };
 		9CD6058C227BEE9C00472E9F /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 9CC82B2E227BB38800498FE3 /* Shaders.metal */; };
 		9CD605A1227BF3A000472E9F /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 9CC82B2E227BB38800498FE3 /* Shaders.metal */; };
@@ -232,6 +233,7 @@
 		9CC82B2E227BB38800498FE3 /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		9CC82B2F227BB38900498FE3 /* ShaderTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderTypes.h; sourceTree = "<group>"; };
 		9CC82B30227BB38900498FE3 /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		9CCB6BF2229984E2005A8B2F /* EditorRenderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorRenderable.swift; sourceTree = "<group>"; };
 		9CD605CA227C67CC00472E9F /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		9CD7C121227CD98000CDA812 /* GameEngine.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = GameEngine.xcconfig; sourceTree = "<group>"; };
 		9CF2719E229447A500847BF4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 				9CFD0AAB2293F88F0094CBCC /* EditorViewController.swift */,
 				9C77AE38229423CC00466837 /* EditorView.swift */,
 				9CFD0AB022941A6C0094CBCC /* EditorRendererPass.swift */,
+				9CCB6BF2229984E2005A8B2F /* EditorRenderable.swift */,
 				9CF2719E229447A500847BF4 /* Extensions.swift */,
 			);
 			path = "GameEngine-Editor";
@@ -612,6 +615,7 @@
 				9C2AAB5E229022670050C139 /* Extentions.swift in Sources */,
 				9C77AE3722941DBF00466837 /* MainRenderPass.swift in Sources */,
 				9C2AAB6D229022670050C139 /* ModelComponent.swift in Sources */,
+				9CCB6BF3229984E2005A8B2F /* EditorRenderable.swift in Sources */,
 				9C2AAB74229022800050C139 /* AppDelegate.swift in Sources */,
 				9C2AAB7A229023BF0050C139 /* EditorScene.swift in Sources */,
 				9C77AE3A22942A7C00466837 /* ShaderEditor.metal in Sources */,
