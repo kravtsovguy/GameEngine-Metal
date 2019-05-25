@@ -7,6 +7,8 @@
 //
 
 import MetalKit
+import GameEngine
+
 
 fileprivate extension UInt8 {
     static var length: UInt {

@@ -1,5 +1,5 @@
 //
-//  EditorView.swift
+//  EditorGameView.swift
 //  GameEngine-Editor
 //
 //  Created by Matvey Kravtsov on 21/05/2019.
@@ -7,9 +7,10 @@
 //
 
 import Cocoa
+import GameEngine
 
 
-class EditorView: GameView {
+class EditorGameView: GameView {
     let renderPass: EditorRendererPass = EditorRendererPass()
 
     override func setup() {

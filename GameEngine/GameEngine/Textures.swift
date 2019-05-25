@@ -9,10 +9,10 @@
 import MetalKit
 
 
-struct Textures {
-    let baseColor: MTLTexture?
+public struct Textures {
+    public let baseColor: MTLTexture?
 
-    init(material: MDLMaterial?) {
+    public init(material: MDLMaterial?) {
         guard let baseColor = material?.property(with: .baseColor), baseColor.type == .texture,
             let mdlTexture = baseColor.textureSamplerValue?.texture else {
                 self.baseColor = nil

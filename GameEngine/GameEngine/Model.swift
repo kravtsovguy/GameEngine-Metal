@@ -14,7 +14,7 @@ public class Model {
     private static let allocator = MTKMeshBufferAllocator(device: Metal.device)
     private static let vertexDescriptor = MDLVertexDescriptor.defaultVertexDescriptor()
     public let name: String
-    let meshes: [Mesh]
+    public let meshes: [Mesh]
 
     required init(name: String, meshes: [Mesh]) {
         self.name = name

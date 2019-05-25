@@ -21,6 +21,7 @@ public enum Main {
         public var viewControllerType: GameViewController.Type = GameViewController.self
         public var viewType: GameView.Type = GameView.self
         public var sceneType: Scene.Type?
+        public var title: String = ""
 
         fileprivate init() { }
     }

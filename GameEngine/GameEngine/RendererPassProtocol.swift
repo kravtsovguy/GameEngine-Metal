@@ -8,7 +8,7 @@
 
 import MetalKit
 
-protocol RendererPassProtocol {
+public protocol RendererPassProtocol {
 
     var renderPassDescriptor: MTLRenderPassDescriptor { get }
 

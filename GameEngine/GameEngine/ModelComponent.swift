@@ -13,21 +13,21 @@ open class ModelComponent: Component {
 
     static var modelComponentsCount: UInt = 1
 
-    let id: UInt = {
+    public let id: UInt = {
         let id = modelComponentsCount
         modelComponentsCount += 1
         return id
     }()
 
-    var name: String { return model.name }
-    let model: Model
+    public var name: String { return model.name }
+    public let model: Model
 
     public init(model: Model) {
         self.model = model
         super.init()
     }
 
-    func render(commandEncoder: MTLRenderCommandEncoder, submesh: Submesh) {
+    public func render(commandEncoder: MTLRenderCommandEncoder, submesh: Submesh) {
         let mtkSubmesh = submesh.mtkSubmesh
         commandEncoder.drawIndexedPrimitives(type: .triangle,
                                              indexCount: mtkSubmesh.indexCount,
@@ -40,7 +40,7 @@ open class ModelComponent: Component {
 
 extension ModelComponent: Renderable {
 
-    func render(commandEncoder: MTLRenderCommandEncoder) {
+    public func render(commandEncoder: MTLRenderCommandEncoder) {
         for mesh in model.meshes {
             for vertexBuffer in mesh.mtkMesh.vertexBuffers {
 

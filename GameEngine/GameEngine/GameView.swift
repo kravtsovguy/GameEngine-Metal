@@ -10,7 +10,7 @@ import MetalKit
 
 
 open class GameView: MTKView {
-    let renderer: Renderer = Renderer()
+    public let renderer: Renderer = Renderer()
     public var scene: Scene? {
         get { return renderer.scene }
         set {

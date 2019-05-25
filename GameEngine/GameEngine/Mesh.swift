@@ -9,9 +9,9 @@
 import MetalKit
 
 
-struct Mesh {
-    let mtkMesh: MTKMesh
-    let submeshes: [Submesh]
+public struct Mesh {
+    public let mtkMesh: MTKMesh
+    public let submeshes: [Submesh]
 
     init(mdlMesh: MDLMesh, mtkMesh: MTKMesh) {
         self.mtkMesh = mtkMesh

@@ -60,6 +60,7 @@ open class AppDelegate: PlatformAppDelegate {
 
         window?.makeKeyAndOrderFront(NSApp)
         window?.center()
+        window?.title = Main.parameters.title
         window?.contentViewController = Main.parameters.viewControllerType.init()
     }
 

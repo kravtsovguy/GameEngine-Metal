@@ -7,6 +7,8 @@
 //
 
 import MetalKit
+import GameEngine
+
 
 class EditorRendererPass: RendererPassProtocol {
 

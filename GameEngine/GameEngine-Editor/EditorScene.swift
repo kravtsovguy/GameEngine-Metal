@@ -6,6 +6,8 @@
 //  Copyright © 2019 Matvey Kravtsov. All rights reserved.
 //
 
+import GameEngine
+
 
 final class EditorScene: Scene {
 

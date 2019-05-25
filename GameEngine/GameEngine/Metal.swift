@@ -9,8 +9,8 @@
 import Metal
 
 
-enum Metal {
-    static let device: MTLDevice = {
+public enum Metal {
+    public static let device: MTLDevice = {
         guard let device = MTLCreateSystemDefaultDevice() else {
             fatalError("Unable to connect to GPU")
         }
@@ -28,7 +28,7 @@ enum Metal {
         return defaultLibrary
     }()
 
-    static let developerLibrary: MTLLibrary = {
+    public static let developerLibrary: MTLLibrary = {
         guard
             let defaultLibrary = device.makeDefaultLibrary() else {
                 fatalError("Unable to load developer's shaders library")

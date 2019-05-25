@@ -9,7 +9,7 @@
 import MetalKit
 
 
-extension MTLVertexDescriptor {
+public extension MTLVertexDescriptor {
 
     static func defaultVertexDescriptor() -> MTLVertexDescriptor {
         let vertexDescriptor = MTLVertexDescriptor()

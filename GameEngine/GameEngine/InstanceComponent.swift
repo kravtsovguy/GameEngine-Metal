@@ -27,7 +27,7 @@ open class InstanceComponent: ModelComponent {
         super.init(model: model)
     }
 
-    override func render(commandEncoder: MTLRenderCommandEncoder, submesh: Submesh) {
+    override public func render(commandEncoder: MTLRenderCommandEncoder, submesh: Submesh) {
 
         var pointer = instanceBuffer.contents().bindMemory(to: Instances.self,
                                                            capacity: instanceCount)

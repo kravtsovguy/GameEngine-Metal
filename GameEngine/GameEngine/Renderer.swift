@@ -10,13 +10,13 @@ import MetalKit
 
 
 /// Platform independent renderer class
-final class Renderer: NSObject {
-    let depthStencilState = createDepthState()!
+final public class Renderer: NSObject {
+    public let depthStencilState = createDepthState()!
     private(set) var uniforms = Uniforms()
     private(set) var fragmentUniforms = FragmentUniforms()
     private var lastRenderTime: CFAbsoluteTime?
     private let mainPass: RendererPassProtocol = MainRendererPass()
-    var renderPasses: [RendererPassProtocol] = []
+    public var renderPasses: [RendererPassProtocol] = []
     var scene: Scene? {
         didSet {
             lastRenderTime = nil
@@ -82,7 +82,7 @@ final class Renderer: NSObject {
 
 extension Renderer: MTKViewDelegate {
 
-    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
+    public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
         print("drawable size: \(size)")
         guard let camera = scene?.cameraComponent else {
             return
@@ -95,7 +95,7 @@ extension Renderer: MTKViewDelegate {
         }
     }
 
-    func draw(in view: MTKView) {
+    public func draw(in view: MTKView) {
         guard
             let scene = scene,
             let camera = scene.cameraComponent,

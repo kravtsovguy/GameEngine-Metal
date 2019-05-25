@@ -12,7 +12,7 @@ open class Scene: Liveable {
     public var name: String
     public private(set) var rootNode: Node = Node(with: "Root")
     public private(set) weak var cameraComponent: CameraComponent?
-    private(set) var renderables: [Renderable] = []
+    public private(set) var renderables: [Renderable] = []
 
     required public init() {
         self.name = "Untitled"

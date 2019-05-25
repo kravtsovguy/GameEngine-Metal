@@ -9,10 +9,10 @@
 import MetalKit
 
 
-struct Submesh {
-    let mtkSubmesh: MTKSubmesh
-    let material: Material
-    let textures: Textures
+public struct Submesh {
+    public let mtkSubmesh: MTKSubmesh
+    public let material: Material
+    public let textures: Textures
     let pipelineState: MTLRenderPipelineState
     let instancedPipelineState: MTLRenderPipelineState
 
