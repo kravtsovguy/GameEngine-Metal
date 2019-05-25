@@ -1,5 +1,5 @@
 //
-//  Extentions.swift
+//  Extensions.swift
 //  GameEngine
 //
 //  Created by Matvey Kravtsov on 04/05/2019.

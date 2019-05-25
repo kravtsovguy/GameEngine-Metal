@@ -1,5 +1,5 @@
 //
-//  Extensions.swift
+//  EditorExtensions.swift
 //  GameEngine-Editor
 //
 //  Created by Matvey Kravtsov on 21/05/2019.
