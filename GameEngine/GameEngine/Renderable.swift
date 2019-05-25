@@ -12,6 +12,6 @@ import MetalKit
 public protocol Renderable: AnyObject {
     var id: UInt { get }
     var name: String { get }
-    var transform: Transform { get }
+    var node: Node! { get }
     func render(commandEncoder: MTLRenderCommandEncoder)
 }

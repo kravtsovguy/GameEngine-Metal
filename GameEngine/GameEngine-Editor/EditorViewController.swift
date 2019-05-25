@@ -24,25 +24,12 @@ final class EditorViewController: GameViewController {
         return view
     }()
 
-    private lazy var editorView: NSView = {
+    private lazy var editorView: EditorView = {
         let width:CGFloat = 200
         let frame = NSRect(origin: CGPoint(x: initialFrame.width - width, y: 0), size: CGSize(width: width, height: initialFrame.height))
-        let view = NSView(frame: frame)
+        let view = EditorView(frame: frame)
 
         return view
-    }()
-
-    private lazy var label: NSTextField = {
-        let height: CGFloat = 22
-        let frame = CGRect(origin: CGPoint(x: 0, y: editorView.bounds.maxY - height), size: CGSize(width: editorView.bounds.width, height: height))
-        let label = NSTextField(frame: frame)
-        label.stringValue = "Object"
-        label.backgroundColor = .clear
-        label.isBezeled = false
-        label.isEditable = false
-        label.alignment = NSTextAlignment.center
-
-        return label
     }()
 
     override func loadView() {
@@ -51,17 +38,13 @@ final class EditorViewController: GameViewController {
         view.addSubview(editorView)
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        editorView.addSubview(label)
-    }
 }
 
 
 extension EditorViewController: EditorGameViewDelegate {
 
-    func selectedObject(name: String) {
-        print("select " + name)
-        label.stringValue = name
+    func selected(node: Node?) {
+        print("select " + (node?.name ?? "none"))
+        editorView.configure(with: EditorViewModel(node: node))
     }
 }

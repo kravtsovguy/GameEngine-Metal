@@ -62,7 +62,7 @@ final public class Renderer: NSObject {
         for renderable in renderables {
             commandEncoder.pushDebugGroup(renderable.name)
 
-            uniforms.modelMatrix = renderable.transform.worldMatrix
+            uniforms.modelMatrix = renderable.node.transform.worldMatrix
             commandEncoder.setVertexBytes(&uniforms,
                                           length: MemoryLayout<Uniforms>.stride,
                                           index: 21)

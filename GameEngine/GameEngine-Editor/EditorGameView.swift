@@ -11,7 +11,7 @@ import GameEngine
 
 
 protocol EditorGameViewDelegate: AnyObject {
-    func selectedObject(name: String)
+    func selected(node: Node?)
 }
 
 
@@ -46,7 +46,7 @@ final class EditorGameView: GameView {
             }
         }
 
-        editorDelegate?.selectedObject(name: selected?.name ?? "none")
+        editorDelegate?.selected(node: selected?.node)
     }
 
 }
