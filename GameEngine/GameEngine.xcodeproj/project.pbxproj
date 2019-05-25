@@ -327,12 +327,7 @@
 				9C7C8453227FA4070071E7BA /* Node.swift */,
 				9C99CBA9228457B900C71D85 /* Component.swift */,
 				9C0240C7227F228C00FBB659 /* Transform.swift */,
-				9C0240C3227E5C7C00FBB659 /* ModelComponent.swift */,
-				9C7C8480227FD0EC0071E7BA /* InstanceComponent.swift */,
-				9C0240CF227F779400FBB659 /* CameraComponent.swift */,
-				9CA432992288F10C00832886 /* ArcballCameraComponent.swift */,
-				9CA432A32289862400832886 /* FPSCameraComponent.swift */,
-				9CA432B72289ACFB00832886 /* SoundComponent.swift */,
+				9CCB6BF422998858005A8B2F /* Components */,
 			);
 			name = "Scene Graph";
 			sourceTree = "<group>";
@@ -409,6 +404,19 @@
 				9CC82B2E227BB38800498FE3 /* Shaders.metal */,
 			);
 			path = ShadersLibrary;
+			sourceTree = "<group>";
+		};
+		9CCB6BF422998858005A8B2F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				9C0240C3227E5C7C00FBB659 /* ModelComponent.swift */,
+				9C7C8480227FD0EC0071E7BA /* InstanceComponent.swift */,
+				9C0240CF227F779400FBB659 /* CameraComponent.swift */,
+				9CA432992288F10C00832886 /* ArcballCameraComponent.swift */,
+				9CA432A32289862400832886 /* FPSCameraComponent.swift */,
+				9CA432B72289ACFB00832886 /* SoundComponent.swift */,
+			);
+			name = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
