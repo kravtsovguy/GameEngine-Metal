@@ -297,7 +297,6 @@
 				9C7C8453227FA4070071E7BA /* Node.swift */,
 				9C99CBA9228457B900C71D85 /* Component.swift */,
 				9C0240C7227F228C00FBB659 /* Transform.swift */,
-				9CCB6BF422998858005A8B2F /* Components */,
 			);
 			name = "Scene Graph";
 			sourceTree = "<group>";
@@ -365,6 +364,7 @@
 			children = (
 				9C99CBB822846C7A00C71D85 /* Shared */,
 				9C99CBAD228458BB00C71D85 /* Core */,
+				9CCB6BF422998858005A8B2F /* Components */,
 				9C99CBAF2284594A00C71D85 /* Main */,
 			);
 			path = GameEngine;
