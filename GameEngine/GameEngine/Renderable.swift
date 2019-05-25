@@ -10,8 +10,8 @@ import MetalKit
 
 
 protocol Renderable: AnyObject {
-    var name: String { get }
     var id: UInt { get }
+    var name: String { get }
     var transform: Transform { get }
     func render(commandEncoder: MTLRenderCommandEncoder)
 }

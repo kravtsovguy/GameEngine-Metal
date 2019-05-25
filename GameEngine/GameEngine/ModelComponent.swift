@@ -12,14 +12,15 @@ import MetalKit
 open class ModelComponent: Component {
 
     static var modelComponentsCount: UInt = 1
-    
-    let model: Model
-    var name: String { return model.name }
+
     let id: UInt = {
         let id = modelComponentsCount
         modelComponentsCount += 1
         return id
     }()
+
+    var name: String { return model.name }
+    let model: Model
 
     public init(model: Model) {
         self.model = model
