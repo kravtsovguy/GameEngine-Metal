@@ -8,14 +8,40 @@
 
 import MetalKit
 
+fileprivate extension UInt8 {
+    static var length: UInt {
+        return 256
+    }
+}
+
+precedencegroup ExponentiationPrecedence { associativity: right higherThan: MultiplicationPrecedence }
+infix operator ^^: ExponentiationPrecedence
+
+fileprivate func ^^<T : BinaryInteger>(base: T, power: Int) -> T {
+    if power < 0 { return 0 }
+    var power = power
+    var result: T = 1
+    var square = base
+
+    if power > 0 {
+        if power % 2 == 1 { result *= square }
+        power /= 2
+    }
+    while power > 0 {
+        square *= square
+        if power % 2 == 1 { result *= square }
+        power /= 2
+    }
+    return result
+}
 
 extension ModelComponent: EditorRenderable {
 
     var editorColor: EditorRendererPass.PixelColor {
-        return EditorRendererPass.PixelColor(blue: UInt8(id / UInt(powf(256, 0)) % 256),
-                                             green: UInt8(id / UInt(powf(256, 1)) % 256),
-                                             red: UInt8(id / UInt(powf(256, 2)) % 256),
-                                             alpha: 255)
+        return EditorRendererPass.PixelColor(blue:  UInt8(id / UInt8.length ^^ 0 % UInt8.length),
+                                             green: UInt8(id / UInt8.length ^^ 1 % UInt8.length),
+                                             red:   UInt8(id / UInt8.length ^^ 2 % UInt8.length),
+                                             alpha: UInt8.max)
     }
 
     func renderEditor(commandEncoder: MTLRenderCommandEncoder) {
