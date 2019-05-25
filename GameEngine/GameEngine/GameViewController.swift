@@ -19,6 +19,7 @@ public typealias PlatformViewController = NSViewController
 
 /// Platform independent view controller
 open class GameViewController: PlatformViewController {
+
     open var gameView: GameView {
         return view as! GameView
     }

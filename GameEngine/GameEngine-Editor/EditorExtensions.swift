@@ -10,17 +10,10 @@ import MetalKit
 import GameEngine
 
 
-fileprivate extension UInt8 {
-    static var length: UInt {
-        return 256
-    }
-}
-
 precedencegroup ExponentiationPrecedence { associativity: right higherThan: MultiplicationPrecedence }
 infix operator ^^: ExponentiationPrecedence
 
-fileprivate func ^^<T : BinaryInteger>(base: T, power: Int) -> T {
-    if power < 0 { return 0 }
+fileprivate func ^^<T : BinaryInteger>(base: T, power: UInt) -> T {
     var power = power
     var result: T = 1
     var square = base
@@ -36,6 +29,14 @@ fileprivate func ^^<T : BinaryInteger>(base: T, power: Int) -> T {
     }
     return result
 }
+
+
+fileprivate extension UInt8 {
+    static var length: UInt {
+        return 256
+    }
+}
+
 
 extension ModelComponent: EditorRenderable {
 

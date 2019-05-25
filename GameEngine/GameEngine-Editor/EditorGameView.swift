@@ -10,15 +10,21 @@ import Cocoa
 import GameEngine
 
 
-class EditorGameView: GameView {
-    let renderPass: EditorRendererPass = EditorRendererPass()
+protocol EditorGameViewDelegate: AnyObject {
+    func selectedObject(name: String)
+}
+
+
+final class EditorGameView: GameView {
+    private let renderPass: EditorRendererPass = EditorRendererPass()
+    weak var editorDelegate: EditorGameViewDelegate?
 
     override func setup() {
         super.setup()
         renderer.renderPasses.append(renderPass)
     }
 
-    open override func mouseDown(with event: NSEvent) {
+    public override func mouseDown(with event: NSEvent) {
         super.mouseDown(with: event)
 
         guard let scene = scene else { return }
@@ -40,7 +46,7 @@ class EditorGameView: GameView {
             }
         }
 
-        print("select \(selected?.name ?? "none")")
+        editorDelegate?.selectedObject(name: selected?.name ?? "none")
     }
 
 }
