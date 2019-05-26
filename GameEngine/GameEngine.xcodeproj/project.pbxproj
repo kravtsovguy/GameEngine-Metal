@@ -25,6 +25,7 @@
 		9C2AAB50228F6F010050C139 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C2AAB4F228F6F010050C139 /* Assets.xcassets */; };
 		9C2AAB5B229022030050C139 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2AAB5A229022030050C139 /* main.swift */; };
 		9C2AAB7A229023BF0050C139 /* EditorScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2AAB79229023BF0050C139 /* EditorScene.swift */; };
+		9C3EBD3A229A0551000CDC6F /* CustomComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3EBD39229A0551000CDC6F /* CustomComponent.swift */; };
 		9C5C3A332299D21A002CADA0 /* ShadersLibrary.metallib in Resources */ = {isa = PBXBuildFile; fileRef = 9C24B4AB227C7BA7009DA259 /* ShadersLibrary.metallib */; };
 		9C5C3A352299EA5F002CADA0 /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C3A342299EA5F002CADA0 /* EditorView.swift */; };
 		9C5C3A382299EB20002CADA0 /* EditorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C3A372299EB20002CADA0 /* EditorViewModel.swift */; };
@@ -181,6 +182,7 @@
 		9C2AAB54228F6F010050C139 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C2AAB5A229022030050C139 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		9C2AAB79229023BF0050C139 /* EditorScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorScene.swift; sourceTree = "<group>"; };
+		9C3EBD39229A0551000CDC6F /* CustomComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomComponent.swift; sourceTree = "<group>"; };
 		9C5C3A342299EA5F002CADA0 /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
 		9C5C3A372299EB20002CADA0 /* EditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewModel.swift; sourceTree = "<group>"; };
 		9C68006E2288509000D96B7D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -270,9 +272,18 @@
 				9CFD0AB022941A6C0094CBCC /* EditorRendererPass.swift */,
 				9CCB6BF2229984E2005A8B2F /* EditorRenderable.swift */,
 				9CF2719E229447A500847BF4 /* Extensions.swift */,
+				9C3EBD38229A042A000CDC6F /* Components */,
 				9C5C3A3A2299EC4B002CADA0 /* EditorViewController */,
 			);
 			path = "GameEngine-Editor";
+			sourceTree = "<group>";
+		};
+		9C3EBD38229A042A000CDC6F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				9C3EBD39229A0551000CDC6F /* CustomComponent.swift */,
+			);
+			name = Components;
 			sourceTree = "<group>";
 		};
 		9C5C3A362299EAE7002CADA0 /* EditorView */ = {
@@ -622,6 +633,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C3EBD3A229A0551000CDC6F /* CustomComponent.swift in Sources */,
 				9C5C3A352299EA5F002CADA0 /* EditorView.swift in Sources */,
 				9CCB6BF3229984E2005A8B2F /* EditorRenderable.swift in Sources */,
 				9C2AAB7A229023BF0050C139 /* EditorScene.swift in Sources */,

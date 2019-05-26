@@ -34,7 +34,12 @@ final class EditorView: NSView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configure(with viewModel: EditorViewModel) {
+    func configure(with viewModel: EditorViewModel?) {
+        guard let viewModel = viewModel else {
+            label.stringValue = ""
+            return
+        }
+
         label.stringValue = viewModel.name
     }
 }
