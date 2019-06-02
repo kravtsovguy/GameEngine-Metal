@@ -210,3 +210,99 @@ final class MoveForwardComponent: Component {
 В компоненте есть метод start, который можно переопределить и получать уведомление, когда компонент появляется на сцене.
 Также, в компоненте есть метод update(deltaTime), который можно переопределить и получать оповещение каждый раз, когда надо отрисовать новый кадр. При этом, в аргумент передается время, между текущем кадром и предыдущем кадром. С помощью данного аргумента можно создавать плавное поведения объектов, даже если возникают "просадки" fps.
 В программе Blender используется система координат, отличная от Metal, поэтому, чтобы двигать объект вперед нужно использовать нормализированный вектор, направленный вправо. При умножении значения перемещения на deltaTime, получается плавное перемещения, так как учитывается время между кадрами. 
+
+
+## Создание собственного пайплайна отрисовки
+
+Чтобы создать свой пайплайн отрисовки необходимо реализовать наследника класса GameView:
+
+```swift
+final class EditorGameView: GameView {
+    private let renderPass: EditorRendererPass = EditorRendererPass()
+
+    override func setup() {
+        super.setup()
+        renderer.renderPasses.append(renderPass)
+    }
+    
+    ...
+}
+```
+
+В нем необходимо создать экземпляр класса, реализующий протокол RendererPassProtocol, а также добавить его в массив графических пайплайнов, находящийся в экземпялре renderer (класс Renderer) 
+
+```swift
+public protocol RendererPassProtocol {
+
+    var renderPassDescriptor: MTLRenderPassDescriptor { get }
+
+    func setup(commandBuffer: MTLCommandBuffer)
+    func setup(commandEncoder: MTLRenderCommandEncoder, renderer: Renderer)
+    func teardown(commandBuffer: MTLCommandBuffer)
+    func render(commandEncoder: MTLRenderCommandEncoder, renderable: Renderable)
+    func commandBufferCompleted(commandBuffer: MTLCommandBuffer)
+    func updateWithView(view: MTKView)
+}
+```
+
+В наследнике, необходимо создать свой пайплайн отрисовки (пример взят из проекта GameEngine-Editor):
+
+```swift
+    static func createEditorRenderPipeline() -> MTLRenderPipelineState {
+        let pipelineStateDescriptor = MTLRenderPipelineDescriptor()
+        pipelineStateDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm //view.colorPixelFormat
+        pipelineStateDescriptor.depthAttachmentPixelFormat = .depth32Float //view.depthStencilPixelFormat
+        pipelineStateDescriptor.vertexFunction =  Metal.developerLibrary.makeFunction(name: "vertex_editor")
+        pipelineStateDescriptor.fragmentFunction = Metal.developerLibrary.makeFunction(name: "fragment_editor")
+        pipelineStateDescriptor.vertexDescriptor = MTLVertexDescriptor.defaultVertexDescriptor()
+
+        return try! Metal.device.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
+    }
+```
+
+Одна из самых важный вещей при создании пайплайна - указать вершинный шейдер и  фрагментный.
+В данном случае используются шейдеры, реализованные в библиотеки разработчика, вот их код:
+
+```metal
+#include <metal_stdlib>
+#include "../GameEngine/ShaderTypes.h"
+
+using namespace metal;
+
+struct VertexIn {
+    float4 position [[attribute(0)]];
+    float3 normal [[attribute(1)]];
+    float2 uv [[attribute(2)]];
+};
+
+struct VertexOut {
+    float4 position [[position]];
+};
+
+vertex VertexOut vertex_editor(VertexIn vertexBuffer [[stage_in]],
+                             constant Uniforms &uniforms [[buffer(21)]]
+                             ) {
+    VertexOut out;
+    out.position = uniforms.projectionMatrix * uniforms.viewMatrix * uniforms.modelMatrix * vertexBuffer.position;
+    return out;
+}
+
+fragment float4 fragment_editor(VertexOut in [[stage_in]],
+                              constant float3 &color [[buffer(12)]]) {
+    return float4(color, 1);
+}
+```
+Вначале надо подключить типы, которые находятся в заголовочном файле ShaderTypes.h, находящийся в проекте движка, он общий для всех проектов.
+
+Также можно подключить свои заголовочные файлы.
+
+Далее идет определение типов и реализация шейдеров.
+
+Код необходимо писать на языке Metal Shading Language, разработанный компанией Apple (https://developer.apple.com/metal/Metal-Shading-Language-Specification.pdf). На самом деле это урезанный стандарт C++ 14.
+
+
+## Заключение
+
+Видно, что реализовать игру с помощью движка достаточно легко. Вся мощь заключается в компонентно-ориентированном подходе.
+Также, если есть необходимость можно реализовывать свои пайплайны и писать свои шейдеры!
+Разработка движка идет очень активно, поэтому документация и руководство может меняться просьба следить за изменениями.
