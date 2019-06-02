@@ -82,56 +82,6 @@ quaternion: simd_quatf
 
 Рассмотрим пример кода с демо проекта:
 ```swift
-let camera = Node(with: "Camera") { node in
-
-        node.add(component: FPSCameraComponent(projectionType: .defaultPerspective)) { component in
-            component.transform.position = [0, 0, -5]
-            component.transform.rotation = [0, 0, radians(fromDegrees: 0)]
-        }
-
-        node.add(component: SoundComponent()) { component in
-            component.playBackgroundMusic("ambient.wav")
-        }
-    }
-
-    let train = Node(with: "Train") { node in
-        let trainModel = Model(withObject: "train")
-        node.add(component: ModelComponent(model: trainModel))
-        node.add(component: MoveForwardComponent())
-        node.transform.position.z = 0
-        node.transform.scale = float3(repeating: 0.5)
-        node.transform.rotation.y = radians(fromDegrees: 0)
-    }
-
-    let trees = Node(with: "Trees") { node in
-        let treeModel = Model(withObject: "treefir")
-        let treesComponent = InstanceComponent(model: treeModel, instanceCount: 3)
-        node.add(component: treesComponent) { component in
-            for i in 0..<3 {
-                component.transforms[i].position.x = Float(i)
-                component.transforms[i].position.y = 0
-                component.transforms[i].position.z = 1
-            }
-        }
-    }
-
-    let plane = Node(with: "Plane") { node in
-        let planeModel = Model.plane(material: Material(baseColor: [0.5,0.5,0.5],
-                                                        specularColor: [0.5,0.5,0.5],
-                                                        shininess: 1))
-        node.add(component: ModelComponent(model: planeModel))
-    }
-
-    let sphere = Node(with: "Sphere") { node in
-        let sphereModel = Model.sphere(material: Material(baseColor: [1.0,0.0,0.0],
-                                                          specularColor: [0.2,0.2,0.2],
-                                                          shininess: 1))
-        node.add(component: ModelComponent(model: sphereModel))
-        node.transform.position.y = 0.5
-        node.transform.position.x = -1
-        node.transform.scale = float3(repeating: 0.5)
-    }
-
     required init() {
         super.init(name: "Main")
         add(node: camera)
@@ -140,7 +90,6 @@ let camera = Node(with: "Camera") { node in
         add(node: plane)
         add(node: sphere)
     }
-}
 ```
 
 - Создается сцена с названием "Main"
@@ -154,3 +103,110 @@ let camera = Node(with: "Camera") { node in
 Рассмотрим каждый объект подробнее
 
 #### Camera
+
+```swift
+let camera = Node(with: "Camera") { node in
+        node.add(component: FPSCameraComponent(projectionType: .defaultPerspective)) { component in
+            component.transform.position = [0, 0, -5]
+            component.transform.rotation = [0, 0, radians(fromDegrees: 0)]
+        }
+
+        node.add(component: SoundComponent()) { component in
+            component.playBackgroundMusic("ambient.wav")
+        }
+    }
+```
+
+К объекту с названием Camera добавляется два компонента: FPSCameraComponent и SoundComponent
+
+- FPSCameraComponent: Это один из главных компонентов сцены, родительский класс Camera. Задача данного компонента - предоставить viewMatrix для вершинного шейдера. В данном случае создается камера в проекцией перспективы и выставляется позиция объекта на сцене
+
+- SoundComponent: Компонент, позволяющий добавлять музыку на сцену
+
+Также к объекту применяется трансформация перемещения и поворота
+
+#### Plane
+
+```swift
+let plane = Node(with: "Plane") { node in
+    let planeModel = Model.plane(material: Material(baseColor: [0.5,0.5,0.5],
+                                                    specularColor: [0.5,0.5,0.5],
+                                                    shininess: 1))
+    node.add(component: ModelComponent(model: planeModel))
+}
+```
+
+К объекту с названием Plane добавляется комнонент ModelComponent. Перед этим создается экземпляр класса Model, вызванный статическим методом plane, который создает поверхность размером 1 на 1 юнит. При создании модели указывается базовый цвет объекта, зеркальный цвет, а также степень отражения
+
+#### Sphere
+
+```swift
+let sphere = Node(with: "Sphere") { node in
+    let sphereModel = Model.sphere(material: Material(baseColor: [1.0,0.0,0.0],
+                                                      specularColor: [0.2,0.2,0.2],
+                                                      shininess: 1))
+    node.add(component: ModelComponent(model: sphereModel))
+    node.transform.position.y = 0.5
+    node.transform.position.x = -1
+    node.transform.scale = float3(repeating: 0.5)
+}
+```
+К объекту с названием Sphere добавляется комнонент ModelComponent. Модель сферы создается с помощью статического метода Model.sphere и добавлением цветов для материала. Радиус сферы по-умолчанию 1 юнит
+В конце, объекту присваивается позиция и масштаб.
+
+#### Train
+
+```swift
+let train = Node(with: "Train") { node in
+    let trainModel = Model(withObject: "train")
+    node.add(component: ModelComponent(model: trainModel))
+    node.add(component: MoveForwardComponent())
+    node.transform.position.z = 0
+    node.transform.scale = float3(repeating: 0.5)
+    node.transform.rotation.y = radians(fromDegrees: 0)
+}
+```
+
+К объекту с названием Train добавляется комнонент ModelComponent. Модель создается из файла с расширением ".obj", материал берется из файла ".mtl", тектура берется из соответствующего файла ".png". В данном случае это подель поезда, сделанная в программе Blender для macOS.
+Далее добавляется кастомный компонент, который двигает объект вперед с постоянной скоростью
+В конце, поезду задается перемещение, поворот и масштаб
+
+#### Trees
+
+```swift
+let trees = Node(with: "Trees") { node in
+    let treeModel = Model(withObject: "treefir")
+    let treesComponent = InstanceComponent(model: treeModel, instanceCount: 3)
+    node.add(component: treesComponent) { component in
+        for i in 0..<3 {
+            component.transforms[i].position.x = Float(i)
+            component.transforms[i].position.y = 0
+            component.transforms[i].position.z = 1
+        }
+    }
+}
+```
+К объекту с названием Trees добавляется комнонент InstanceComponent. Этот класс является наследником класса ModelComponent, при инициализации на вход принимает саму модель и сколько копий нужно ещё создать. Этот компонент служит оптимизацией при отрисовки множества одинаковых объектов.
+Далее, в компоненте для каждой модели присваивается позиция так, чтобы деревья выстроились в ряд
+
+#### MoveForwardComponent
+
+Данный компонент находится в демо проекте и его задача сделать так, чтобы объект в котором он лежит двигался по прямой с константной скоростью
+
+```swift
+final class MoveForwardComponent: Component {
+
+    override public func start() {
+        print("MoveForwardComponent started")
+    }
+
+    override public func update(with deltaTime: Float) {
+        self.transform.position += self.transform.rightVector * deltaTime
+    }
+}
+```
+
+Любой компонент должен быть наследником класса GameEngine.Component.
+В компоненте есть метод start, который можно переопределить и получать уведомление, когда компонент появляется на сцене.
+Также, в компоненте есть метод update(deltaTime), который можно переопределить и получать оповещение каждый раз, когда надо отрисовать новый кадр. При этом, в аргумент передается время, между текущем кадром и предыдущем кадром. С помощью данного аргумента можно создавать плавное поведения объектов, даже если возникают "просадки" fps.
+В программе Blender используется система координат, отличная от Metal, поэтому, чтобы двигать объект вперед нужно использовать нормализированный вектор, направленный вправо. При умножении значения перемещения на deltaTime, получается плавное перемещения, так как учитывается время между кадрами. 
