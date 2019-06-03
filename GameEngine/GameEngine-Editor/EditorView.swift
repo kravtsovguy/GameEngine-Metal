@@ -41,5 +41,22 @@ final class EditorView: NSView {
         }
 
         label.stringValue = viewModel.name
+
+        for component in viewModel.components {
+            print(component.name)
+
+            for parameter in component.parameters {
+                switch parameter {
+                case .string(let name, let parameter):
+                    print("\(name): \(parameter.value)")
+                case .int(let name, let parameter):
+                    print("\(name): \(parameter.value)")
+                case .float(let name, let parameter):
+                    print("\(name): \(parameter.value)")
+                case .float3(let name, let parameter):
+                    print("\(name): \(parameter.value)")
+                }
+            }
+        }
     }
 }

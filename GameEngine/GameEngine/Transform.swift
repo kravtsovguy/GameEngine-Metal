@@ -20,7 +20,7 @@ public final class Transform: Component {
         }
     }
     public var scale: float3 = [1, 1, 1]
-    var quaternion = simd_quatf()
+    var quaternion: simd_quatf = simd_quatf()
 
     var matrix: float4x4 {
         let translationMatrix = float4x4(translation: position)

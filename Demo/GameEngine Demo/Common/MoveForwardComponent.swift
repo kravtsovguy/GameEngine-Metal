@@ -11,6 +11,10 @@ import GameEngine
 
 final class MoveForwardComponent: Component {
 
+    override public func start() {
+        print("MoveForwardComponent started")
+    }
+
     override public func update(with deltaTime: Float) {
         self.transform.position += self.transform.rightVector * deltaTime
     }

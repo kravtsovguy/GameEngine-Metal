@@ -45,6 +45,11 @@ extension ModelComponent: EditorRenderable {
                                              green: UInt8(id / UInt8.length ^^ 1 % UInt8.length),
                                              red:   UInt8(id / UInt8.length ^^ 2 % UInt8.length),
                                              alpha: UInt8.max)
+
+//        return EditorRendererPass.PixelColor(blue:  UInt8.random(in: 0...UInt8.max),
+//                                             green: UInt8.random(in: 0...UInt8.max),
+//                                             red:   UInt8.random(in: 0...UInt8.max),
+//                                             alpha: UInt8.max)
     }
 
     func renderEditor(commandEncoder: MTLRenderCommandEncoder) {
