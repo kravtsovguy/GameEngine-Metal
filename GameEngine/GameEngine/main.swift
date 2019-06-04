@@ -30,8 +30,8 @@ public enum Main {
 
     public static func start(_ argc: Int32 = CommandLine.argc,
                              _ argv: UnsafeMutablePointer<UnsafeMutablePointer<CChar>?> = CommandLine.unsafeArgv,
-                             builder:((Parameters)->())? = nil) {
-        builder?(parameters)
+                             builder:((Parameters)->())) {
+        builder(parameters)
 
         #if os(iOS) || os(tvOS)
         UIApplicationMain(argc, argv, nil, NSStringFromClass(parameters.appDelegateType))
